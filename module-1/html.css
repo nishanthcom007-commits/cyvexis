@@ -1,0 +1,88 @@
+/* ==========================================================================
+   CERTIFICATE GENERATOR STYLES
+   ========================================================================== */
+.cert-container {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+  font-family: inherit;
+}
+
+.cert-card {
+  background: var(--bg-card, #0f172a);
+  border: 1px solid var(--border-subtle, #1e293b);
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 580px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.cert-badge {
+  display: inline-block;
+  background: var(--emerald-glow, rgba(16, 185, 129, 0.15));
+  color: var(--emerald-safe, #10b981);
+  border: 1px solid var(--emerald-safe, #10b981);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+
+.cert-card h2 {
+  color: #f8fafc;
+  margin: 0 0 8px 0;
+  font-size: 1.5rem;
+}
+
+.cert-card p {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+}
+
+.cert-input-group {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.cert-input-group input {
+  flex: 1;
+  background: var(--bg-input, #1e293b);
+  border: 1px solid var(--border-subtle, #334155);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+}
+
+.cert-input-group input:focus {
+  border-color: var(--cyan-neon, #00f2fe);
+}
+
+.cert-input-group button {
+  background: var(--cyan-neon, #00f2fe);
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.cert-input-group button:hover {
+  opacity: 0.85;
+}
+
+.cert-privacy-note {
+  display: block;
+  color: #64748b;
+  font-size: 0.78rem;
+}
