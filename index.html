@@ -792,6 +792,9 @@
       gap: 16px;
       text-decoration: none;
       transition: all 0.2s ease;
+      min-width: 0;
+      max-width: 100%;
+      box-sizing: border-box;
     }
 
     .contact-card:hover {
@@ -809,6 +812,8 @@
     .contact-info {
       display: flex;
       flex-direction: column;
+      min-width: 0;
+      flex: 1;
     }
 
     .contact-label {
@@ -825,6 +830,7 @@
       color: #ffffff;
       font-family: var(--font-mono);
       word-break: break-all;
+      overflow-wrap: anywhere;
     }
 
     .issue-report-bar {
@@ -838,12 +844,24 @@
       font-size: 0.9rem;
       color: #e2e8f0;
       line-height: 1.55;
+      min-width: 0;
+      width: 100%;
+      box-sizing: border-box;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .issue-report-bar > span {
+      min-width: 0;
+      flex: 1;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .issue-icon {
       font-size: 1.2rem;
       flex-shrink: 0;
-      margin-top: 1px;
+      margin-top: 2px;
     }
 
     .issue-report-bar code {
@@ -852,7 +870,11 @@
       padding: 2px 6px;
       border-radius: 4px;
       font-family: var(--font-mono);
-      font-size: 0.86rem;
+      font-size: 0.85rem;
+      word-break: break-all;
+      overflow-wrap: anywhere;
+      display: inline;
+      white-space: normal;
     }
 
     /* Footer */
@@ -866,19 +888,86 @@
     }
 
     @media (max-width: 768px) {
+      .container {
+        padding: 24px 14px 75px;
+      }
+      .navbar {
+        padding: 12px 14px;
+      }
       .trust-hero-card {
-        padding: 30px 22px;
+        padding: 28px 18px;
       }
       .audit-card {
-        padding: 30px 22px;
+        padding: 28px 18px;
       }
       .safety-box {
-        padding: 26px 20px;
+        padding: 22px 16px;
+      }
+      .contacts-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
       }
       .section-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
+      }
+      .footer {
+        padding-bottom: 75px; /* Ensures clearance for Netlify badge on mobile */
+      }
+    }
+
+    @media (max-width: 520px) {
+      .nav-track {
+        display: none; /* Prevents header from forcing horizontal scroll on mobile */
+      }
+      .logo-brand {
+        font-size: 1.02rem;
+      }
+      .brand-logo-3d {
+        width: 38px;
+        height: 38px;
+      }
+      .trust-stats-grid {
+        grid-template-columns: 1fr;
+      }
+      .cert-announcement-strip {
+        padding: 10px 12px;
+      }
+      .cert-announcement-text {
+        font-size: 0.76rem;
+      }
+      .safety-box {
+        padding: 18px 12px;
+      }
+      .safety-critical-text {
+        font-size: 0.92rem;
+        padding: 12px 12px;
+      }
+      .safety-sub-text {
+        font-size: 0.88rem;
+      }
+      .contact-card {
+        padding: 12px 12px;
+        gap: 10px;
+      }
+      .contact-icon {
+        font-size: 1.35rem;
+      }
+      .contact-value {
+        font-size: 0.82rem;
+      }
+      .issue-report-bar {
+        padding: 12px 10px;
+        font-size: 0.84rem;
+        gap: 8px;
+      }
+      .issue-icon {
+        font-size: 1.1rem;
+      }
+      .issue-report-bar code {
+        font-size: 0.78rem;
+        padding: 1px 4px;
       }
     }
   </style>
