@@ -851,17 +851,19 @@
       word-break: break-word;
     }
 
-    .issue-report-bar > span {
-      min-width: 0;
-      flex: 1;
-      overflow-wrap: anywhere;
-      word-break: break-word;
+    .issue-icon {
+      font-size: 1.25rem;
+      flex: 0 0 auto;
+      margin-top: 2px;
+      line-height: 1;
     }
 
-    .issue-icon {
-      font-size: 1.2rem;
-      flex-shrink: 0;
-      margin-top: 2px;
+    .issue-text {
+      flex: 1 1 auto;
+      min-width: 0;
+      width: 100%;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .issue-report-bar code {
@@ -1227,10 +1229,10 @@
         </div>
 
         <div class="issue-report-bar">
-          <span class="issue-icon">💬</span>
-          <span>
+          <span class="issue-icon" aria-hidden="true">💬</span>
+          <div class="issue-text">
             <strong>Encountered an Issue or Have Suggestions?</strong> If you discover a bug, broken challenge, or have suggestions to improve our cyber drills, please report it directly to <code>cyvexis.cybersecurity@gmail.com</code> or reach us on Instagram <code>@cyvexis</code>.
-          </span>
+          </div>
         </div>
       </div>
     </section>
