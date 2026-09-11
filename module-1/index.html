@@ -103,10 +103,10 @@
       </div>
 
       <div class="format-header">
-        <span class="format-kicker">// SELECT YOUR PREFERRED TRAINING TRACK</span>
-        <h2 class="format-title">How Would You Like to Complete Module 01?</h2>
+        <span class="format-kicker">// SELECT YOUR TRAINING PATH</span>
+        <h2 class="format-title">How Would You Like to Learn Today?</h2>
         <p class="format-desc">
-          It's your choice! Watch the quick <strong>3-minute video walkthrough</strong> or read the <strong>4-minute interactive article</strong>. Both tracks fully prepare you for the quiz and official completion certificate.
+          Choose one format to begin. Complete your track to unlock the 5-Question Quiz and earn your official verified certificate.
         </p>
       </div>
 
@@ -117,7 +117,7 @@
           <div class="choice-icon">🎬</div>
           <h3 class="choice-title">Watch Video Briefing</h3>
           <p class="choice-desc">
-            Fast, high-definition visual walkthrough dissecting real-world lookalike links and social engineering tricks.
+            Fast, high-definition visual walkthrough. Dissects lookalike links, spoofed URLs, and psychological urgency tricks.
           </p>
           <div class="choice-action">
             <span class="btn-choice-select" id="btnLabelVideo">Selected Track ✓</span>
@@ -130,7 +130,7 @@
           <div class="choice-icon">📖</div>
           <h3 class="choice-title">Read Interactive Article</h3>
           <p class="choice-desc">
-            Comprehensive written guide with side-by-side URL comparisons, attacker tactics, and the "Before You Click" protocol.
+            Comprehensive written guide. Includes URL comparisons, attacker playbooks, and the "Before You Click" protocol.
           </p>
           <div class="choice-action">
             <span class="btn-choice-select secondary" id="btnLabelArticle">Choose Reading Track ➔</span>
@@ -138,43 +138,54 @@
         </div>
       </div>
 
-      <!-- Video Briefing Player Container -->
-      <div class="video-briefing-card" id="videoBriefingCard">
-        <div class="video-card-top">
-          <div class="window-dots">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
+      <!-- VIDEO TRACK CONTAINER (Visible only in Video Mode) -->
+      <div id="videoTrackContent" class="track-content">
+        <div class="video-briefing-card" id="videoBriefingCard">
+          <div class="video-card-top">
+            <div class="window-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="video-card-title">CYVEXIS DEFENSE LABS // 3-MIN TACTICAL VIDEO BRIEFING</span>
+            <span class="video-quality-tag">1080p HD &bull; 3 MINS</span>
           </div>
-          <span class="video-card-title">CYVEXIS DEFENSE LABS // 3-MIN TACTICAL VIDEO BRIEFING</span>
-          <span class="video-quality-tag">1080p HD &bull; 3 MINS</span>
-        </div>
 
-        <div class="video-frame-wrapper">
-          <video id="phishingVideo" controls playsinline preload="metadata">
-            <source src="phishing-briefing.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-
-        <div class="video-card-bottom">
-          <div class="video-hint">
-            <span class="hint-icon">🎯</span>
-            <span>Watched the video? Jump straight to the <strong>Awareness Quiz</strong> to earn your certificate!</span>
+          <div class="video-frame-wrapper">
+            <video id="phishingVideo" controls playsinline preload="metadata">
+              <source src="phishing-briefing.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
-          <div class="video-btn-actions">
-            <a href="#quiz" class="btn-direct-quiz">
-              <span>Start 5-Q Quiz Now ➔</span>
+
+          <!-- Video Completion Notification Banner -->
+          <div class="video-completion-banner" id="videoCompletionNotice" style="display: none;">
+            <span class="comp-icon">🎉</span>
+            <div class="comp-text">
+              <strong>Video Briefing Completed!</strong>
+              <span>You are now prepared to ace the awareness quiz. Proceed below to begin.</span>
+            </div>
+          </div>
+
+          <div class="video-card-bottom">
+            <div class="video-hint">
+              <span class="hint-icon">🎯</span>
+              <span>Finished watching? Jump directly to the <strong>Awareness Quiz</strong> to earn your certificate!</span>
+            </div>
+            <a href="#quiz" class="btn-direct-quiz" id="btnProceedQuiz">
+              <span>Proceed to 5-Q Quiz &amp; Certificate ➔</span>
             </a>
-            <button type="button" class="btn-quick-jump" onclick="setLearningMode('article')">
-              <span>Or Read 4-Min Article ↓</span>
-            </button>
           </div>
         </div>
       </div>
+
     </section>
 
-    <!-- SECTION 1: WHAT IS PHISHING & WHAT TO DO IF YOU CLICK -->
+    <!-- ==========================================================================
+         ARTICLE TRACK CONTAINER (Visible only in Article Mode)
+         ========================================================================== -->
+    <div id="articleTrackContent" class="track-content" style="display: none;">
+<!-- SECTION 1: WHAT IS PHISHING & WHAT TO DO IF YOU CLICK -->
     <section id="about-phishing" class="phishing-info-section">
       <div class="section-header">
         <span class="section-tag">// Fundamental Awareness</span>
@@ -324,6 +335,52 @@
       </div>
     </section>
 
+
+    <!-- SECTION 4: THE "BEFORE YOU CLICK" PROTOCOL -->
+    <section id="checklist" class="checklist-section">
+      <div class="section-header">
+        <span class="section-tag">// Section 04: Core Habits</span>
+        <h2 class="section-title">The "Before You Click" Protocol</h2>
+        <p class="section-desc">Four golden habits to protect your credentials and data every day.</p>
+      </div>
+
+      <div class="checklist-grid">
+        <div class="checklist-card">
+          <div class="checklist-number">01</div>
+          <div class="checklist-body">
+            <h4>Read the Domain Backwards</h4>
+            <p>Locate the first single slash (<code>/</code>) in the address bar. Look immediately to the left to see the actual registered domain and extension.</p>
+          </div>
+        </div>
+
+        <div class="checklist-card">
+          <div class="checklist-number">02</div>
+          <div class="checklist-body">
+            <h4>Never Trust the Padlock Alone</h4>
+            <p>HTTPS only encrypts the connection; it doesn't guarantee who owns the server. Over 80% of phishing sites display the lock icon.</p>
+          </div>
+        </div>
+
+        <div class="checklist-card">
+          <div class="checklist-number">03</div>
+          <div class="checklist-body">
+            <h4>Navigate Independently</h4>
+            <p>If an email warns of an urgent restriction or locked account, open a new browser tab manually and navigate to your known bookmark.</p>
+          </div>
+        </div>
+
+        <div class="checklist-card">
+          <div class="checklist-number">04</div>
+          <div class="checklist-body">
+            <h4>Verify Financial Requests Out-of-Band</h4>
+            <p>If an executive or coworker requests gift cards or emergency transfers, call them directly on a known phone number to verify.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+
     <!-- SECTION 3: THE 5 PHISHING AWARENESS QUIZ QUESTIONS -->
     <section id="quiz" class="challenge-section">
       <div class="section-header">
@@ -411,49 +468,6 @@
           </button>
         </div>
 
-      </div>
-    </section>
-
-    <!-- SECTION 4: THE "BEFORE YOU CLICK" PROTOCOL -->
-    <section id="checklist" class="checklist-section">
-      <div class="section-header">
-        <span class="section-tag">// Section 04: Core Habits</span>
-        <h2 class="section-title">The "Before You Click" Protocol</h2>
-        <p class="section-desc">Four golden habits to protect your credentials and data every day.</p>
-      </div>
-
-      <div class="checklist-grid">
-        <div class="checklist-card">
-          <div class="checklist-number">01</div>
-          <div class="checklist-body">
-            <h4>Read the Domain Backwards</h4>
-            <p>Locate the first single slash (<code>/</code>) in the address bar. Look immediately to the left to see the actual registered domain and extension.</p>
-          </div>
-        </div>
-
-        <div class="checklist-card">
-          <div class="checklist-number">02</div>
-          <div class="checklist-body">
-            <h4>Never Trust the Padlock Alone</h4>
-            <p>HTTPS only encrypts the connection; it doesn't guarantee who owns the server. Over 80% of phishing sites display the lock icon.</p>
-          </div>
-        </div>
-
-        <div class="checklist-card">
-          <div class="checklist-number">03</div>
-          <div class="checklist-body">
-            <h4>Navigate Independently</h4>
-            <p>If an email warns of an urgent restriction or locked account, open a new browser tab manually and navigate to your known bookmark.</p>
-          </div>
-        </div>
-
-        <div class="checklist-card">
-          <div class="checklist-number">04</div>
-          <div class="checklist-body">
-            <h4>Verify Financial Requests Out-of-Band</h4>
-            <p>If an executive or coworker requests gift cards or emergency transfers, call them directly on a known phone number to verify.</p>
-          </div>
-        </div>
       </div>
     </section>
 

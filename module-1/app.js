@@ -329,15 +329,15 @@ function generateCertificate() {
 }
 
 /* ==========================================================================
-   LEARNING MODE SWITCHER (3-Min Video Briefing vs 4-Min Interactive Article)
+   STRICT LEARNING MODE SWITCHER (Video Track vs Article Track)
    ========================================================================== */
 function setLearningMode(mode) {
   const cardVideo = document.getElementById('cardChoiceVideo');
   const cardArticle = document.getElementById('cardChoiceArticle');
   const btnVideo = document.getElementById('btnLabelVideo');
   const btnArticle = document.getElementById('btnLabelArticle');
-  const videoCard = document.getElementById('videoBriefingCard');
-  const articleSection = document.getElementById('about-phishing');
+  const videoTrack = document.getElementById('videoTrackContent');
+  const articleTrack = document.getElementById('articleTrackContent');
   const videoEl = document.getElementById('phishingVideo');
 
   if (mode === 'video') {
@@ -351,9 +351,12 @@ function setLearningMode(mode) {
       btnArticle.textContent = 'Choose Reading Track ➔';
       btnArticle.className = 'btn-choice-select secondary';
     }
-    if (videoCard) {
-      videoCard.style.display = 'block';
-      videoCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // Show ONLY Video Track, Hide Article Track
+    if (videoTrack) videoTrack.style.display = 'block';
+    if (articleTrack) articleTrack.style.display = 'none';
+
+    if (videoTrack) {
+      videoTrack.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   } else if (mode === 'article') {
     if (cardArticle) cardArticle.classList.add('active');
@@ -366,12 +369,42 @@ function setLearningMode(mode) {
       btnVideo.textContent = 'Choose Video Track ➔';
       btnVideo.className = 'btn-choice-select secondary';
     }
+    // Pause video if playing
     if (videoEl && !videoEl.paused) {
       videoEl.pause();
     }
-    if (articleSection) {
-      articleSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Show ONLY Article Track, Hide Video Track
+    if (videoTrack) videoTrack.style.display = 'none';
+    if (articleTrack) articleTrack.style.display = 'block';
+
+    if (articleTrack) {
+      articleTrack.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 }
 window.setLearningMode = setLearningMode;
+
+// Automatically detect when the video finishes playing!
+document.addEventListener('DOMContentLoaded', () => {
+  const videoEl = document.getElementById('phishingVideo');
+  const completionNotice = document.getElementById('videoCompletionNotice');
+  const proceedBtn = document.getElementById('btnProceedQuiz');
+
+  if (videoEl) {
+    videoEl.addEventListener('ended', () => {
+      if (completionNotice) {
+        completionNotice.style.display = 'flex';
+      }
+      if (proceedBtn) {
+        proceedBtn.classList.add('highlight-pulse');
+      }
+      const quizSection = document.getElementById('quiz');
+      if (quizSection) {
+        setTimeout(() => {
+          quizSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 1200);
+      }
+    });
+  }
+});
+
