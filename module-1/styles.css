@@ -1893,7 +1893,7 @@ html {
   font-size: 0.8rem;
 }
 
-/* Choice Cards (3 Min Video vs 4 Min Article) */
+/* Choice Cards (4 Min Video vs 4 Min Article) */
 .format-choice-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
