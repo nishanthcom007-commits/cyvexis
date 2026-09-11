@@ -327,3 +327,33 @@ function generateCertificate() {
   downloadLink.click();
   document.body.removeChild(downloadLink);
 }
+
+/* ==========================================================================
+   LEARNING MODE SWITCHER (Video Briefing vs Interactive Article)
+   ========================================================================== */
+function setLearningMode(mode) {
+  const tabVideo = document.getElementById('tabBtnVideo');
+  const tabArticle = document.getElementById('tabBtnArticle');
+  const videoCard = document.getElementById('videoBriefingCard');
+  const articleSection = document.getElementById('about-phishing');
+  const videoEl = document.getElementById('phishingVideo');
+
+  if (mode === 'video') {
+    if (tabVideo) tabVideo.classList.add('active');
+    if (tabArticle) tabArticle.classList.remove('active');
+    if (videoCard) {
+      videoCard.style.display = 'block';
+      videoCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  } else if (mode === 'article') {
+    if (tabArticle) tabArticle.classList.add('active');
+    if (tabVideo) tabVideo.classList.remove('active');
+    if (videoEl && !videoEl.paused) {
+      videoEl.pause();
+    }
+    if (articleSection) {
+      articleSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+}
+window.setLearningMode = setLearningMode;

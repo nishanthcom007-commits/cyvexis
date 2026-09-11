@@ -79,6 +79,65 @@
       </div>
     </section>
 
+    <!-- ==========================================================================
+         SECTION 0: CHOOSE TRAINING METHOD (VIDEO BRIEFING VS INTERACTIVE ARTICLE)
+         ========================================================================== -->
+    <section class="learning-format-section" aria-label="Learning Format Switcher">
+      <div class="format-header">
+        <span class="format-kicker">// ADAPTIVE TRAINING MODES</span>
+        <h2 class="format-title">Choose How You Want to Train</h2>
+        <p class="format-desc">Watch our high-definition tactical video briefing or read the comprehensive interactive guide.</p>
+      </div>
+
+      <div class="format-toggle-tabs">
+        <button type="button" class="format-tab-btn active" id="tabBtnVideo" onclick="setLearningMode('video')">
+          <span class="tab-icon">🎬</span>
+          <div class="tab-info">
+            <strong>Watch Video Briefing</strong>
+            <span>1080p Tactical Walkthrough</span>
+          </div>
+        </button>
+
+        <button type="button" class="format-tab-btn" id="tabBtnArticle" onclick="setLearningMode('article')">
+          <span class="tab-icon">📖</span>
+          <div class="tab-info">
+            <strong>Read Interactive Guide</strong>
+            <span>Detailed Breakdown &amp; Checklist</span>
+          </div>
+        </button>
+      </div>
+
+      <!-- Video Briefing Card -->
+      <div class="video-briefing-card" id="videoBriefingCard">
+        <div class="video-card-top">
+          <div class="window-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <span class="video-card-title">CYVEXIS DEFENSE LABS // MODULE 01 VIDEO BRIEFING</span>
+          <span class="video-quality-tag">1080p HD</span>
+        </div>
+
+        <div class="video-frame-wrapper">
+          <video id="phishingVideo" controls playsinline preload="metadata">
+            <source src="phishing-briefing.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div class="video-card-bottom">
+          <div class="video-hint">
+            <span class="hint-icon">💡</span>
+            <span>Completed the briefing? Proceed directly to the <strong>Awareness Quiz</strong> below to earn your verified certificate!</span>
+          </div>
+          <button type="button" class="btn-quick-jump" onclick="setLearningMode('article')">
+            <span>Prefer Reading? Scroll to Guide ↓</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
     <!-- SECTION 1: WHAT IS PHISHING & WHAT TO DO IF YOU CLICK -->
     <section id="about-phishing" class="phishing-info-section">
       <div class="section-header">
