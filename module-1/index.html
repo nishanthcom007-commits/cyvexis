@@ -79,35 +79,66 @@
       </div>
     </section>
 
-    <!-- ==========================================================================
+        <!-- ==========================================================================
          SECTION 0: CHOOSE TRAINING METHOD (VIDEO BRIEFING VS INTERACTIVE ARTICLE)
          ========================================================================== -->
-    <section class="learning-format-section" aria-label="Learning Format Switcher">
+    <section class="learning-format-section" id="learningFormatSection" aria-label="Learning Format Switcher">
+      
+      <!-- Stepper Indicator -->
+      <div class="training-stepper">
+        <div class="step-badge active">
+          <span class="step-circle">1</span>
+          <span>CHOOSE METHOD (VIDEO OR ARTICLE)</span>
+        </div>
+        <span class="step-arrow">➔</span>
+        <div class="step-badge">
+          <span class="step-circle">2</span>
+          <span>5-QUESTION QUIZ</span>
+        </div>
+        <span class="step-arrow">➔</span>
+        <div class="step-badge">
+          <span class="step-circle">3</span>
+          <span>OFFICIAL CERTIFICATE</span>
+        </div>
+      </div>
+
       <div class="format-header">
-        <span class="format-kicker">// ADAPTIVE TRAINING MODES</span>
-        <h2 class="format-title">Choose How You Want to Train</h2>
-        <p class="format-desc">Watch our high-definition tactical video briefing or read the comprehensive interactive guide.</p>
+        <span class="format-kicker">// SELECT YOUR PREFERRED TRAINING TRACK</span>
+        <h2 class="format-title">How Would You Like to Complete Module 01?</h2>
+        <p class="format-desc">
+          It's your choice! Watch the quick <strong>3-minute video walkthrough</strong> or read the <strong>4-minute interactive article</strong>. Both tracks fully prepare you for the quiz and official completion certificate.
+        </p>
       </div>
 
-      <div class="format-toggle-tabs">
-        <button type="button" class="format-tab-btn active" id="tabBtnVideo" onclick="setLearningMode('video')">
-          <span class="tab-icon">🎬</span>
-          <div class="tab-info">
-            <strong>Watch Video Briefing</strong>
-            <span>1080p Tactical Walkthrough</span>
+      <div class="format-choice-grid">
+        <!-- Option 1: 3-Min Video Track -->
+        <div class="choice-card active" id="cardChoiceVideo" onclick="setLearningMode('video')">
+          <div class="choice-badge-time cyan">⏱️ 3 MINUTES</div>
+          <div class="choice-icon">🎬</div>
+          <h3 class="choice-title">Watch Video Briefing</h3>
+          <p class="choice-desc">
+            Fast, high-definition visual walkthrough dissecting real-world lookalike links and social engineering tricks.
+          </p>
+          <div class="choice-action">
+            <span class="btn-choice-select" id="btnLabelVideo">Selected Track ✓</span>
           </div>
-        </button>
+        </div>
 
-        <button type="button" class="format-tab-btn" id="tabBtnArticle" onclick="setLearningMode('article')">
-          <span class="tab-icon">📖</span>
-          <div class="tab-info">
-            <strong>Read Interactive Guide</strong>
-            <span>Detailed Breakdown &amp; Checklist</span>
+        <!-- Option 2: 4-Min Reading Track -->
+        <div class="choice-card" id="cardChoiceArticle" onclick="setLearningMode('article')">
+          <div class="choice-badge-time emerald">⏱️ 4 MINUTES</div>
+          <div class="choice-icon">📖</div>
+          <h3 class="choice-title">Read Interactive Article</h3>
+          <p class="choice-desc">
+            Comprehensive written guide with side-by-side URL comparisons, attacker tactics, and the "Before You Click" protocol.
+          </p>
+          <div class="choice-action">
+            <span class="btn-choice-select secondary" id="btnLabelArticle">Choose Reading Track ➔</span>
           </div>
-        </button>
+        </div>
       </div>
 
-      <!-- Video Briefing Card -->
+      <!-- Video Briefing Player Container -->
       <div class="video-briefing-card" id="videoBriefingCard">
         <div class="video-card-top">
           <div class="window-dots">
@@ -115,8 +146,8 @@
             <span class="dot yellow"></span>
             <span class="dot green"></span>
           </div>
-          <span class="video-card-title">CYVEXIS DEFENSE LABS // MODULE 01 VIDEO BRIEFING</span>
-          <span class="video-quality-tag">1080p HD</span>
+          <span class="video-card-title">CYVEXIS DEFENSE LABS // 3-MIN TACTICAL VIDEO BRIEFING</span>
+          <span class="video-quality-tag">1080p HD &bull; 3 MINS</span>
         </div>
 
         <div class="video-frame-wrapper">
@@ -128,12 +159,17 @@
 
         <div class="video-card-bottom">
           <div class="video-hint">
-            <span class="hint-icon">💡</span>
-            <span>Completed the briefing? Proceed directly to the <strong>Awareness Quiz</strong> below to earn your verified certificate!</span>
+            <span class="hint-icon">🎯</span>
+            <span>Watched the video? Jump straight to the <strong>Awareness Quiz</strong> to earn your certificate!</span>
           </div>
-          <button type="button" class="btn-quick-jump" onclick="setLearningMode('article')">
-            <span>Prefer Reading? Scroll to Guide ↓</span>
-          </button>
+          <div class="video-btn-actions">
+            <a href="#quiz" class="btn-direct-quiz">
+              <span>Start 5-Q Quiz Now ➔</span>
+            </a>
+            <button type="button" class="btn-quick-jump" onclick="setLearningMode('article')">
+              <span>Or Read 4-Min Article ↓</span>
+            </button>
+          </div>
         </div>
       </div>
     </section>

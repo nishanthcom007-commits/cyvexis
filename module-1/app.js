@@ -329,25 +329,43 @@ function generateCertificate() {
 }
 
 /* ==========================================================================
-   LEARNING MODE SWITCHER (Video Briefing vs Interactive Article)
+   LEARNING MODE SWITCHER (3-Min Video Briefing vs 4-Min Interactive Article)
    ========================================================================== */
 function setLearningMode(mode) {
-  const tabVideo = document.getElementById('tabBtnVideo');
-  const tabArticle = document.getElementById('tabBtnArticle');
+  const cardVideo = document.getElementById('cardChoiceVideo');
+  const cardArticle = document.getElementById('cardChoiceArticle');
+  const btnVideo = document.getElementById('btnLabelVideo');
+  const btnArticle = document.getElementById('btnLabelArticle');
   const videoCard = document.getElementById('videoBriefingCard');
   const articleSection = document.getElementById('about-phishing');
   const videoEl = document.getElementById('phishingVideo');
 
   if (mode === 'video') {
-    if (tabVideo) tabVideo.classList.add('active');
-    if (tabArticle) tabArticle.classList.remove('active');
+    if (cardVideo) cardVideo.classList.add('active');
+    if (cardArticle) cardArticle.classList.remove('active');
+    if (btnVideo) {
+      btnVideo.textContent = 'Selected Track ✓';
+      btnVideo.className = 'btn-choice-select';
+    }
+    if (btnArticle) {
+      btnArticle.textContent = 'Choose Reading Track ➔';
+      btnArticle.className = 'btn-choice-select secondary';
+    }
     if (videoCard) {
       videoCard.style.display = 'block';
       videoCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   } else if (mode === 'article') {
-    if (tabArticle) tabArticle.classList.add('active');
-    if (tabVideo) tabVideo.classList.remove('active');
+    if (cardArticle) cardArticle.classList.add('active');
+    if (cardVideo) cardVideo.classList.remove('active');
+    if (btnArticle) {
+      btnArticle.textContent = 'Selected Track ✓';
+      btnArticle.className = 'btn-choice-select';
+    }
+    if (btnVideo) {
+      btnVideo.textContent = 'Choose Video Track ➔';
+      btnVideo.className = 'btn-choice-select secondary';
+    }
     if (videoEl && !videoEl.paused) {
       videoEl.pause();
     }
