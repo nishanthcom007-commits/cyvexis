@@ -84,7 +84,113 @@
       </div>
     </section>
 
-    <!-- SECTION 1: UNDERSTAND (Pedagogical Pillar 1) -->
+    <!-- ==========================================================================
+         SECTION 0: CHOOSE TRAINING METHOD (VIDEO BRIEFING VS INTERACTIVE ARTICLE)
+         ========================================================================== -->
+    <section class="learning-format-section" id="learningFormatSection" aria-label="Learning Format Switcher">
+      
+      <!-- Stepper Indicator -->
+      <div class="training-stepper">
+        <div class="step-badge active">
+          <span class="step-circle">1</span>
+          <span>CHOOSE METHOD (VIDEO OR ARTICLE)</span>
+        </div>
+        <span class="step-arrow">➔</span>
+        <div class="step-badge">
+          <span class="step-circle">2</span>
+          <span>SCENARIO CHALLENGE</span>
+        </div>
+        <span class="step-arrow">➔</span>
+        <div class="step-badge">
+          <span class="step-circle">3</span>
+          <span>OFFICIAL CERTIFICATE</span>
+        </div>
+      </div>
+
+      <div class="format-header">
+        <span class="format-kicker">// SELECT YOUR PREFERRED TRAINING TRACK</span>
+        <h2 class="format-title">How Would You Like to Learn Today?</h2>
+        <p class="format-desc">
+          Choose your training track below. Complete either the <strong>5-minute video walkthrough</strong> or the <strong>5-minute interactive article</strong> to unlock the scenario challenge and claim your official credential.
+        </p>
+      </div>
+
+      <div class="format-choice-grid">
+        <!-- Option 1: 5-Min Video Track -->
+        <div class="choice-card active" id="cardChoiceVideo" onclick="setLearningMode('video')">
+          <div class="choice-badge-time cyan">⏱️ 5 MINUTES</div>
+          <div class="choice-icon">🎬</div>
+          <h3 class="choice-title">Watch Video Briefing</h3>
+          <p class="choice-desc">
+            Fast, high-definition visual walkthrough. Dissects credential stuffing, password spraying, and MFA prompt-bombing psychological traps.
+          </p>
+          <div class="choice-action">
+            <span class="btn-choice-select" id="btnLabelVideo">Selected Track ✓</span>
+          </div>
+        </div>
+
+        <!-- Option 2: 5-Min Reading Track -->
+        <div class="choice-card" id="cardChoiceArticle" onclick="setLearningMode('article')">
+          <div class="choice-badge-time emerald">⏱️ 5 MINUTES</div>
+          <div class="choice-icon">📖</div>
+          <h3 class="choice-title">Read Interactive Article</h3>
+          <p class="choice-desc">
+            Comprehensive interactive guide with real-time MFA fatigue push simulators, entropy strength calculator, and passkey architecture.
+          </p>
+          <div class="choice-action">
+            <span class="btn-choice-select secondary" id="btnLabelArticle">Choose Reading Track ➔</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIDEO TRACK CONTAINER (Visible only in Video Mode) -->
+      <div id="videoTrackContent" class="track-content">
+        <div class="video-briefing-card" id="videoBriefingCard">
+          <div class="video-card-top">
+            <div class="window-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="video-card-title">CYVEXIS DEFENSE LABS // 5-MIN TACTICAL VIDEO BRIEFING</span>
+            <span class="video-quality-tag">1080p HD &bull; 5 MINS</span>
+          </div>
+
+          <div class="video-frame-wrapper">
+            <video id="mfaVideo" controls playsinline preload="metadata">
+              <source src="password-hygiene-briefing.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          <!-- Video Completion Notification Banner -->
+          <div class="video-completion-banner" id="videoCompletionNotice" style="display: none;">
+            <span class="comp-icon">🎉</span>
+            <div class="comp-text">
+              <strong>Video Briefing Completed!</strong>
+              <span>You are now prepared to ace the scenario challenge. Proceed below to begin.</span>
+            </div>
+          </div>
+
+          <div class="video-card-bottom">
+            <div class="video-hint">
+              <span class="hint-icon">🎯</span>
+              <span>Finished watching? Jump directly to the <strong>Scenario Challenge</strong> to earn your certificate!</span>
+            </div>
+            <a href="#practice" class="btn-direct-quiz" id="btnProceedChallenge">
+              <span>Proceed to Challenge &amp; Certificate ➔</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+        <!-- ==========================================================================
+         ARTICLE TRACK CONTAINER (Visible only in Article Mode)
+         ========================================================================== -->
+    <div id="articleTrackContent" class="track-content" style="display: none;">
+<!-- SECTION 1: UNDERSTAND (Pedagogical Pillar 1) -->
     <section id="understand" class="training-section">
       <div class="section-header">
         <span class="section-tag">// 01. UNDERSTAND THE MECHANICS</span>
@@ -506,6 +612,79 @@
       </div>
     </section>
 
+
+    <!-- SECTION 6: REMEMBER (Pedagogical Pillar 6 - Practical Key Takeaways) -->
+    <section id="remember" class="training-section">
+      <div class="section-header">
+        <span class="section-tag">// 06. KEY TAKEAWAYS</span>
+        <h2 class="section-title">Your Daily Credential Defense Checklist</h2>
+        <p class="section-desc">
+          Check off these habits to harden your personal and organizational identity against credential attacks.
+        </p>
+      </div>
+
+      <div class="takeaways-grid">
+        
+        <div class="takeaway-card" onclick="toggleTakeaway(this)">
+          <div class="takeaway-checkbox">
+            <input type="checkbox" id="t1">
+            <label for="t1"></label>
+          </div>
+          <div class="takeaway-info">
+            <h4>1. Unprompted Push = Compromised Password</h4>
+            <p>If you receive an MFA push when you weren't actively logging in, your password is already in the hands of an attacker. Deny the prompt and reset your password immediately.</p>
+          </div>
+        </div>
+
+        <div class="takeaway-card" onclick="toggleTakeaway(this)">
+          <div class="takeaway-checkbox">
+            <input type="checkbox" id="t2">
+            <label for="t2"></label>
+          </div>
+          <div class="takeaway-info">
+            <h4>2. Never Approve to Silence the Noise</h4>
+            <p>Notification fatigue is an intentional attack tactic. Approving the request hands the keys to your company's network to a criminal. Treat repeated prompts as an ongoing incident.</p>
+          </div>
+        </div>
+
+        <div class="takeaway-card" onclick="toggleTakeaway(this)">
+          <div class="takeaway-checkbox">
+            <input type="checkbox" id="t3">
+            <label for="t3"></label>
+          </div>
+          <div class="takeaway-info">
+            <h4>3. Eliminate Password Re-use with a Vault</h4>
+            <p>A breach on one service should never threaten another. Use a password manager to store unique, complex 20+ character passwords for every account.</p>
+          </div>
+        </div>
+
+        <div class="takeaway-card" onclick="toggleTakeaway(this)">
+          <div class="takeaway-checkbox">
+            <input type="checkbox" id="t4">
+            <label for="t4"></label>
+          </div>
+          <div class="takeaway-info">
+            <h4>4. Upgrade to Phishing-Resistant MFA</h4>
+            <p>Prefer Passkeys, FIDO2 hardware keys, or Number Matching over simple "one-tap" approvals and SMS codes whenever available in your account settings.</p>
+          </div>
+        </div>
+
+        <div class="takeaway-card" onclick="toggleTakeaway(this)">
+          <div class="takeaway-checkbox">
+            <input type="checkbox" id="t5">
+            <label for="t5"></label>
+          </div>
+          <div class="takeaway-info">
+            <h4>5. Rapid Reporting Trumps Embarrassment</h4>
+            <p>Security is a team sport. If you ever accidentally tap approve, immediately report it to your IT/SOC team. Quick reporting neutralizes the breach before data leaves the network.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    </div>
+
+
     <!-- SECTION 5: PRACTICE (Pedagogical Pillar 5 - Interactive Scenario Quiz) -->
     <section id="practice" class="training-section">
       <div class="section-header">
@@ -591,76 +770,6 @@
           <button class="btn-primary" id="btn-restart-quiz">
             <span>🔄 Retake Scenario Challenge</span>
           </button>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- SECTION 6: REMEMBER (Pedagogical Pillar 6 - Practical Key Takeaways) -->
-    <section id="remember" class="training-section">
-      <div class="section-header">
-        <span class="section-tag">// 06. KEY TAKEAWAYS</span>
-        <h2 class="section-title">Your Daily Credential Defense Checklist</h2>
-        <p class="section-desc">
-          Check off these habits to harden your personal and organizational identity against credential attacks.
-        </p>
-      </div>
-
-      <div class="takeaways-grid">
-        
-        <div class="takeaway-card" onclick="toggleTakeaway(this)">
-          <div class="takeaway-checkbox">
-            <input type="checkbox" id="t1">
-            <label for="t1"></label>
-          </div>
-          <div class="takeaway-info">
-            <h4>1. Unprompted Push = Compromised Password</h4>
-            <p>If you receive an MFA push when you weren't actively logging in, your password is already in the hands of an attacker. Deny the prompt and reset your password immediately.</p>
-          </div>
-        </div>
-
-        <div class="takeaway-card" onclick="toggleTakeaway(this)">
-          <div class="takeaway-checkbox">
-            <input type="checkbox" id="t2">
-            <label for="t2"></label>
-          </div>
-          <div class="takeaway-info">
-            <h4>2. Never Approve to Silence the Noise</h4>
-            <p>Notification fatigue is an intentional attack tactic. Approving the request hands the keys to your company's network to a criminal. Treat repeated prompts as an ongoing incident.</p>
-          </div>
-        </div>
-
-        <div class="takeaway-card" onclick="toggleTakeaway(this)">
-          <div class="takeaway-checkbox">
-            <input type="checkbox" id="t3">
-            <label for="t3"></label>
-          </div>
-          <div class="takeaway-info">
-            <h4>3. Eliminate Password Re-use with a Vault</h4>
-            <p>A breach on one service should never threaten another. Use a password manager to store unique, complex 20+ character passwords for every account.</p>
-          </div>
-        </div>
-
-        <div class="takeaway-card" onclick="toggleTakeaway(this)">
-          <div class="takeaway-checkbox">
-            <input type="checkbox" id="t4">
-            <label for="t4"></label>
-          </div>
-          <div class="takeaway-info">
-            <h4>4. Upgrade to Phishing-Resistant MFA</h4>
-            <p>Prefer Passkeys, FIDO2 hardware keys, or Number Matching over simple "one-tap" approvals and SMS codes whenever available in your account settings.</p>
-          </div>
-        </div>
-
-        <div class="takeaway-card" onclick="toggleTakeaway(this)">
-          <div class="takeaway-checkbox">
-            <input type="checkbox" id="t5">
-            <label for="t5"></label>
-          </div>
-          <div class="takeaway-info">
-            <h4>5. Rapid Reporting Trumps Embarrassment</h4>
-            <p>Security is a team sport. If you ever accidentally tap approve, immediately report it to your IT/SOC team. Quick reporting neutralizes the breach before data leaves the network.</p>
-          </div>
         </div>
 
       </div>
