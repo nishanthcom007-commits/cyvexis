@@ -1018,8 +1018,8 @@ function setLearningMode(mode) {
   } else if (mode === 'article') {
     window.currentLearningMode = 'article';
 
-    // Pause video if playing
-    if (videoEl && !videoEl.paused) {
+    // Pause video if HTML5 video element is playing
+    if (videoEl && typeof videoEl.pause === 'function' && !videoEl.paused) {
       videoEl.pause();
     }
 
