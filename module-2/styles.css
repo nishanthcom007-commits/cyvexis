@@ -2269,48 +2269,55 @@ html {
   gap: 12px;
   margin-bottom: 2rem;
   flex-wrap: wrap;
+  width: 100%;
 }
 
-.step-badge {
-  display: flex;
+.format-step-pill {
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   background: rgba(14, 22, 42, 0.7);
   border: 1px solid var(--border-subtle, rgba(255,255,255,0.08));
   border-radius: 9999px;
-  padding: 6px 14px;
+  padding: 8px 18px;
   font-family: var(--font-mono);
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   color: var(--text-muted, #94a3b8);
+  width: auto;
+  height: auto;
+  white-space: nowrap;
+  box-sizing: border-box;
 }
 
-.step-badge.active {
+.format-step-pill.active {
   border-color: var(--cyan-neon, #00f2fe);
   background: rgba(0, 242, 254, 0.12);
   color: #fff;
   box-shadow: 0 0 15px rgba(0, 242, 254, 0.25);
 }
 
-.step-circle {
-  width: 20px;
-  height: 20px;
+.format-step-num {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
+  color: #fff;
 }
 
-.step-badge.active .step-circle {
+.format-step-pill.active .format-step-num {
   background: var(--cyan-neon, #00f2fe);
-  color: #000;
+  color: #050b14;
 }
 
-.step-arrow {
+.format-step-arrow {
   color: var(--text-dim, #64748b);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
 }
 
 /* Choice Cards (5 Min Video vs 5 Min Article) */

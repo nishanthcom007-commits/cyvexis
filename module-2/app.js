@@ -43,7 +43,7 @@ function initMfaFatigueSimulation() {
   // Web Audio Context for notification chimes & haptic clicks
   let audioCtx = null;
   function playBeep(freq = 520, duration = 0.12, type = 'sine') {
-    if (!soundEnabled) return;
+    if (!soundEnabled || window.currentLearningMode !== 'article') return;
     try {
       if (!audioCtx) {
         const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -71,12 +71,21 @@ function initMfaFatigueSimulation() {
   }
 
   function playAlertChime() {
+    if (window.currentLearningMode !== 'article') return;
     playBeep(680, 0.08, 'triangle');
-    setTimeout(() => playBeep(880, 0.12, 'sine'), 90);
+    setTimeout(() => {
+      if (window.currentLearningMode === 'article') {
+        playBeep(880, 0.12, 'sine');
+      }
+    }, 90);
   }
 
   // Trigger one barrage round
   function triggerIncomingPush() {
+    if (window.currentLearningMode !== 'article') {
+      stopAttack();
+      return;
+    }
     if (currentPromptCount < maxPrompts) {
       currentPromptCount++;
       counterBadge.textContent = `${currentPromptCount} of ${maxPrompts}`;
@@ -107,12 +116,14 @@ function initMfaFatigueSimulation() {
   }
 
   function triggerPhoneVibrate() {
-    if (!phoneFrame) return;
+    if (!phoneFrame || window.currentLearningMode !== 'article') return;
     phoneFrame.classList.add('vibrating');
     telemHaptic.textContent = 'Active (Vibrating)';
     setTimeout(() => {
-      phoneFrame.classList.remove('vibrating');
-      telemHaptic.textContent = 'Idle (Awaiting next)';
+      if (phoneFrame) phoneFrame.classList.remove('vibrating');
+      if (telemHaptic && window.currentLearningMode === 'article') {
+        telemHaptic.textContent = 'Idle (Awaiting next)';
+      }
     }, 450);
   }
 
@@ -133,15 +144,22 @@ function initMfaFatigueSimulation() {
     btnDeny.disabled = false;
     btnApprove.disabled = false;
 
-    // Push barrage every 4 seconds
-    attackInterval = setInterval(triggerIncomingPush, 4200);
+    // Push barrage every 4 seconds only if in article mode
+    if (window.currentLearningMode === 'article') {
+      attackInterval = setInterval(triggerIncomingPush, 4200);
+    }
   }
 
   function stopAttack() {
     if (attackInterval) clearInterval(attackInterval);
     if (vibrateInterval) clearInterval(vibrateInterval);
+    attackInterval = null;
+    vibrateInterval = null;
     if (phoneFrame) phoneFrame.classList.remove('vibrating');
     if (telemHaptic) telemHaptic.textContent = 'Stopped';
+    if (audioCtx && audioCtx.state === 'running') {
+      try { audioCtx.suspend(); } catch (e) {}
+    }
   }
 
   // Handle User Clicks on Deny
@@ -189,8 +207,18 @@ function initMfaFatigueSimulation() {
     soundBtnText.textContent = soundEnabled ? '🔊 Sound / Vibration FX: On' : '🔇 Sound / Vibration FX: Off';
   });
 
-  // Start initial attack simulation
-  startAttack();
+  // Expose simulation controller so learning mode selector can control it
+  window.mfaSimController = {
+    start: startAttack,
+    stop: stopAttack
+  };
+
+  // Only start attack simulation if currently in article mode; in video mode keep it stopped!
+  if (window.currentLearningMode === 'article') {
+    startAttack();
+  } else {
+    stopAttack();
+  }
 }
 
 /* ==========================================================================
@@ -951,6 +979,8 @@ function renderCanvas(ctx, canvas, name, logo) {
 /* ==========================================================================
    STRICT LEARNING MODE SWITCHER (5-Min Video Track vs 5-Min Article Track)
    ========================================================================== */
+window.currentLearningMode = 'video';
+
 function setLearningMode(mode) {
   const cardVideo = document.getElementById('cardChoiceVideo');
   const cardArticle = document.getElementById('cardChoiceArticle');
@@ -961,6 +991,13 @@ function setLearningMode(mode) {
   const videoEl = document.getElementById('mfaVideo');
 
   if (mode === 'video') {
+    window.currentLearningMode = 'video';
+
+    // Immediately stop simulation attack loop and silence all sound & vibration!
+    if (window.mfaSimController && typeof window.mfaSimController.stop === 'function') {
+      window.mfaSimController.stop();
+    }
+
     if (cardVideo) cardVideo.classList.add('active');
     if (cardArticle) cardArticle.classList.remove('active');
     if (btnVideo) {
@@ -979,6 +1016,18 @@ function setLearningMode(mode) {
       videoTrack.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   } else if (mode === 'article') {
+    window.currentLearningMode = 'article';
+
+    // Pause video if playing
+    if (videoEl && !videoEl.paused) {
+      videoEl.pause();
+    }
+
+    // Start simulation attack when user enters Article Mode
+    if (window.mfaSimController && typeof window.mfaSimController.start === 'function') {
+      window.mfaSimController.start();
+    }
+
     if (cardArticle) cardArticle.classList.add('active');
     if (cardVideo) cardVideo.classList.remove('active');
     if (btnArticle) {
@@ -988,10 +1037,6 @@ function setLearningMode(mode) {
     if (btnVideo) {
       btnVideo.textContent = 'Choose Video Track ➔';
       btnVideo.className = 'btn-choice-select secondary';
-    }
-    // Pause video if playing
-    if (videoEl && !videoEl.paused) {
-      videoEl.pause();
     }
     // Show ONLY Article Track, Hide Video Track
     if (videoTrack) videoTrack.style.display = 'none';
