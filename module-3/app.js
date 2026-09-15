@@ -337,3 +337,88 @@ document.addEventListener('DOMContentLoaded', () => {
   updateScoreDisplay();
 });
 
+/* ==========================================================================
+   STRICT LEARNING MODE SWITCHER (3-Min Video Track vs 2-Min Article Track)
+   ========================================================================== */
+window.currentLearningMode = 'video';
+
+function setLearningMode(mode) {
+  const cardVideo = document.getElementById('cardChoiceVideo');
+  const cardArticle = document.getElementById('cardChoiceArticle');
+  const btnVideo = document.getElementById('btnLabelVideo');
+  const btnArticle = document.getElementById('btnLabelArticle');
+  const videoTrack = document.getElementById('videoTrackContent');
+  const articleTrack = document.getElementById('articleTrackContent');
+  const videoEl = document.getElementById('becVideo');
+
+  if (mode === 'video') {
+    window.currentLearningMode = 'video';
+    if (cardVideo) cardVideo.classList.add('active');
+    if (cardArticle) cardArticle.classList.remove('active');
+    if (btnVideo) {
+      btnVideo.textContent = 'Selected Track ✓';
+      btnVideo.className = 'btn-choice-select';
+    }
+    if (btnArticle) {
+      btnArticle.textContent = 'Choose Reading Track ➔';
+      btnArticle.className = 'btn-choice-select secondary';
+    }
+    // Show ONLY Video Track, Hide Article Track
+    if (videoTrack) videoTrack.style.display = 'block';
+    if (articleTrack) articleTrack.style.display = 'none';
+
+    if (videoTrack) {
+      videoTrack.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  } else if (mode === 'article') {
+    window.currentLearningMode = 'article';
+    if (cardArticle) cardArticle.classList.add('active');
+    if (cardVideo) cardVideo.classList.remove('active');
+    if (btnArticle) {
+      btnArticle.textContent = 'Selected Track ✓';
+      btnArticle.className = 'btn-choice-select';
+    }
+    if (btnVideo) {
+      btnVideo.textContent = 'Choose Video Track ➔';
+      btnVideo.className = 'btn-choice-select secondary';
+    }
+    // Pause video if HTML5 video element is playing
+    if (videoEl && typeof videoEl.pause === 'function' && !videoEl.paused) {
+      videoEl.pause();
+    }
+    // Show ONLY Article Track, Hide Video Track
+    if (videoTrack) videoTrack.style.display = 'none';
+    if (articleTrack) articleTrack.style.display = 'block';
+
+    if (articleTrack) {
+      articleTrack.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+}
+window.setLearningMode = setLearningMode;
+
+// Automatically detect when the video finishes playing in Module 3!
+document.addEventListener('DOMContentLoaded', () => {
+  const videoEl = document.getElementById('becVideo');
+  const completionNotice = document.getElementById('videoCompletionNotice');
+  const proceedBtn = document.getElementById('btnProceedQuiz');
+
+  if (videoEl) {
+    videoEl.addEventListener('ended', () => {
+      if (completionNotice) {
+        completionNotice.style.display = 'flex';
+      }
+      if (proceedBtn) {
+        proceedBtn.classList.add('highlight-pulse');
+      }
+      const quizSection = document.getElementById('triageAssessments');
+      if (quizSection) {
+        setTimeout(() => {
+          quizSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 1200);
+      }
+    });
+  }
+});
+
+

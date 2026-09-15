@@ -1105,3 +1105,367 @@ body {
     overflow-wrap: anywhere;
   }
 }
+
+/* ==========================================================================
+   CYVEXIS ADAPTIVE LEARNING FORMAT SWITCHER & VIDEO PLAYER (MODULE 03)
+   ========================================================================== */
+.learning-format-section {
+  margin: 2.5rem 0 3.5rem;
+}
+
+.format-header {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.format-kicker {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  color: var(--cyan-neon, #00f2fe);
+  letter-spacing: 0.12em;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.format-title {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.format-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted, #94a3b8);
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Stepper Indicator */
+.training-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.format-step-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(14, 22, 42, 0.7);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: 9999px;
+  padding: 8px 18px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.78rem;
+  color: var(--text-muted, #94a3b8);
+  width: auto;
+  height: auto;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.format-step-pill.active {
+  border-color: var(--cyan-neon, #00f2fe);
+  background: rgba(0, 242, 254, 0.12);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.25);
+}
+
+.format-step-num {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: #fff;
+}
+
+.format-step-pill.active .format-step-num {
+  background: var(--cyan-neon, #00f2fe);
+  color: #050b14;
+}
+
+.format-step-arrow {
+  color: var(--text-dim, #64748b);
+  font-size: 0.85rem;
+}
+
+/* Choice Cards (3 Min Video vs 2 Min Article) */
+.format-choice-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 860px;
+  margin: 0 auto 2.5rem;
+}
+
+.choice-card {
+  background: linear-gradient(145deg, rgba(14, 22, 42, 0.8) 0%, rgba(9, 15, 30, 0.95) 100%);
+  border: 1.5px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: var(--radius-lg, 18px);
+  padding: 1.75rem 1.5rem;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.choice-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 242, 254, 0.45);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55), 0 0 20px rgba(0, 242, 254, 0.15);
+}
+
+.choice-card.active {
+  border-color: var(--cyan-neon, #00f2fe);
+  background: linear-gradient(145deg, rgba(0, 242, 254, 0.1) 0%, rgba(14, 22, 42, 0.95) 100%);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 242, 254, 0.22);
+}
+
+.choice-badge-time {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  letter-spacing: 0.05em;
+}
+
+.choice-badge-time.cyan {
+  background: rgba(0, 242, 254, 0.15);
+  color: var(--cyan-neon, #00f2fe);
+  border: 1px solid rgba(0, 242, 254, 0.4);
+}
+
+.choice-badge-time.emerald {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--emerald-safe, #10b981);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.choice-icon {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.4));
+}
+
+.choice-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.choice-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted, #94a3b8);
+  line-height: 1.55;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.choice-action {
+  margin-top: auto;
+}
+
+.btn-choice-select {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.7rem 1.2rem;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  background: linear-gradient(135deg, #00f2fe 0%, #0284c7 100%);
+  color: #000;
+  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.35);
+  transition: all 0.2s ease;
+}
+
+.btn-choice-select.secondary {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  color: #fff;
+  box-shadow: none;
+}
+
+.choice-card.active .btn-choice-select {
+  background: linear-gradient(135deg, #00f2fe 0%, #0284c7 100%);
+  color: #000;
+}
+
+/* Video Player Card */
+.video-briefing-card {
+  background: #070c1a;
+  border: 1px solid rgba(0, 242, 254, 0.35);
+  border-radius: var(--radius-lg, 18px);
+  overflow: hidden;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.65), 0 0 30px rgba(0, 242, 254, 0.12);
+  transition: all 0.3s ease;
+}
+
+.video-card-top {
+  background: #03060f;
+  border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.video-card-title {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  color: #94a3b8;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  flex: 1;
+}
+
+.video-quality-tag {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--emerald-safe, #10b981);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.video-frame-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-frame-wrapper video {
+  width: 100%;
+  height: 100%;
+  border: none;
+  object-fit: contain;
+  background: #000;
+}
+
+.video-card-bottom {
+  padding: 16px 22px;
+  background: rgba(10, 16, 33, 0.9);
+  border-top: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.video-hint {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: #cbd5e1;
+}
+
+.btn-direct-quiz {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #000 !important;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-direct-quiz:hover {
+  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+  color: #000 !important;
+}
+
+/* Video Completion Banner */
+.video-completion-banner {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(6, 182, 212, 0.15) 100%);
+  border: 1px solid var(--emerald-safe, #10b981);
+  border-radius: var(--radius-sm, 8px);
+  padding: 12px 18px;
+  margin: 14px 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+  animation: fadeIn 0.4s ease;
+}
+
+.comp-icon {
+  font-size: 1.5rem;
+}
+
+.comp-text strong {
+  display: block;
+  color: var(--emerald-safe, #10b981);
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+}
+
+.comp-text span {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+}
+
+.highlight-pulse {
+  animation: pulseGlowBtn 1.5s infinite;
+}
+
+@keyframes pulseGlowBtn {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { box-shadow: 0 0 0 14px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+@media (max-width: 680px) {
+  .format-choice-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .training-stepper {
+    display: none;
+  }
+  .video-card-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .btn-direct-quiz {
+    width: 100%;
+    justify-content: center;
+  }
+}
