@@ -235,6 +235,14 @@
         <div id="scoreDisplay" class="score-pill">Score: 0 / 4 Completed</div>
       </div>
 
+      <!-- Passing Requirement Notice -->
+      <div class="quiz-passing-notice">
+        <div class="passing-notice-badge">⚠️ PASSING REQUIREMENT</div>
+        <div class="passing-notice-text">
+          You must score at least <strong>50% (minimum 2 out of 4 scenarios correct)</strong> across all 4 evaluations to unlock and download your official Certificate of Completion. Choose your responses carefully!
+        </div>
+      </div>
+
       <!-- Scenario 1 -->
       <article class="quiz-card" id="qCard1">
         <div class="card-top">
@@ -338,18 +346,24 @@
         </div>
         <div class="feedback-msg" id="fb4" role="alert"></div>
       </article>
+
+      <!-- Triage Results Card (Populated dynamically when all 4 assessments are completed) -->
+      <div id="triageResultsCard" class="triage-result-card" style="display: none;"></div>
     </section>
 
     <!-- Certificate Generator Section -->
     <section class="cert-container" id="certificateSection" aria-label="Certificate Credential Generator">
-      <div class="cert-card">
-        <div class="cert-badge">🛡️ VERIFIED COMPLETION RECORD</div>
-        <h2>Claim Your Module 03 Executive Defense Credential</h2>
-        <p>Complete the triage assessments above to generate your downloadable, client-side cryptographic awareness certificate.</p>
+      <div class="cert-card" id="certCard">
+        <div class="cert-badge" id="certBadge">🔒 CERTIFICATE LOCKED</div>
+        <h2 id="certTitle">Claim Your Module 03 Executive Defense Credential</h2>
+        <p id="certDesc">Complete all 4 threat evaluation assessments above with at least 50% (2/4) correct to unlock your official verified certificate.</p>
 
         <div class="cert-input-group">
-          <input type="text" id="studentName" placeholder="Enter Full Name" autocomplete="off" aria-label="Student Full Name" />
-          <button type="button" id="generateBtn" onclick="generateCertificate()">Download Certificate</button>
+          <input type="text" id="studentName" placeholder="Enter Full Name" autocomplete="off" aria-label="Student Full Name" disabled />
+          <button type="button" id="generateBtn" onclick="generateCertificate()" disabled style="opacity: 0.6; cursor: not-allowed;">Download Certificate</button>
+        </div>
+        <div id="certLockNotice" class="cert-lock-helper-msg" style="display: block; margin-top: 12px; color: #f59e0b; font-size: 0.88rem; font-family: var(--font-mono, monospace);">
+          ⚠️ Complete all 4 threat evaluations above to unlock download access.
         </div>
 
         <span class="cert-privacy-note">🔒 Zero Data Retention: Rendered locally via HTML5 Canvas. We never store or transmit your identity.</span>

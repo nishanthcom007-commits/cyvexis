@@ -165,15 +165,101 @@ function initQuizGame() {
     }
   }
 
+  let quizCompleted = false;
+  let quizPassed = false;
+  window.module1QuizPassed = false;
+
   nextBtn.addEventListener('click', () => {
     if (currentIndex < questions.length - 1) {
       currentIndex++;
       loadQuestion(currentIndex);
     } else {
-      // Show Completion Screen
+      // Show Completion Screen & check 50% passing threshold (at least 3 of 5)
+      quizCompleted = true;
+      quizPassed = (score >= 3);
+      window.module1QuizPassed = quizPassed;
+
       quizActiveCard.style.display = 'none';
       completionScreen.classList.add('show');
       finalScoreEl.textContent = score;
+
+      const celebrationTitle = document.querySelector('.completion-celebration-title');
+      const claimBanner = document.querySelector('.claim-cert-scroll-banner');
+      const certBadge = document.getElementById('certBadge');
+      const certDesc = document.getElementById('certDesc');
+      const studentNameInput = document.getElementById('studentName');
+      const generateBtn = document.getElementById('generateBtn');
+      const certLockNotice = document.getElementById('certLockNotice');
+
+      if (quizPassed) {
+        if (celebrationTitle) {
+          celebrationTitle.innerHTML = `👏 Congratulations! You Passed with ${score}/5! 🥳`;
+        }
+        if (claimBanner) {
+          claimBanner.innerHTML = `
+            <div class="cert-scroll-icon">🎓</div>
+            <div class="cert-scroll-info">
+              <h4 class="cert-scroll-title" style="color: #10b981;">🎉 Certificate Unlocked (Score: ${score}/5 - Passed)</h4>
+              <p class="cert-scroll-sub">You scored 50% or higher! Scroll down to enter your name and download your verified credential:</p>
+            </div>
+            <a href="#certificateSection" class="btn-go-down-cert" style="background: linear-gradient(135deg, #10b981, #059669);">
+              <span>Claim Certificate ↓</span>
+            </a>
+          `;
+        }
+        if (certBadge) {
+          certBadge.textContent = '🛡️ VERIFIED COMPLETION';
+          certBadge.style.color = '#00f2fe';
+          certBadge.style.borderColor = 'rgba(0, 242, 254, 0.4)';
+          certBadge.style.background = 'rgba(0, 242, 254, 0.1)';
+        }
+        if (certDesc) {
+          certDesc.textContent = 'Enter the name you would like displayed on your official Cyvexis awareness record.';
+        }
+        if (studentNameInput) studentNameInput.disabled = false;
+        if (generateBtn) {
+          generateBtn.disabled = false;
+          generateBtn.style.opacity = '1';
+          generateBtn.style.cursor = 'pointer';
+        }
+        if (certLockNotice) certLockNotice.style.display = 'none';
+      } else {
+        if (celebrationTitle) {
+          celebrationTitle.innerHTML = `⚠️ Quiz Not Passed (Score: ${score}/5)`;
+        }
+        if (claimBanner) {
+          claimBanner.innerHTML = `
+            <div class="cert-scroll-icon">🔒</div>
+            <div class="cert-scroll-info">
+              <h4 class="cert-scroll-title" style="color: #ef4444;">❌ Certificate Locked (Minimum 3/5 Required)</h4>
+              <p class="cert-scroll-sub" style="color: #cbd5e1;">You scored ${score} out of 5. You need at least <strong>50% (3 out of 5 correct)</strong> to qualify for a certificate. Please retake the quiz to unlock your certificate.</p>
+            </div>
+            <button type="button" class="btn-go-down-cert" onclick="document.getElementById('btn-restart-quiz').click()" style="background: linear-gradient(135deg, #ef4444, #dc2626); border: none; cursor: pointer;">
+              <span>🔄 Retake Quiz to Unlock</span>
+            </button>
+          `;
+        }
+        if (certBadge) {
+          certBadge.textContent = '🔒 CERTIFICATE LOCKED - MINIMUM 3/5 REQUIRED';
+          certBadge.style.color = '#ef4444';
+          certBadge.style.borderColor = 'rgba(239, 68, 68, 0.4)';
+          certBadge.style.background = 'rgba(239, 68, 68, 0.1)';
+        }
+        if (certDesc) {
+          certDesc.innerHTML = `<span style="color: #f87171;">You scored ${score}/5. You must score at least 3/5 (50%) to unlock the certificate.</span>`;
+        }
+        if (studentNameInput) studentNameInput.disabled = true;
+        if (generateBtn) {
+          generateBtn.disabled = true;
+          generateBtn.style.opacity = '0.5';
+          generateBtn.style.cursor = 'not-allowed';
+        }
+        if (certLockNotice) {
+          certLockNotice.style.display = 'block';
+          certLockNotice.innerHTML = `❌ Certificate locked. Click <strong>Retake Quiz</strong> above and score at least 3/5 to unlock.`;
+          certLockNotice.style.color = '#ef4444';
+        }
+      }
     }
   });
 
@@ -182,8 +268,40 @@ function initQuizGame() {
       currentIndex = 0;
       score = 0;
       scoreEl.textContent = '0';
+      quizCompleted = false;
+      quizPassed = false;
+      window.module1QuizPassed = false;
       completionScreen.classList.remove('show');
       quizActiveCard.style.display = 'block';
+
+      // Reset certificate section to locked state
+      const certBadge = document.getElementById('certBadge');
+      const certDesc = document.getElementById('certDesc');
+      const studentNameInput = document.getElementById('studentName');
+      const generateBtn = document.getElementById('generateBtn');
+      const certLockNotice = document.getElementById('certLockNotice');
+
+      if (certBadge) {
+        certBadge.textContent = '🔒 CERTIFICATE LOCKED';
+        certBadge.style.color = '';
+        certBadge.style.borderColor = '';
+        certBadge.style.background = '';
+      }
+      if (certDesc) {
+        certDesc.textContent = 'Complete the Phishing Awareness Drill above with at least 50% (3/5) correct to unlock your official verified certificate.';
+      }
+      if (studentNameInput) studentNameInput.disabled = true;
+      if (generateBtn) {
+        generateBtn.disabled = true;
+        generateBtn.style.opacity = '0.6';
+        generateBtn.style.cursor = 'not-allowed';
+      }
+      if (certLockNotice) {
+        certLockNotice.style.display = 'block';
+        certLockNotice.textContent = '⚠️ Take the 5-question quiz above to unlock download access.';
+        certLockNotice.style.color = '#f59e0b';
+      }
+
       loadQuestion(0);
     });
   }
@@ -224,6 +342,13 @@ function initEmbedModal() {
   }
 }
 function generateCertificate() {
+  if (!window.module1QuizPassed) {
+    alert("Certificate Locked: You must score at least 50% (minimum 3 out of 5 correct) on the Phishing Awareness Quiz to unlock and download your certificate.");
+    const quizSec = document.getElementById('quiz');
+    if (quizSec) quizSec.scrollIntoView({ behavior: 'smooth' });
+    return;
+  }
+
   const nameInput = document.getElementById('studentName');
   const name = nameInput ? nameInput.value.trim() : '';
 

@@ -700,6 +700,14 @@
         </p>
       </div>
 
+      <!-- Passing Requirement Notice -->
+      <div class="quiz-passing-notice">
+        <div class="passing-notice-badge">⚠️ PASSING REQUIREMENT</div>
+        <div class="passing-notice-text">
+          You must score at least <strong>50% (minimum 2 out of 3 scenarios correct)</strong> to unlock and download your official Certificate of Completion. Choose your responses carefully!
+        </div>
+      </div>
+
       <div class="quiz-container">
         
         <!-- Quiz Progress Bar -->
@@ -782,13 +790,16 @@
 
     <!-- Cyvexis Certificate Generator Section -->
     <section class="cert-container" id="certificateSection">
-      <div class="cert-card">
-        <div class="cert-badge">🛡️ VERIFIED COMPLETION</div>
-        <h2>Claim Your Completion Certificate</h2>
-        <p>Enter the name you would like displayed on your official Cyvexis awareness record.</p>
+      <div class="cert-card" id="certCard">
+        <div class="cert-badge" id="certBadge">🔒 CERTIFICATE LOCKED</div>
+        <h2 id="certTitle">Claim Your Completion Certificate</h2>
+        <p id="certDesc">Complete the Scenario Challenge above with at least 50% (2/3) correct to unlock your official verified certificate.</p>
         <div class="cert-input-group">
-          <input type="text" id="studentName" placeholder="Enter Full Name" autocomplete="off" />
-          <button id="generateBtn" onclick="generateCertificate()">Download Certificate</button>
+          <input type="text" id="studentName" placeholder="Enter Full Name" autocomplete="off" disabled />
+          <button id="generateBtn" onclick="generateCertificate()" disabled style="opacity: 0.6; cursor: not-allowed;">Download Certificate</button>
+        </div>
+        <div id="certLockNotice" class="cert-lock-helper-msg" style="display: block; margin-top: 12px; color: #f59e0b; font-size: 0.88rem; font-family: var(--font-mono);">
+          ⚠️ Take the 3-scenario challenge above to unlock download access.
         </div>
         <span class="cert-privacy-note">🔒 Zero Data Retention: Rendered locally on your device. We never store or log your name.</span>
       </div>

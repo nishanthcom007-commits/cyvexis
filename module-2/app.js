@@ -472,16 +472,129 @@ function initScenarioQuiz() {
   function showCompletionScreen() {
     quizCard.classList.add('hidden');
     quizCompleteCard.classList.remove('hidden');
-    completionSummaryText.textContent = `You scored ${userScore} out of ${quizQuestions.length} scenarios correctly. Your vigilance and response awareness are well-calibrated.`;
+
+    const quizPassed = (userScore >= 2);
+    window.module2QuizPassed = quizPassed;
+
+    const trophyEl = quizCompleteCard.querySelector('.completion-trophy');
+    const headerEl = quizCompleteCard.querySelector('h3');
+    const claimBanner = quizCompleteCard.querySelector('.claim-cert-scroll-banner');
+    const certBadge = document.getElementById('certBadge');
+    const certDesc = document.getElementById('certDesc');
+    const studentNameInput = document.getElementById('studentName');
+    const generateBtn = document.getElementById('generateBtn');
+    const certLockNotice = document.getElementById('certLockNotice');
+
+    if (quizPassed) {
+      if (trophyEl) trophyEl.textContent = '🏆';
+      if (headerEl) headerEl.textContent = `Scenario Challenge Passed (${userScore}/3)!`;
+      completionSummaryText.textContent = `Congratulations! You scored ${userScore} out of ${quizQuestions.length} scenarios correctly. You met the 50% passing requirement and unlocked your certificate.`;
+
+      if (claimBanner) {
+        claimBanner.innerHTML = `
+          <div class="cert-scroll-icon">🎓</div>
+          <div class="cert-scroll-info">
+            <h4 class="cert-scroll-title" style="color: #10b981;">🎉 Certificate Unlocked (Passed: ${userScore}/3)</h4>
+            <p class="cert-scroll-sub">You scored 50% or higher! Scroll down to enter your name and download your verified credential:</p>
+          </div>
+          <a href="#certificateSection" class="btn-go-down-cert" style="background: linear-gradient(135deg, #10b981, #059669);">
+            <span>Claim Certificate ↓</span>
+          </a>
+        `;
+      }
+      if (certBadge) {
+        certBadge.textContent = '🛡️ VERIFIED COMPLETION';
+        certBadge.style.color = '#00f2fe';
+        certBadge.style.borderColor = 'rgba(0, 242, 254, 0.4)';
+        certBadge.style.background = 'rgba(0, 242, 254, 0.1)';
+      }
+      if (certDesc) {
+        certDesc.textContent = 'Enter the name you would like displayed on your official Cyvexis awareness record.';
+      }
+      if (studentNameInput) studentNameInput.disabled = false;
+      if (generateBtn) {
+        generateBtn.disabled = false;
+        generateBtn.style.opacity = '1';
+        generateBtn.style.cursor = 'pointer';
+      }
+      if (certLockNotice) certLockNotice.style.display = 'none';
+    } else {
+      if (trophyEl) trophyEl.textContent = '⚠️';
+      if (headerEl) headerEl.textContent = `Challenge Not Passed (Score: ${userScore}/3)`;
+      completionSummaryText.textContent = `You scored ${userScore} out of ${quizQuestions.length} scenarios correctly. You must answer at least half (minimum 2 out of 3) correctly to unlock your certificate.`;
+
+      if (claimBanner) {
+        claimBanner.innerHTML = `
+          <div class="cert-scroll-icon">🔒</div>
+          <div class="cert-scroll-info">
+            <h4 class="cert-scroll-title" style="color: #ef4444;">❌ Certificate Locked (Minimum 2/3 Required)</h4>
+            <p class="cert-scroll-sub" style="color: #cbd5e1;">You scored ${userScore} out of 3. You need at least <strong>50% (2 out of 3 correct)</strong> to qualify for a certificate. Please retake the challenge below.</p>
+          </div>
+          <button type="button" class="btn-go-down-cert" onclick="document.getElementById('btn-restart-quiz').click()" style="background: linear-gradient(135deg, #ef4444, #dc2626); border: none; cursor: pointer;">
+            <span>🔄 Retake Challenge to Unlock</span>
+          </button>
+        `;
+      }
+      if (certBadge) {
+        certBadge.textContent = '🔒 CERTIFICATE LOCKED - MINIMUM 2/3 REQUIRED';
+        certBadge.style.color = '#ef4444';
+        certBadge.style.borderColor = 'rgba(239, 68, 68, 0.4)';
+        certBadge.style.background = 'rgba(239, 68, 68, 0.1)';
+      }
+      if (certDesc) {
+        certDesc.innerHTML = `<span style="color: #f87171;">You scored ${userScore}/3. You must score at least 2/3 (50%) to unlock the certificate.</span>`;
+      }
+      if (studentNameInput) studentNameInput.disabled = true;
+      if (generateBtn) {
+        generateBtn.disabled = true;
+        generateBtn.style.opacity = '0.5';
+        generateBtn.style.cursor = 'not-allowed';
+      }
+      if (certLockNotice) {
+        certLockNotice.style.display = 'block';
+        certLockNotice.innerHTML = `❌ Certificate locked. Click <strong>Retake Challenge</strong> above and score at least 2/3 to unlock.`;
+        certLockNotice.style.color = '#ef4444';
+      }
+    }
   }
 
   btnRestartQuiz.addEventListener('click', () => {
     currentQuestionIndex = 0;
     userScore = 0;
     userScoreEl.textContent = '0';
+    window.module2QuizPassed = false;
     quizCompleteCard.classList.add('hidden');
     quizCard.classList.remove('hidden');
     btnNext.innerHTML = '<span>Next Scenario ➔</span>';
+
+    // Reset certificate section to locked state
+    const certBadge = document.getElementById('certBadge');
+    const certDesc = document.getElementById('certDesc');
+    const studentNameInput = document.getElementById('studentName');
+    const generateBtn = document.getElementById('generateBtn');
+    const certLockNotice = document.getElementById('certLockNotice');
+
+    if (certBadge) {
+      certBadge.textContent = '🔒 CERTIFICATE LOCKED';
+      certBadge.style.color = '';
+      certBadge.style.borderColor = '';
+      certBadge.style.background = '';
+    }
+    if (certDesc) {
+      certDesc.textContent = 'Complete the Scenario Challenge above with at least 50% (2/3) correct to unlock your official verified certificate.';
+    }
+    if (studentNameInput) studentNameInput.disabled = true;
+    if (generateBtn) {
+      generateBtn.disabled = true;
+      generateBtn.style.opacity = '0.6';
+      generateBtn.style.cursor = 'not-allowed';
+    }
+    if (certLockNotice) {
+      certLockNotice.style.display = 'block';
+      certLockNotice.textContent = '⚠️ Take the 3-scenario challenge above to unlock download access.';
+      certLockNotice.style.color = '#f59e0b';
+    }
+
     renderQuestion(0);
   });
 
@@ -599,6 +712,13 @@ function initCertificateGenerator() {
 }
 
 function generateCertificate() {
+  if (!window.module2QuizPassed) {
+    alert("Certificate Locked: You must score at least 50% (minimum 2 out of 3 scenarios correct) on the Scenario Challenge to unlock and download your certificate.");
+    const practiceSec = document.getElementById('practice');
+    if (practiceSec) practiceSec.scrollIntoView({ behavior: 'smooth' });
+    return;
+  }
+
   const nameInput = document.getElementById('studentName');
   const studentName = nameInput ? nameInput.value.trim() : '';
 

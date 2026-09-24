@@ -89,7 +89,174 @@ function checkAnswer(qNum, isCorrect, clickedBtn) {
       updateScoreDisplay();
     }
   }
+
+  // Check if all 4 scenarios have been completed
+  if (answeredQuestions.size === 4) {
+    checkCompletion();
+  }
 }
+
+let quizCompleted = false;
+let quizPassed = false;
+window.module3QuizPassed = false;
+
+function checkCompletion() {
+  quizCompleted = true;
+  quizPassed = (score >= 2);
+  window.module3QuizPassed = quizPassed;
+
+  const resultsCard = document.getElementById('triageResultsCard');
+  const certBadge = document.getElementById('certBadge');
+  const certDesc = document.getElementById('certDesc');
+  const studentNameInput = document.getElementById('studentName');
+  const generateBtn = document.getElementById('generateBtn');
+  const certLockNotice = document.getElementById('certLockNotice');
+
+  if (resultsCard) {
+    resultsCard.style.display = 'block';
+    if (quizPassed) {
+      resultsCard.className = 'triage-result-card passed';
+      resultsCard.innerHTML = `
+        <div class="result-header" style="display: flex; gap: 14px; align-items: center;">
+          <span class="result-icon" style="font-size: 2.2rem;">🎉</span>
+          <div>
+            <h3 style="color: #10b981; margin: 0 0 6px; font-size: 1.25rem;">Threat Assessments Passed: ${score} / 4 Correct!</h3>
+            <p style="margin: 0; color: #cbd5e1; font-size: 0.95rem; line-height: 1.5;">Outstanding triage analysis! You met the 50% passing threshold and successfully unlocked your official Cyvexis completion certificate.</p>
+          </div>
+        </div>
+        <div style="margin-top: 18px; display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="#certificateSection" class="btn-direct-quiz" style="background: linear-gradient(135deg, #10b981, #059669); padding: 10px 20px; border-radius: 8px; text-decoration: none; color: #000 !important; font-weight: 700;">
+            <span>Claim Unlocked Certificate ↓</span>
+          </a>
+          <button type="button" class="btn-direct-quiz" onclick="resetAssessments()" style="background: rgba(255,255,255,0.08); color: #fff !important; border: 1px solid var(--border-subtle); padding: 10px 20px; border-radius: 8px; cursor: pointer;">
+            <span>🔄 Retake Assessments</span>
+          </button>
+        </div>
+      `;
+    } else {
+      resultsCard.className = 'triage-result-card failed';
+      resultsCard.innerHTML = `
+        <div class="result-header" style="display: flex; gap: 14px; align-items: center;">
+          <span class="result-icon" style="font-size: 2.2rem;">⚠️</span>
+          <div>
+            <h3 style="color: #ef4444; margin: 0 0 6px; font-size: 1.25rem;">Assessments Not Passed (Score: ${score} / 4)</h3>
+            <p style="margin: 0; color: #cbd5e1; font-size: 0.95rem; line-height: 1.5;">You scored less than 50% (Passing requirement: minimum 2 out of 4 scenarios correct). Your certificate remains locked until you achieve at least 50%.</p>
+          </div>
+        </div>
+        <div style="margin-top: 18px;">
+          <button type="button" class="btn-direct-quiz" onclick="resetAssessments()" style="background: linear-gradient(135deg, #ef4444, #dc2626); padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; color: #fff !important; font-weight: 700;">
+            <span>🔄 Retake Threat Assessments Now</span>
+          </button>
+        </div>
+      `;
+    }
+  }
+
+  if (quizPassed) {
+    if (certBadge) {
+      certBadge.textContent = '🛡️ VERIFIED COMPLETION RECORD';
+      certBadge.style.color = '#00f2fe';
+      certBadge.style.borderColor = 'rgba(0, 242, 254, 0.4)';
+      certBadge.style.background = 'rgba(0, 242, 254, 0.1)';
+    }
+    if (certDesc) {
+      certDesc.textContent = 'Complete the triage assessments above to generate your downloadable, client-side cryptographic awareness certificate.';
+    }
+    if (studentNameInput) studentNameInput.disabled = false;
+    if (generateBtn) {
+      generateBtn.disabled = false;
+      generateBtn.style.opacity = '1';
+      generateBtn.style.cursor = 'pointer';
+    }
+    if (certLockNotice) certLockNotice.style.display = 'none';
+  } else {
+    if (certBadge) {
+      certBadge.textContent = '🔒 CERTIFICATE LOCKED - MINIMUM 2/4 REQUIRED';
+      certBadge.style.color = '#ef4444';
+      certBadge.style.borderColor = 'rgba(239, 68, 68, 0.4)';
+      certBadge.style.background = 'rgba(239, 68, 68, 0.1)';
+    }
+    if (certDesc) {
+      certDesc.innerHTML = `<span style="color: #f87171;">You scored ${score}/4. You must score at least 2/4 (50%) to unlock the certificate.</span>`;
+    }
+    if (studentNameInput) studentNameInput.disabled = true;
+    if (generateBtn) {
+      generateBtn.disabled = true;
+      generateBtn.style.opacity = '0.5';
+      generateBtn.style.cursor = 'not-allowed';
+    }
+    if (certLockNotice) {
+      certLockNotice.style.display = 'block';
+      certLockNotice.innerHTML = `❌ Certificate locked. Click <strong>Retake Threat Assessments</strong> above and score at least 2/4 to unlock.`;
+      certLockNotice.style.color = '#ef4444';
+    }
+  }
+}
+
+function resetAssessments() {
+  score = 0;
+  answeredQuestions.clear();
+  quizCompleted = false;
+  quizPassed = false;
+  window.module3QuizPassed = false;
+  updateScoreDisplay();
+
+  const resultsCard = document.getElementById('triageResultsCard');
+  if (resultsCard) resultsCard.style.display = 'none';
+
+  for (let i = 1; i <= 4; i++) {
+    const card = document.getElementById(`qCard${i}`);
+    if (card) {
+      card.classList.remove('answered-correct', 'answered-wrong');
+      const buttons = card.querySelectorAll('.opt-btn');
+      buttons.forEach(btn => {
+        btn.disabled = false;
+        btn.classList.remove('correct', 'wrong');
+      });
+      const fb = document.getElementById(`fb${i}`);
+      if (fb) {
+        fb.style.display = 'none';
+        fb.innerHTML = '';
+      }
+      const statusBadge = document.getElementById(`status${i}`);
+      if (statusBadge) {
+        statusBadge.textContent = 'PENDING';
+        statusBadge.className = 'status-indicator';
+      }
+    }
+  }
+
+  const certBadge = document.getElementById('certBadge');
+  const certDesc = document.getElementById('certDesc');
+  const studentNameInput = document.getElementById('studentName');
+  const generateBtn = document.getElementById('generateBtn');
+  const certLockNotice = document.getElementById('certLockNotice');
+
+  if (certBadge) {
+    certBadge.textContent = '🔒 CERTIFICATE LOCKED';
+    certBadge.style.color = '';
+    certBadge.style.borderColor = '';
+    certBadge.style.background = '';
+  }
+  if (certDesc) {
+    certDesc.textContent = 'Complete all 4 threat evaluation assessments above with at least 50% (2/4) correct to unlock your official verified certificate.';
+  }
+  if (studentNameInput) studentNameInput.disabled = true;
+  if (generateBtn) {
+    generateBtn.disabled = true;
+    generateBtn.style.opacity = '0.6';
+    generateBtn.style.cursor = 'not-allowed';
+  }
+  if (certLockNotice) {
+    certLockNotice.style.display = 'block';
+    certLockNotice.textContent = '⚠️ Complete all 4 threat evaluations above to unlock download access.';
+    certLockNotice.style.color = '#f59e0b';
+  }
+
+  const firstCard = document.getElementById('triageAssessments');
+  if (firstCard) firstCard.scrollIntoView({ behavior: 'smooth' });
+}
+window.resetAssessments = resetAssessments;
 
 /**
  * Updates the tactical scoreboard HUD.
@@ -111,6 +278,20 @@ function updateScoreDisplay() {
  * Generates and downloads the client-side verified dark-mode completion certificate.
  */
 function generateCertificate() {
+  if (answeredQuestions.size < 4) {
+    alert('Please complete all 4 Threat Evaluation Assessments before generating your certificate.');
+    const assessSec = document.getElementById('triageAssessments');
+    if (assessSec) assessSec.scrollIntoView({ behavior: 'smooth' });
+    return;
+  }
+
+  if (score < 2) {
+    alert(`Certificate Locked: You scored ${score} / 4. You must achieve at least 50% (minimum 2 out of 4 correct) to unlock and download your certificate. Please click 'Retake Threat Assessments' to try again.`);
+    const assessSec = document.getElementById('triageAssessments');
+    if (assessSec) assessSec.scrollIntoView({ behavior: 'smooth' });
+    return;
+  }
+
   const nameInput = document.getElementById('studentName');
   const name = (nameInput ? nameInput.value.trim() : '');
 
