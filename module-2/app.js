@@ -711,6 +711,14 @@ function initCertificateGenerator() {
   }
 }
 
+const MODULE2_CONFIG = {
+  code: 'M02',
+  filePrefix: 'Module2',
+  title: 'MODULE 02: PASSWORD HYGIENE & MFA FATIGUE DEFENSE',
+  descLine1: 'An intensive cybersecurity training module covering credential stuffing mitigation,',
+  descLine2: 'passkey adoption, and MFA prompt bombing triage.'
+};
+
 function generateCertificate() {
   if (!window.module2QuizPassed) {
     alert("Certificate Locked: You must score at least 50% (minimum 2 out of 3 scenarios correct) on the Scenario Challenge to unlock and download your certificate.");
@@ -723,7 +731,7 @@ function generateCertificate() {
   const studentName = nameInput ? nameInput.value.trim() : '';
 
   if (!studentName) {
-    alert('Please enter your full name to generate your official Cyvexis awareness record.');
+    alert('Please enter your full name to generate your verified Cyvexis certificate.');
     if (nameInput) nameInput.focus();
     return;
   }
@@ -735,186 +743,66 @@ function generateCertificate() {
   }
 
   const ctx = canvas.getContext('2d');
-  if (!ctx) {
-    console.error('Canvas 2D context not supported.');
-    return;
-  }
-
-  // Set explicit canvas dimensions
-  canvas.width = 1200;
-  canvas.height = 850;
+  if (!ctx) return;
 
   const btn = document.getElementById('generateBtn');
   const originalBtnText = btn ? btn.innerHTML : 'Download Certificate';
   if (btn) {
     btn.disabled = true;
-    btn.innerHTML = '<span>⚡ Rendering Certificate...</span>';
+    btn.innerHTML = '<span>⏳ Rendering Certificate...</span>';
   }
 
-  function renderCertificate(logoImg) {
-    try {
-      // 1. Background: Deep obsidian/navy matching logo background (#0b2545)
-      ctx.fillStyle = '#0b2545';
-      ctx.fillRect(0, 0, 1200, 850);
+  const templateImg = new Image();
+  templateImg.crossOrigin = 'anonymous';
 
-      // Subtle dark gradient overlay for depth
-      const grad = ctx.createLinearGradient(0, 0, 1200, 850);
-      grad.addColorStop(0, 'rgba(6, 9, 19, 0.45)');
-      grad.addColorStop(0.5, 'rgba(11, 37, 69, 0.05)');
-      grad.addColorStop(1, 'rgba(6, 9, 19, 0.45)');
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, 1200, 850);
+  templateImg.onload = function() {
+    canvas.width = 2048;
+    canvas.height = 1142;
 
-      // 2. Borders: Outer dark slate border (#1e293b)
-      ctx.strokeStyle = '#1e293b';
-      ctx.lineWidth = 12;
-      ctx.strokeRect(24, 24, 1152, 802);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(templateImg, 0, 0, 2048, 1142);
 
-      // Inner cyan stroke (#00f2fe)
-      ctx.strokeStyle = '#00f2fe';
-      ctx.lineWidth = 2;
-      ctx.strokeRect(38, 38, 1124, 774);
+    const centerX = 1024;
+    const navyColor = '#0c1b33';
+    const descColor = '#1e293b';
 
-      // High-tech corner bracket accents
-      ctx.strokeStyle = '#00f2fe';
-      ctx.lineWidth = 3;
-      const bracketLen = 28;
-      // Top-left
-      ctx.beginPath();
-      ctx.moveTo(38, 38 + bracketLen); ctx.lineTo(38, 38); ctx.lineTo(38 + bracketLen, 38);
-      // Top-right
-      ctx.moveTo(1200 - 38 - bracketLen, 38); ctx.lineTo(1200 - 38, 38); ctx.lineTo(1200 - 38, 38 + bracketLen);
-      // Bottom-left
-      ctx.moveTo(38, 850 - 38 - bracketLen); ctx.lineTo(38, 850 - 38); ctx.lineTo(38 + bracketLen, 850 - 38);
-      // Bottom-right
-      ctx.moveTo(1200 - 38 - bracketLen, 850 - 38); ctx.lineTo(1200 - 38, 850 - 38); ctx.lineTo(1200 - 38, 850 - 38 - bracketLen);
-      ctx.stroke();
+    // 1. Recipient Full Name (bold serif in deep navy)
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = navyColor;
+    let nameFontSize = 50;
+    ctx.font = `bold ${nameFontSize}px Georgia, "Times New Roman", serif`;
+    while (ctx.measureText(studentName.toUpperCase()).width > 1200 && nameFontSize > 28) {
+      nameFontSize -= 2;
+      ctx.font = `bold ${nameFontSize}px Georgia, "Times New Roman", serif`;
+    }
+    ctx.fillText(studentName.toUpperCase(), centerX, 542);
 
-      // Ambient cybersecurity grid lines
-      ctx.save();
-      ctx.strokeStyle = 'rgba(0, 242, 254, 0.035)';
-      ctx.lineWidth = 1;
-      for (let x = 60; x < 1140; x += 40) {
-        ctx.beginPath(); ctx.moveTo(x, 40); ctx.lineTo(x, 810); ctx.stroke();
-      }
-      for (let y = 60; y < 810; y += 40) {
-        ctx.beginPath(); ctx.moveTo(40, y); ctx.lineTo(1160, y); ctx.stroke();
-      }
-      ctx.restore();
+    // 2. Module Title (bold serif)
+    ctx.fillStyle = navyColor;
+    ctx.font = 'bold 34px Georgia, "Times New Roman", serif';
+    ctx.fillText(MODULE2_CONFIG.title, centerX, 684);
 
-      // 3. Logo placement: Centered at top (width ~100px, height ~100px, x: 550, y: 60)
-      if (logoImg) {
-        ctx.drawImage(logoImg, 550, 60, 100, 100);
-      }
+    // 3. Module Description (italic serif)
+    ctx.fillStyle = descColor;
+    ctx.font = 'italic 26px Georgia, "Times New Roman", serif';
+    ctx.fillText(MODULE2_CONFIG.descLine1, centerX, 752);
+    if (MODULE2_CONFIG.descLine2) {
+      ctx.fillText(MODULE2_CONFIG.descLine2, centerX, 788);
+    }
 
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
+    // 4. Date & ID
+    const today = new Date();
+    const formattedDate = `Date: ${today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`;
+    const randomSuffix = Math.floor(1000 + Math.random() * 9000);
+    const certId = `ID: CYV-${today.getFullYear()}-${MODULE2_CONFIG.code}-${randomSuffix}`;
 
-      // 4. Header: "CYVEXIS // CYBERSECURITY DRILLS" (cyan monospace)
-      ctx.font = '600 16px "JetBrains Mono", "Courier New", monospace';
-      ctx.fillStyle = '#00f2fe';
-      ctx.fillText('CYVEXIS // CYBERSECURITY DRILLS', 600, 195);
+    ctx.font = '500 25px "Courier New", Consolas, monospace';
+    ctx.fillStyle = '#334155';
+    ctx.fillText(formattedDate, 760, 960);
+    ctx.fillText(certId, 1220, 960);
 
-      // 5. Title: "Certificate of Completion" (bold sans-serif white)
-      ctx.font = 'bold 44px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
-      ctx.fillStyle = '#ffffff';
-      ctx.fillText('Certificate of Completion', 600, 255);
-
-      // Small subtitle lead-in
-      ctx.font = '500 15px "Inter", sans-serif';
-      ctx.fillStyle = '#94a3b8';
-      ctx.fillText('THIS CERTIFICATE IS PROUDLY CONFERRED TO', 600, 315);
-
-      // 6. Recipient: Entered student name in emerald green (#10b981), 46px bold
-      ctx.font = 'bold 46px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
-      ctx.fillStyle = '#10b981';
-      ctx.fillText(studentName, 600, 375);
-
-      // Accent underline under recipient
-      const nameWidth = Math.max(300, Math.min(840, ctx.measureText(studentName).width + 70));
-      const lineGrad = ctx.createLinearGradient(600 - nameWidth / 2, 0, 600 + nameWidth / 2, 0);
-      lineGrad.addColorStop(0, 'rgba(16, 185, 129, 0)');
-      lineGrad.addColorStop(0.5, '#10b981');
-      lineGrad.addColorStop(1, 'rgba(16, 185, 129, 0)');
-      ctx.strokeStyle = lineGrad;
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.moveTo(600 - nameWidth / 2, 408);
-      ctx.lineTo(600 + nameWidth / 2, 408);
-      ctx.stroke();
-
-      // 7. Statement: "has successfully completed the practical awareness drill on Password Hygiene & MFA Fatigue: Defending Against Credential Attacks"
-      ctx.font = '400 18px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
-      ctx.fillStyle = '#cbd5e1';
-      ctx.fillText('has successfully completed the practical awareness drill on', 600, 448);
-
-      const moduleTitle = 'Password Hygiene & MFA Fatigue: Defending Against Credential Attacks';
-      ctx.font = 'bold 23px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
-      // Dynamically check width and adjust if necessary to guarantee fit inside inner frame
-      let titleFontSize = 23;
-      while (ctx.measureText(moduleTitle).width > 1040 && titleFontSize > 16) {
-        titleFontSize -= 1;
-        ctx.font = `bold ${titleFontSize}px "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
-      }
-      ctx.fillStyle = '#38bdf8';
-      ctx.fillText(moduleTitle, 600, 482);
-
-      // Divider line
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(250, 528);
-      ctx.lineTo(950, 528);
-      ctx.stroke();
-
-      // 8. Metadata: Dynamic date and record ID (CYV-XXXXXX)
-      const dynamicDate = new Date().toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      });
-      const randChars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-      let randSuffix = '';
-      for (let i = 0; i < 6; i++) {
-        randSuffix += randChars.charAt(Math.floor(Math.random() * randChars.length));
-      }
-      const recordId = `CYV-${randSuffix}`;
-
-      // Left Metadata: Issue Date
-      ctx.font = '600 13px "JetBrains Mono", monospace';
-      ctx.fillStyle = '#64748b';
-      ctx.fillText('ISSUE DATE', 420, 575);
-      ctx.font = '600 16px "Inter", sans-serif';
-      ctx.fillStyle = '#f8fafc';
-      ctx.fillText(dynamicDate, 420, 605);
-
-      // Right Metadata: Record ID
-      ctx.font = '600 13px "JetBrains Mono", monospace';
-      ctx.fillStyle = '#64748b';
-      ctx.fillText('VERIFIED RECORD ID', 780, 575);
-      ctx.font = '700 17px "JetBrains Mono", monospace';
-      ctx.fillStyle = '#00f2fe';
-      ctx.fillText(recordId, 780, 605);
-
-      // Verification seal badge
-      ctx.font = '600 12px "JetBrains Mono", monospace';
-      ctx.fillStyle = '#10b981';
-      ctx.fillText('🛡️ CYVEXIS VERIFIED CREDENTIAL RECORD', 600, 668);
-
-      // Divider line above footer
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(100, 715);
-      ctx.lineTo(1100, 715);
-      ctx.stroke();
-
-      // 9. Footer banner: "Client-Side Verified • Zero Credentials Stored • cyvexis"
-      ctx.font = '500 14px "JetBrains Mono", "Courier New", monospace';
-      ctx.fillStyle = '#94a3b8';
-      ctx.fillText('Client-Side Verified • Zero Credentials Stored • cyvexis', 600, 755);
-
-      // 10. Export canvas as PNG data URL and trigger download named Cyvexis_Module2_Certificate_<Name>.png
+    setTimeout(() => {
       const cleanName = studentName.replace(/[^a-zA-Z0-9_-]/g, '_');
       const filename = `Cyvexis_Module2_Certificate_${cleanName}.png`;
       const dataUrl = canvas.toDataURL('image/png');
@@ -925,176 +813,27 @@ function generateCertificate() {
       document.body.appendChild(downloadLink);
       downloadLink.click();
       document.body.removeChild(downloadLink);
-    } catch (err) {
-      console.error('Certificate generation error:', err);
-      alert('An error occurred while generating your certificate. Please try again.');
-    } finally {
+
       if (btn) {
         btn.disabled = false;
         btn.innerHTML = originalBtnText;
       }
-    }
-  }
+    }, 200);
+  };
 
-  // Load the brand logo image (logo.jpg or 1.jpg). Wait for img.onload before rendering canvas.
-  let hasRendered = false;
-  const brandLogo = new Image();
-  brandLogo.crossOrigin = 'anonymous';
-
-  brandLogo.onload = () => {
-    if (!hasRendered) {
-      hasRendered = true;
-      renderCertificate(brandLogo);
+  templateImg.onerror = function() {
+    alert("Could not load certificate template. Please refresh and try again.");
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = originalBtnText;
     }
   };
 
-  brandLogo.onerror = () => {
-    // Fallback attempt to 1.jpg if logo.jpg failed to load
-    const fallbackLogo = new Image();
-    fallbackLogo.crossOrigin = 'anonymous';
-    fallbackLogo.onload = () => {
-      if (!hasRendered) {
-        hasRendered = true;
-        renderCertificate(fallbackLogo);
-      }
-    };
-    fallbackLogo.onerror = () => {
-      if (!hasRendered) {
-        hasRendered = true;
-        renderCertificate(null);
-      }
-    };
-    fallbackLogo.src = '1.jpg';
-  };
-
-  brandLogo.src = 'logo.jpg';
-
-  // Handle cached image scenario
-  if (brandLogo.complete && brandLogo.naturalWidth > 0) {
-    if (!hasRendered) {
-      hasRendered = true;
-      renderCertificate(brandLogo);
-    }
-  }
+  templateImg.src = 'certificate-template.png';
 }
 
 // Attach globally for inline HTML onclick handlers
 window.generateCertificate = generateCertificate;
-
-
-function generateCertificate() {
-  const nameInput = document.getElementById('studentName');
-  const name = nameInput.value.trim();
-
-  if (!name) {
-    alert("Please enter a name for the certificate.");
-    return;
-  }
-
-  const canvas = document.getElementById('certCanvas');
-  const ctx = canvas.getContext('2d');
-
-  // Load official Cyvexis logo from root
-  const logo = new Image();
-  logo.src = '../1.jpg';
-
-  logo.onload = function() {
-    renderCanvas(ctx, canvas, name, logo);
-  };
-
-  logo.onerror = function() {
-    // If the image cannot be found, render without breaking
-    renderCanvas(ctx, canvas, name, null);
-  };
-}
-
-function renderCanvas(ctx, canvas, name, logo) {
-  // Background
-  ctx.fillStyle = "#060913";
-  ctx.fillRect(0, 0, 1200, 850);
-
-  // Outer & Inner Borders
-  ctx.lineWidth = 4;
-  ctx.strokeStyle = "#1e293b";
-  ctx.strokeRect(30, 30, 1140, 790);
-
-  ctx.lineWidth = 2;
-  ctx.strokeStyle = "#00f2fe";
-  ctx.strokeRect(42, 42, 1116, 766);
-
-  // Top Logo
-  let startY = 160;
-  if (logo) {
-    const logoSize = 85;
-    ctx.drawImage(logo, (1200 - logoSize) / 2, 55, logoSize, logoSize);
-    startY = 180;
-  }
-
-  // Header & Title
-  ctx.textAlign = "center";
-  ctx.fillStyle = "#00f2fe";
-  ctx.font = "bold 20px monospace";
-  ctx.fillText("CYVEXIS // CYBERSECURITY DRILLS", 600, startY);
-
-  ctx.fillStyle = "#ffffff";
-  ctx.font = "bold 44px sans-serif";
-  ctx.fillText("Certificate of Completion", 600, startY + 60);
-
-  ctx.fillStyle = "#94a3b8";
-  ctx.font = "20px sans-serif";
-  ctx.fillText("This certifies that", 600, startY + 120);
-
-  // Recipient Name
-  ctx.fillStyle = "#10b981";
-  ctx.font = "bold 46px sans-serif";
-  ctx.fillText(name.toUpperCase(), 600, startY + 185);
-
-  ctx.strokeStyle = "#1e293b";
-  ctx.lineWidth = 1.5;
-  ctx.beginPath();
-  ctx.moveTo(350, startY + 210);
-  ctx.lineTo(850, startY + 210);
-  ctx.stroke();
-
-  // Completion Statement & Module Title
-  ctx.fillStyle = "#cbd5e1";
-  ctx.font = "21px sans-serif";
-  ctx.fillText("has successfully completed the practical awareness drill on", 600, startY + 260);
-
-  ctx.fillStyle = "#f8fafc";
-  ctx.font = "bold 23px sans-serif";
-  ctx.fillText("Password Hygiene & MFA Fatigue: Defending Against Credential Attacks", 600, startY + 310);
-
-  // Date & ID
-  const today = new Date().toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric'
-  });
-  const randomSuffix = Math.random().toString(36).substring(2, 8).toUpperCase();
-  const certId = `CYV-MOD2-${randomSuffix}`;
-
-  ctx.fillStyle = "#64748b";
-  ctx.font = "15px monospace";
-  ctx.fillText(`Issued: ${today}   |   Record ID: ${certId}`, 600, startY + 390);
-
-  // Privacy Footer
-  ctx.fillStyle = "#0a0f1d";
-  ctx.fillRect(180, 725, 840, 48);
-  ctx.strokeStyle = "rgba(0, 242, 254, 0.25)";
-  ctx.lineWidth = 1;
-  ctx.strokeRect(180, 725, 840, 48);
-
-  ctx.fillStyle = "#94a3b8";
-  ctx.font = "14px monospace";
-  ctx.fillText("Client-Side Verified • Zero Credentials Stored • cyvexis", 600, 755);
-
-  // Trigger Local PNG Download
-  const downloadLink = document.createElement('a');
-  downloadLink.download = `Cyvexis_Module2_Certificate_${name.replace(/\s+/g, '_')}.png`;
-  downloadLink.href = canvas.toDataURL('image/png');
-  downloadLink.click();
-}
 
 /* ==========================================================================
    STRICT LEARNING MODE SWITCHER (5-Min Video Track vs 5-Min Article Track)

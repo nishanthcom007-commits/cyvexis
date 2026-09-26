@@ -341,6 +341,14 @@ function initEmbedModal() {
     });
   }
 }
+const MODULE1_CONFIG = {
+  code: 'M01',
+  filePrefix: 'Module1',
+  title: 'MODULE 01: PHISHING LINK & URL DECEPTION DEFENSE',
+  descLine1: 'An intensive cybersecurity training module covering deceptive URL dissection,',
+  descLine2: 'typosquatting triage, and credential harvesting mitigation.'
+};
+
 function generateCertificate() {
   if (!window.module1QuizPassed) {
     alert("Certificate Locked: You must score at least 50% (minimum 3 out of 5 correct) on the Phishing Awareness Quiz to unlock and download your certificate.");
@@ -353,7 +361,7 @@ function generateCertificate() {
   const name = nameInput ? nameInput.value.trim() : '';
 
   if (!name) {
-    alert("Please enter a name for the certificate.");
+    alert("Please enter your full name to generate your verified Cyvexis certificate.");
     if (nameInput) nameInput.focus();
     return;
   }
@@ -362,95 +370,88 @@ function generateCertificate() {
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
 
-  // Obsidian dark background
-  ctx.fillStyle = "#060913";
-  ctx.fillRect(0, 0, 1200, 800);
-
-  // Dual borders: Outer dark border and Cyan inner border (#00f2fe)
-  ctx.lineWidth = 4;
-  ctx.strokeStyle = "#1e293b";
-  ctx.strokeRect(30, 30, 1140, 740);
-
-  ctx.lineWidth = 2;
-  ctx.strokeStyle = "#00f2fe";
-  ctx.strokeRect(42, 42, 1116, 716);
-
-  // Brand Header
-  ctx.textAlign = "center";
-  ctx.fillStyle = "#00f2fe";
-  ctx.font = "bold 22px monospace";
-  ctx.fillText("CYVEXIS // CYBERSECURITY DRILLS", 600, 115);
-
-  // Main Bold Title
-  ctx.fillStyle = "#ffffff";
-  ctx.font = "bold 44px sans-serif";
-  ctx.fillText("Certificate of Completion", 600, 185);
-
-  // Certification Statement
-  ctx.fillStyle = "#94a3b8";
-  ctx.font = "20px sans-serif";
-  ctx.fillText("This certifies that", 600, 255);
-
-  // Recipient Name in Emerald Green (#10b981)
-  ctx.fillStyle = "#10b981";
-  ctx.font = "bold 48px sans-serif";
-  ctx.fillText(name, 600, 335);
-
-  // Decorative separator line
-  ctx.strokeStyle = "rgba(255, 255, 255, 0.15)";
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.moveTo(350, 360);
-  ctx.lineTo(850, 360);
-  ctx.stroke();
-
-  // Accomplishment text
-  ctx.fillStyle = "#cbd5e1";
-  ctx.font = "22px sans-serif";
-  ctx.fillText("has successfully completed the practical awareness drill on", 600, 415);
-
-  // Course Title
-  ctx.fillStyle = "#f8fafc";
-  ctx.font = "bold 26px sans-serif";
-  ctx.fillText("Phishing Links: Spot Deceptive URLs Before You Click", 600, 465);
-
-  // Dynamic Date & Random Record ID (CYV-XXXXXX)
-  const today = new Date().toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric'
-  });
-  const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  let randId = '';
-  for (let i = 0; i < 6; i++) {
-    randId += chars.charAt(Math.floor(Math.random() * chars.length));
+  const btn = document.getElementById('generateBtn');
+  const originalBtnText = btn ? btn.innerHTML : 'Download Certificate';
+  if (btn) {
+    btn.disabled = true;
+    btn.innerHTML = '<span>⏳ Rendering Certificate...</span>';
   }
-  const certId = "CYV-" + randId;
 
-  ctx.fillStyle = "#64748b";
-  ctx.font = "16px monospace";
-  ctx.fillText(`Issued: ${today}  |  Record ID: ${certId}`, 600, 555);
+  const templateImg = new Image();
+  templateImg.crossOrigin = 'anonymous';
 
-  // Security & Privacy Notice Box
-  ctx.fillStyle = "rgba(10, 15, 29, 0.85)";
-  ctx.fillRect(180, 635, 840, 52);
-  ctx.strokeStyle = "rgba(0, 242, 254, 0.35)";
-  ctx.lineWidth = 1;
-  ctx.strokeRect(180, 635, 840, 52);
+  templateImg.onload = function() {
+    canvas.width = 2048;
+    canvas.height = 1142;
 
-  // Privacy Footer
-  ctx.fillStyle = "#94a3b8";
-  ctx.font = "14px monospace";
-  ctx.fillText("Client-Side Verified • Zero Credentials Stored • cyvexis", 600, 668);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(templateImg, 0, 0, 2048, 1142);
 
-  // Trigger Local Download
-  const sanitizedName = name.replace(/[\s/\\?%*:|"<>]+/g, '_');
-  const downloadLink = document.createElement('a');
-  downloadLink.download = `Cyvexis_Certificate_${sanitizedName}.png`;
-  downloadLink.href = canvas.toDataURL('image/png');
-  document.body.appendChild(downloadLink);
-  downloadLink.click();
-  document.body.removeChild(downloadLink);
+    const centerX = 1024;
+    const navyColor = '#0c1b33';
+    const descColor = '#1e293b';
+
+    // 1. Recipient Full Name (bold serif in deep navy)
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = navyColor;
+    let nameFontSize = 50;
+    ctx.font = `bold ${nameFontSize}px Georgia, "Times New Roman", serif`;
+    while (ctx.measureText(name.toUpperCase()).width > 1200 && nameFontSize > 28) {
+      nameFontSize -= 2;
+      ctx.font = `bold ${nameFontSize}px Georgia, "Times New Roman", serif`;
+    }
+    ctx.fillText(name.toUpperCase(), centerX, 542);
+
+    // 2. Module Title (bold serif)
+    ctx.fillStyle = navyColor;
+    ctx.font = 'bold 34px Georgia, "Times New Roman", serif';
+    ctx.fillText(MODULE1_CONFIG.title, centerX, 684);
+
+    // 3. Module Description (italic serif)
+    ctx.fillStyle = descColor;
+    ctx.font = 'italic 26px Georgia, "Times New Roman", serif';
+    ctx.fillText(MODULE1_CONFIG.descLine1, centerX, 752);
+    if (MODULE1_CONFIG.descLine2) {
+      ctx.fillText(MODULE1_CONFIG.descLine2, centerX, 788);
+    }
+
+    // 4. Date & ID
+    const today = new Date();
+    const formattedDate = `Date: ${today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`;
+    const randomSuffix = Math.floor(1000 + Math.random() * 9000);
+    const certId = `ID: CYV-${today.getFullYear()}-${MODULE1_CONFIG.code}-${randomSuffix}`;
+
+    ctx.font = '500 25px "Courier New", Consolas, monospace';
+    ctx.fillStyle = '#334155';
+    ctx.fillText(formattedDate, 760, 960);
+    ctx.fillText(certId, 1220, 960);
+
+    setTimeout(() => {
+      const sanitizedName = name.replace(/[\s/\\?%*:|"<>]+/g, '_');
+      const downloadLink = document.createElement('a');
+      downloadLink.download = `Cyvexis_Module1_Certificate_${sanitizedName}.png`;
+      downloadLink.href = canvas.toDataURL('image/png');
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+
+      if (btn) {
+        btn.disabled = false;
+        btn.innerHTML = originalBtnText;
+      }
+    }, 200);
+  };
+
+  templateImg.onerror = function() {
+    alert("Could not load certificate template. Please refresh and try again.");
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = originalBtnText;
+    }
+  };
+
+  templateImg.src = 'certificate-template.png';
 }
 
 /* ==========================================================================
