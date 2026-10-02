@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    if (window.location.hostname.includes('netlify.app')) {
+      window.location.replace('https://cyvexis.pages.dev' + window.location.pathname + window.location.search + window.location.hash);
+    }
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyvexis // Module 06: Cloud Security, Data Privacy &amp; API Protection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Ambient Cyber Grid Background -->
+  <div class="cyber-background" aria-hidden="true">
+    <div class="grid-plane"></div>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <img src="cyvexis-logo.png" alt="Cyvexis 3D Logo" class="brand-logo-3d" onerror="this.src='../logo.png'" />
+        <a href="../index.html" class="back-link">
+          <span class="nav-arrow">←</span> Return to Cyvexis Hub
+        </a>
+      </div>
+      <div class="nav-meta">
+        <span class="pulse-dot"></span>
+        <span class="nav-badge">DRILL 06 // CLOUD &amp; API DEFENSE</span>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- Header Section -->
+    <header class="drill-header">
+      <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px;">
+        <div class="tag-pill purple-tag">CLOUD INFRASTRUCTURE // MODULE 06</div>
+        <div class="tag-pill time-badge">⏱️ ESTIMATED TIME: 15 MINS</div>
+      </div>
+      <h1>Cloud Security, Data Privacy &amp; API Protection</h1>
+      <p class="drill-desc">
+        Modern enterprise infrastructure runs on distributed cloud platforms, APIs, and microservices. Master the Shared Responsibility Model, eradicate exposed cloud storage buckets, eliminate hardcoded Git secrets, comply with international data privacy laws (GDPR &amp; DPDP), and audit high-risk Shadow IT integrations.
+      </p>
+    </header>
+
+    <!-- Training Stepper -->
+    <div class="training-stepper">
+      <div class="format-step-pill active">
+        <span class="format-step-num">1</span>
+        <span>CURRICULUM LESSONS</span>
+      </div>
+      <span class="format-step-arrow">➔</span>
+      <div class="format-step-pill">
+        <span class="format-step-num">2</span>
+        <span>CLOUD DEFENSE LABS</span>
+      </div>
+      <span class="format-step-arrow">➔</span>
+      <div class="format-step-pill">
+        <span class="format-step-num">3</span>
+        <span>ASSESSMENT (80% TO PASS)</span>
+      </div>
+      <span class="format-step-arrow">➔</span>
+      <div class="format-step-pill">
+        <span class="format-step-num">4</span>
+        <span>OFFICIAL CERTIFICATE</span>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         CURRICULUM LESSON CONTENT (SECTIONS 1 TO 4)
+         ========================================================================== -->
+    <section class="curriculum-section" aria-label="Curriculum Lessons">
+      <div class="curriculum-grid">
+
+        <!-- SECTION 1: THE SHARED RESPONSIBILITY MODEL & CLOUD MISCONFIGURATIONS -->
+        <article class="lesson-card">
+          <div class="lesson-header">
+            <span class="lesson-badge">SECTION 01 // ARCHITECTURE</span>
+            <span class="lesson-icon">☁️</span>
+          </div>
+          <h2 class="lesson-title">The Shared Responsibility Model &amp; Cloud Misconfigurations</h2>
+          <div class="lesson-content">
+            <p>
+              <strong>The Core Reality:</strong> Cloud service providers (AWS, Google Cloud, Microsoft Azure) secure the underlying hardware, hypervisors, and data center facilities (<em>"Security of the Cloud"</em>). However, the customer retains sole responsibility for configuring access control, operating systems, network firewalls, and data assets (<em>"Security in the Cloud"</em>).
+            </p>
+            <p>
+              <strong>Critical Misconfigurations:</strong>
+            </p>
+            <ul class="lesson-bullet-list">
+              <li><strong>Publicly Accessible Cloud Storage Buckets:</strong> Storage containers (AWS S3, Azure Blob, GCS) configured with public read/write ACLs, exposing database dumps, system backups, and sensitive customer PII to automated internet scanners.</li>
+              <li><strong>Permissive IAM Roles:</strong> Wildcard permissions (<code>Action: "*"</code>, <code>Resource: "*"</code>), excessive administrative policies assigned to temporary worker roles, and forgotten long-lived root credentials.</li>
+            </ul>
+            <div class="key-defense-box">
+              <div class="key-defense-title">🛡️ Key Defense Protocol</div>
+              <p class="key-defense-desc">
+                <strong>Enforce Least Privilege &amp; CSPM:</strong> Strictly enforce Least Privilege RBAC policies. Enable global <em>Block Public Access (BPA)</em> on all cloud storage buckets, and run continuous Cloud Security Posture Management (CSPM) audits to detect drifting configurations.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- SECTION 2: API KEYS, SECRETS MANAGEMENT & CODE LEAKS -->
+        <article class="lesson-card">
+          <div class="lesson-header">
+            <span class="lesson-badge">SECTION 02 // SECRETS HYGIENE</span>
+            <span class="lesson-icon">🔑</span>
+          </div>
+          <h2 class="lesson-title">API Keys, Secrets Management &amp; Code Leaks</h2>
+          <div class="lesson-content">
+            <p>
+              <strong>The Attack Vector:</strong> Developers frequently hardcode API keys, JWT signing tokens, database connection strings, and private SSH certificates directly into source code files, configuration manifests, or uncommitted <code>.env</code> templates.
+            </p>
+            <p>
+              <strong>Git Scraping Bots:</strong> Threat actors continuously monitor the public GitHub and GitLab event feeds using high-speed automated scrapers. When a commit containing credentials is push-published, automated adversary bots harvest and exploit the keys within <strong>under 60 seconds</strong> to launch cryptomining clusters or exfiltrate production databases.
+            </p>
+            <ul class="lesson-bullet-list">
+              <li><strong>Automated Secrets Scanning:</strong> Integrate pre-commit hooks and CI/CD secret scanning engines (e.g., TruffleHog, GitGuardian, GitHub Secret Scanning) to halt git pushes containing credential entropy.</li>
+              <li><strong>Dedicated Secret Stores:</strong> Never store static plaintext keys in code or deployment repos. Dynamically retrieve secrets at runtime from centralized vaults (HashiCorp Vault, AWS Secrets Manager, Doppler, GCP Secret Manager).</li>
+              <li><strong>Short-Lived Ephemeral Tokens:</strong> Implement auto-rotating, short-lived IAM session credentials instead of permanent root-level API tokens.</li>
+            </ul>
+            <div class="key-defense-box">
+              <div class="key-defense-title">🛡️ Key Defense Protocol</div>
+              <p class="key-defense-desc">
+                <strong>Zero Secrets in Git:</strong> Enforce strict pre-commit verification hooks. If a credential is ever accidentally committed, treat it as immediately compromised—revoke and rotate the key instantly rather than attempting to delete the commit.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- SECTION 3: DATA CLASSIFICATION & PRIVACY REGULATIONS (GDPR & DPDP) -->
+        <article class="lesson-card">
+          <div class="lesson-header">
+            <span class="lesson-badge">SECTION 03 // DATA COMPLIANCE</span>
+            <span class="lesson-icon">📜</span>
+          </div>
+          <h2 class="lesson-title">Data Classification &amp; Privacy Regulations (GDPR &amp; DPDP)</h2>
+          <div class="lesson-content">
+            <p>
+              <strong>Enterprise Data Tiers:</strong> Organizations must categorize all digital assets into rigorous tiers to determine applicable security controls:
+            </p>
+            <ul class="lesson-bullet-list">
+              <li><strong>Public Tier:</strong> Marketing copy, press releases, publicly available documentation. Requires basic integrity verification.</li>
+              <li><strong>Internal Tier:</strong> Non-sensitive team memos, architectural roadmaps, and internal handbook guides. Restrict to active employees.</li>
+              <li><strong>Confidential / Restricted:</strong> Proprietary source code, financial ledgers, algorithmic trade secrets, and core network topology diagrams.</li>
+              <li><strong>Regulated PII (Personally Identifiable Information):</strong> Government IDs (Aadhaar, SSN), biometric identifiers, payment card data (PCI-DSS), and medical health records.</li>
+            </ul>
+            <p>
+              <strong>Privacy Compliance Essentials:</strong> Regulations like the European Union's <strong>GDPR</strong> and India's <strong>Digital Personal Data Protection (DPDP) Act</strong> mandate strict <em>data minimization</em> (collecting only what is strictly necessary), <em>storage limitation</em> (purging records when business purpose concludes), and <em>explicit affirmative consent</em>.
+            </p>
+            <div class="key-defense-box">
+              <div class="key-defense-title">🛡️ Key Defense Protocol</div>
+              <p class="key-defense-desc">
+                <strong>Cryptographic Hygiene:</strong> Enforce <strong>AES-256</strong> encryption for all data at rest across object storage and relational databases, and mandate <strong>TLS 1.3</strong> for all data in transit across internal and external APIs.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- SECTION 4: SHADOW IT & THIRD-PARTY SAAS GOVERNANCE -->
+        <article class="lesson-card">
+          <div class="lesson-header">
+            <span class="lesson-badge">SECTION 04 // GOVERNANCE</span>
+            <span class="lesson-icon">👁️</span>
+          </div>
+          <h2 class="lesson-title">Shadow IT &amp; Third-Party SaaS Governance</h2>
+          <div class="lesson-content">
+            <p>
+              <strong>The Threat of Shadow SaaS:</strong> Employees often register for unvetted third-party productivity tools, document converters, and public generative AI engines using corporate credentials, pasting proprietary IP, client source code, and unredacted databases into external cloud infrastructure without SecOps approval.
+            </p>
+            <p>
+              <strong>Token &amp; OAuth Scope Hijacking:</strong> Rogue browser extensions and malicious third-party SaaS apps request over-privileged OAuth scopes (such as <code>https://mail.google.com/</code>: <em>"Read, compose, send, and permanently delete all your emails"</em>). Users grant permission with a single click, granting adversaries persistent API-level access to corporate inboxes without triggering credential alerts.
+            </p>
+            <ul class="lesson-bullet-list">
+              <li><strong>Cloud Access Security Brokers (CASB):</strong> Monitor and block unauthorized data uploads to unsanctioned cloud platforms.</li>
+              <li><strong>Sanctioned SaaS Catalogs:</strong> Require enterprise authentication through company-approved Single Sign-On (SSO) portals with pre-vetted data privacy agreements.</li>
+              <li><strong>Continuous OAuth Auditing:</strong> Periodically review and revoke third-party application permissions and browser extension policies across the enterprise.</li>
+            </ul>
+            <div class="key-defense-box">
+              <div class="key-defense-title">🛡️ Key Defense Protocol</div>
+              <p class="key-defense-desc">
+                <strong>Centralized OAuth Authorization:</strong> Prohibit employees from self-authorizing third-party cloud apps. Enforce administrative approval for all OAuth grants that request read or write permissions to enterprise mail, files, or identity directory resources.
+              </p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         INTERACTIVE CLOUD & API DEFENSE SIMULATOR
+         ========================================================================== -->
+    <section class="simulator-container" id="cloudSimulator" aria-label="Interactive Cloud Defense Simulator">
+      <div class="sim-header">
+        <span class="tag-pill purple-tag">CYVEXIS CLOUD LABS // INTERACTIVE INFRASTRUCTURE AUDITOR</span>
+        <h2>Tactical Cloud &amp; API Defense Terminal</h2>
+        <p>Audit cloud storage bucket ACLs, intercept hardcoded Git secrets in real time, explore data privacy regulatory tiers, and neutralize over-privileged OAuth scopes.</p>
+      </div>
+
+      <!-- Simulator Tabs Navigation -->
+      <div class="sim-tabs-nav">
+        <button type="button" class="sim-tab-btn active" data-tab="buckets" onclick="switchSimTab('buckets')">
+          <span>🪣</span> Storage Bucket Auditor
+        </button>
+        <button type="button" class="sim-tab-btn" data-tab="secrets" onclick="switchSimTab('secrets')">
+          <span>🔍</span> Git Secret Scanner
+        </button>
+        <button type="button" class="sim-tab-btn" data-tab="privacy" onclick="switchSimTab('privacy')">
+          <span>⚖️</span> Privacy &amp; GDPR Matrix
+        </button>
+        <button type="button" class="sim-tab-btn" data-tab="oauth" onclick="switchSimTab('oauth')">
+          <span>🛡️</span> OAuth &amp; Shadow IT
+        </button>
+      </div>
+
+      <!-- Tab 1: Cloud Storage Bucket Auditor -->
+      <div class="sim-tab-panel active" id="tab-buckets">
+        <div class="cloud-terminal-box">
+          <div class="terminal-top-bar">
+            <span class="terminal-title">☁️ AWS S3 &amp; GCS ACCESS CONTROL AUDITOR</span>
+            <span class="terminal-status-badge" id="bucketStatusBadge">CRITICAL MISCONFIGURATION DETECTED</span>
+          </div>
+
+          <div class="bucket-card-grid">
+            <div class="bucket-item-card exposed" id="exposedBucketCard">
+              <h4>s3://cyvexis-customer-backups-prod</h4>
+              <div class="bucket-meta-line">Access Status: <span id="bucketAclText" style="color: var(--danger-rose); font-weight: 700;">PUBLIC READ / WRITE ⚠️</span></div>
+              <div class="bucket-meta-line">Encryption: <span id="bucketEncText" style="color: #f87171;">NONE (Plaintext at Rest)</span></div>
+              <div class="bucket-meta-line">Contains: <span>prod_customers_pii.sql, db_dump.tar.gz</span></div>
+            </div>
+
+            <div class="bucket-item-card">
+              <h4>s3://cyvexis-static-assets-cdn</h4>
+              <div class="bucket-meta-line">Access Status: <span>Public Read (Images/CSS Only)</span></div>
+              <div class="bucket-meta-line">Encryption: <span>AES-256 (Server-Side)</span></div>
+              <div class="bucket-meta-line">Contains: <span>brand_logos.png, stylesheet.css</span></div>
+            </div>
+          </div>
+
+          <p style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 12px; font-family: var(--font-mono);">
+            <strong>Telemetry Alert:</strong> Automated crawlers identified publicly accessible SQL database backups containing 45,000 unencrypted customer PII records.
+          </p>
+
+          <button type="button" class="btn-terminal-action danger-btn" id="btnRemediateBucket" onclick="remediateStorageBucket()">
+            🚨 Apply Global Block Public Access (BPA) &amp; Enforce SSE-KMS (AES-256)
+          </button>
+
+          <div id="bucketRemediateAlert" style="display: none; margin-top: 14px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--emerald-safe); color: #a7f3d0; padding: 12px; border-radius: 6px; font-size: 0.85rem; font-family: var(--font-mono);"></div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Git Commit Secret Scanner -->
+      <div class="sim-tab-panel" id="tab-secrets">
+        <div class="cloud-terminal-box">
+          <div class="terminal-top-bar">
+            <span class="terminal-title">🐙 PRE-COMMIT SECRETS SCANNER // TRUFFLEHOG &amp; GITGUARDIAN</span>
+            <span class="terminal-status-badge" id="gitScannerBadge">LEAK DETECTED (HIGH ENTROPY)</span>
+          </div>
+
+          <pre class="code-editor-pre" id="gitCodeBlock">// Staged Commit: src/controllers/billing.js
+const AWS = require('aws-sdk');
+
+// High Entropy AWS Root Secret Key Detected:
+const AWS_ACCESS_KEY_ID = "AKIAIOSFODNN7EXAMPLE";
+const AWS_SECRET_ACCESS_KEY = "<span class="highlight-leak">wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY</span>";
+
+const s3 = new AWS.S3({ accessKeyId: AWS_ACCESS_KEY_ID, secretAccessKey: AWS_SECRET_ACCESS_KEY });</pre>
+
+          <p style="font-size: 0.84rem; color: #cbd5e1; margin-bottom: 12px; font-family: var(--font-mono);">
+            <strong>Pre-Commit Hook Alert:</strong> If pushed to GitHub, adversary bot scrapers will detect and abuse this root access credential in approximately 45 seconds.
+          </p>
+
+          <button type="button" class="btn-terminal-action" id="btnRemediateGit" onclick="remediateGitSecrets()">
+            🛡️ Strip Hardcoded Secrets &amp; Inject Dynamic Secrets Manager Vault
+          </button>
+
+          <div id="gitRemediateAlert" style="display: none; margin-top: 14px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--emerald-safe); color: #a7f3d0; padding: 12px; border-radius: 6px; font-size: 0.85rem; font-family: var(--font-mono);"></div>
+        </div>
+      </div>
+
+      <!-- Tab 3: Data Classification & Privacy Matrix -->
+      <div class="sim-tab-panel" id="tab-privacy">
+        <div class="cloud-terminal-box">
+          <div class="terminal-top-bar">
+            <span class="terminal-title">⚖️ DATA CLASSIFICATION &amp; COMPLIANCE MATRIX</span>
+            <span class="terminal-status-badge safe">GDPR &amp; DPDP ACT STANDARDS</span>
+          </div>
+
+          <div class="privacy-tiers-grid">
+            <div class="privacy-tier-card" data-tier="public" onclick="selectPrivacyTier('public')">
+              <div class="tier-name">1. Public Tier</div>
+              <div class="tier-examples">Marketing web pages, press releases</div>
+              <span class="tier-badge">Low Risk</span>
+            </div>
+            <div class="privacy-tier-card" data-tier="internal" onclick="selectPrivacyTier('internal')">
+              <div class="tier-name">2. Internal Tier</div>
+              <div class="tier-examples">Team roadmaps, employee directories</div>
+              <span class="tier-badge">Moderate Risk</span>
+            </div>
+            <div class="privacy-tier-card" data-tier="restricted" onclick="selectPrivacyTier('restricted')">
+              <div class="tier-name">3. Confidential</div>
+              <div class="tier-examples">Source code, financial reports, keys</div>
+              <span class="tier-badge" style="color: #f59e0b;">High Risk</span>
+            </div>
+            <div class="privacy-tier-card selected" data-tier="pii" onclick="selectPrivacyTier('pii')">
+              <div class="tier-name">4. Regulated PII</div>
+              <div class="tier-examples">Aadhaar, SSN, health &amp; credit data</div>
+              <span class="tier-badge" style="color: var(--danger-rose);">Critical Risk</span>
+            </div>
+          </div>
+
+          <div style="background: rgba(10, 15, 29, 0.9); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 18px; margin-top: 14px;">
+            <h4 id="tierDisplayTitle" style="color: var(--cyan-neon); font-size: 1rem; margin-bottom: 8px;">Regulated PII &amp; Sensitive Personal Data</h4>
+            <div style="font-size: 0.86rem; color: #cbd5e1; margin-bottom: 8px; line-height: 1.5;">
+              <strong>Mandatory Controls:</strong> <span id="tierDisplayControls">Field-level tokenization, strict data minimization, dynamic masking, and AES-256 storage. Zero storage in unsanctioned public SaaS/AI tools.</span>
+            </div>
+            <div style="font-size: 0.86rem; color: #a7f3d0; line-height: 1.5;">
+              <strong>Statutory Compliance:</strong> <span id="tierDisplayCompliance">Strict governance under GDPR (EU) and DPDP Act (India). Explicit consent required. Penalties up to 4% global turnover or ₹250 Crore for willful negligence.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: OAuth Scope & Shadow IT Auditor -->
+      <div class="sim-tab-panel" id="tab-oauth">
+        <div class="cloud-terminal-box">
+          <div class="terminal-top-bar">
+            <span class="terminal-title">🛡️ SHADOW IT &amp; OAUTH TOKEN AUDITOR</span>
+            <span class="terminal-status-badge" id="oauthStatusBadge">OVER-PRIVILEGED OAUTH GRANT</span>
+          </div>
+
+          <div class="oauth-scope-item danger-scope" id="oauthRogueRow">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <h4 style="color: #ffffff; font-size: 0.95rem;">Application: "Free AI Document Assistant &amp; Spellchecker"</h4>
+              <span style="font-size: 0.75rem; color: var(--danger-rose); font-weight: 700;">UNAPPROVED SHADOW SAAS</span>
+            </div>
+            <div style="font-size: 0.84rem; color: #f87171; margin-bottom: 6px;">
+              <strong>Requested OAuth Scopes:</strong> <code>https://mail.google.com/</code> &bull; <code>https://www.googleapis.com/auth/drive</code>
+            </div>
+            <p style="font-size: 0.82rem; color: #cbd5e1; line-height: 1.45;">
+              <strong>Security Risk:</strong> This browser extension was granted full read/write/delete access to corporate mailboxes and cloud drives. It possesses continuous API access to steal session tokens, search confidential attachments, and exfiltrate customer records.
+            </p>
+          </div>
+
+          <button type="button" class="btn-terminal-action danger-btn" id="btnRevokeOAuth" onclick="revokeOAuthScope()">
+            🚨 Revoke Third-Party OAuth App Grant &amp; Restrict to Enterprise Catalog
+          </button>
+
+          <div id="oauthRevokeAlert" style="display: none; margin-top: 14px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--emerald-safe); color: #a7f3d0; padding: 12px; border-radius: 6px; font-size: 0.85rem; font-family: var(--font-mono);"></div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==========================================================================
+         PRACTICAL ASSESSMENT HUD & 6 SCENARIO QUESTIONS
+         ========================================================================== -->
+    <section class="quiz-section" id="quizSection" aria-label="Interactive Cloud Defense Assessment">
+      <div class="quiz-header-bar">
+        <div>
+          <span class="tag-pill">SECTION 03 // EVALUATION</span>
+          <h2>Cloud Security &amp; API Assessment</h2>
+        </div>
+        <div class="score-hud" id="scoreDisplay">Score: 0 / 6 Resolved</div>
+      </div>
+
+      <!-- Passing Requirement Notice -->
+      <div class="quiz-notice-banner">
+        <span style="font-size: 1.3rem;">⚠️</span>
+        <div>
+          <strong>Passing Requirement Notice:</strong> You must achieve at least <strong>80% (minimum 5 out of 6 correct)</strong> on this Cloud Security &amp; Data Privacy assessment to unlock and download your official Cyvexis Certificate of Completion. Read each scenario carefully before submitting your answer.
+        </div>
+      </div>
+
+      <!-- QUESTION 1 -->
+      <article class="quiz-card" id="qCard1">
+        <div class="card-top">
+          <span class="q-num">QUESTION 01 // SHARED RESPONSIBILITY MODEL</span>
+          <span class="status-indicator" id="status1">PENDING</span>
+        </div>
+        <p class="q-title">
+          Under the Cloud Shared Responsibility Model, which security layer is exclusively the customer's responsibility in Infrastructure-as-a-Service (IaaS)?
+        </p>
+        <div class="options-grid">
+          <button type="button" class="opt-btn" onclick="checkAnswer(1, 0, this)">
+            <span class="opt-key">A</span>
+            <span class="opt-label">Physical perimeter security and cooling of the data center.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(1, 1, this)">
+            <span class="opt-key">B</span>
+            <span class="opt-label">Hardware hypervisor maintenance and server firmware patching.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(1, 2, this)">
+            <span class="opt-key">C</span>
+            <span class="opt-label">Customer data classification, OS configuration, and IAM role assignment.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(1, 3, this)">
+            <span class="opt-key">D</span>
+            <span class="opt-label">Global fiber network cabling and undersea cable redundancy.</span>
+          </button>
+        </div>
+        <div class="feedback-msg" id="fb1" role="alert"></div>
+      </article>
+
+      <!-- QUESTION 2 -->
+      <article class="quiz-card" id="qCard2">
+        <div class="card-top">
+          <span class="q-num">QUESTION 02 // GIT SECRETS EXPOSURE</span>
+          <span class="status-indicator" id="status2">PENDING</span>
+        </div>
+        <p class="q-title">
+          A developer accidentally pushes an AWS root access key to a public GitHub repository. Within minutes, the key is compromised. What is the root cause of this rapid exposure?
+        </p>
+        <div class="options-grid">
+          <button type="button" class="opt-btn" onclick="checkAnswer(2, 0, this)">
+            <span class="opt-key">A</span>
+            <span class="opt-label">GitHub automatically revokes and deletes all public repositories with errors.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(2, 1, this)">
+            <span class="opt-key">B</span>
+            <span class="opt-label">Adversaries run automated bots that continuously scrape public commits for API token patterns.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(2, 2, this)">
+            <span class="opt-key">C</span>
+            <span class="opt-label">The cloud provider broadcasts secret pushes to all registered users.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(2, 3, this)">
+            <span class="opt-key">D</span>
+            <span class="opt-label">The local IDE automatically forwards credentials to open DNS resolvers.</span>
+          </button>
+        </div>
+        <div class="feedback-msg" id="fb2" role="alert"></div>
+      </article>
+
+      <!-- QUESTION 3 -->
+      <article class="quiz-card" id="qCard3">
+        <div class="card-top">
+          <span class="q-num">QUESTION 03 // SECRETS ARCHITECTURE</span>
+          <span class="status-indicator" id="status3">PENDING</span>
+        </div>
+        <p class="q-title">
+          What is the most secure method for applications to access third-party API credentials in modern production environments?
+        </p>
+        <div class="options-grid">
+          <button type="button" class="opt-btn" onclick="checkAnswer(3, 0, this)">
+            <span class="opt-key">A</span>
+            <span class="opt-label">Hardcode the token into client-side JavaScript source code.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(3, 1, this)">
+            <span class="opt-key">B</span>
+            <span class="opt-label">Retrieve short-lived secrets dynamically from a dedicated secrets manager or environment vault.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(3, 2, this)">
+            <span class="opt-key">C</span>
+            <span class="opt-label">Store plaintext API keys in a public `.env` file committed to version control.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(3, 3, this)">
+            <span class="opt-key">D</span>
+            <span class="opt-label">Send the API token in the URL query string parameter for every HTTP request.</span>
+          </button>
+        </div>
+        <div class="feedback-msg" id="fb3" role="alert"></div>
+      </article>
+
+      <!-- QUESTION 4 -->
+      <article class="quiz-card" id="qCard4">
+        <div class="card-top">
+          <span class="q-num">QUESTION 04 // SHADOW IT &amp; PRIVACY COMPLIANCE</span>
+          <span class="status-indicator" id="status4">PENDING</span>
+        </div>
+        <p class="q-title">
+          Which scenario represents an unacceptable 'Shadow IT' risk under data protection frameworks like the DPDP Act or GDPR?
+        </p>
+        <div class="options-grid">
+          <button type="button" class="opt-btn" onclick="checkAnswer(4, 0, this)">
+            <span class="opt-key">A</span>
+            <span class="opt-label">Using the company's approved, SSO-integrated cloud storage platform.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(4, 1, this)">
+            <span class="opt-key">B</span>
+            <span class="opt-label">Pasting unredacted customer databases into an unsanctioned, public third-party AI tool for analysis.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(4, 2, this)">
+            <span class="opt-key">C</span>
+            <span class="opt-label">Using multi-factor hardware keys to authenticate into the company code repository.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(4, 3, this)">
+            <span class="opt-key">D</span>
+            <span class="opt-label">Submitting weekly project time tracking logs via an approved internal portal.</span>
+          </button>
+        </div>
+        <div class="feedback-msg" id="fb4" role="alert"></div>
+      </article>
+
+      <!-- QUESTION 5 -->
+      <article class="quiz-card" id="qCard5">
+        <div class="card-top">
+          <span class="q-num">QUESTION 05 // CLOUD IAM PERMISSIONS</span>
+          <span class="status-indicator" id="status5">PENDING</span>
+        </div>
+        <p class="q-title">
+          What principle should govern how cloud IAM (Identity and Access Management) permissions are granted to services and users?
+        </p>
+        <div class="options-grid">
+          <button type="button" class="opt-btn" onclick="checkAnswer(5, 0, this)">
+            <span class="opt-key">A</span>
+            <span class="opt-label">Assign full wildcard administrative access (`*`) to eliminate deployment friction.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(5, 1, this)">
+            <span class="opt-key">B</span>
+            <span class="opt-label">Principle of Least Privilege: grant only the minimum permissions necessary to complete the task.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(5, 2, this)">
+            <span class="opt-key">C</span>
+            <span class="opt-label">Grant root account credentials to every team member during onboarding.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(5, 3, this)">
+            <span class="opt-key">D</span>
+            <span class="opt-label">Share a single administrative service account across all microservices.</span>
+          </button>
+        </div>
+        <div class="feedback-msg" id="fb5" role="alert"></div>
+      </article>
+
+      <!-- QUESTION 6 -->
+      <article class="quiz-card" id="qCard6">
+        <div class="card-top">
+          <span class="q-num">QUESTION 06 // BROWSER EXTENSION PRIVILEGES</span>
+          <span class="status-indicator" id="status6">PENDING</span>
+        </div>
+        <p class="q-title">
+          An employee grants a free browser extension permission to 'Read and modify all data on all websites'. What specific danger does this introduce?
+        </p>
+        <div class="options-grid">
+          <button type="button" class="opt-btn" onclick="checkAnswer(6, 0, this)">
+            <span class="opt-key">A</span>
+            <span class="opt-label">The browser will refuse to render encrypted TLS web pages.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(6, 1, this)">
+            <span class="opt-key">B</span>
+            <span class="opt-label">The extension can intercept session tokens, passwords, and form submissions in real time.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(6, 2, this)">
+            <span class="opt-key">C</span>
+            <span class="opt-label">The operating system will automatically disable firewall protections.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(6, 3, this)">
+            <span class="opt-key">D</span>
+            <span class="opt-label">The device's physical network adapter will be permanently throttled.</span>
+          </button>
+        </div>
+        <div class="feedback-msg" id="fb6" role="alert"></div>
+      </article>
+
+      <!-- Assessment Results Card (Dynamic) -->
+      <div id="triageResultsCard" class="triage-result-card" style="display: none;"></div>
+    </section>
+
+    <!-- ==========================================================================
+         CERTIFICATE GENERATION SECTION (CONNECTED TO CERTIFICATE-TEMPLATE.PNG)
+         ========================================================================== -->
+    <section class="cert-container" id="certificateSection" aria-label="Certificate Credential Generator">
+      <div class="cert-card" id="certCard">
+        <div class="cert-badge" id="certBadge">🔒 CERTIFICATE LOCKED - MINIMUM 80% (5/6) REQUIRED</div>
+        <h2 id="certTitle">Claim Your Module 06 Defense Credential</h2>
+        <p id="certDesc">
+          Complete all 6 cloud security questions above with at least 80% (5/6) correct to unlock your official verified certificate.
+        </p>
+
+        <div class="cert-input-group">
+          <input type="text" id="studentName" placeholder="Enter Full Name" autocomplete="off" aria-label="Student Full Name" disabled />
+          <button type="button" id="generateBtn" onclick="generateCertificate()" disabled style="opacity: 0.5; cursor: not-allowed;">
+            Download Certificate
+          </button>
+        </div>
+        <div id="certLockNotice" class="cert-lock-helper-msg" style="display: block; margin-top: 12px; color: #f59e0b; font-size: 0.88rem; font-family: var(--font-mono, monospace);">
+          ⚠️ Complete all 6 threat evaluation questions above to unlock download access.
+        </div>
+
+        <span class="cert-privacy-note">
+          🔒 Zero Data Retention: Rendered locally via HTML5 Canvas. We never store or transmit your identity.
+        </span>
+      </div>
+
+      <!-- Hidden 2048x1142 canvas for high-resolution certificate rendering -->
+      <canvas id="certCanvas" width="2048" height="1142" style="display:none;"></canvas>
+    </section>
+
+    <!-- Mandatory Cyvexis Threat & Safety Notice -->
+    <section class="cyvexis-safety-notice" aria-label="Official Security Advisory">
+      <div class="cyvexis-safety-card">
+        <div class="cyvexis-safety-header">
+          <span class="cyvexis-safety-icon">🛡️</span>
+          <div>
+            <h3>CYVEXIS OFFICIAL SECURITY ADVISORY</h3>
+            <p class="cyvexis-safety-tagline">ZERO-TRUST IDENTITY POLICY // MANDATORY USER GUIDELINE</p>
+          </div>
+        </div>
+        <p class="cyvexis-safety-statement">
+          <strong>⚠️ Cyvexis will NEVER ask you for your passwords, two-factor authentication codes, or sensitive account credentials.</strong>
+          If anyone contacts you asking for these credentials under our name, do not engage. Report the attempt immediately or report any issue to our official channels:
+        </p>
+        <div class="cyvexis-contacts-grid">
+          <div class="cyvexis-contact-badge">
+            <span class="contact-label">✉️ <strong>Official Security Desk:</strong></span>
+            <a href="mailto:cyvexis.cybersecurity@gmail.com" class="contact-email">cyvexis.cybersecurity@gmail.com</a>
+          </div>
+          <div class="cyvexis-contact-badge">
+            <span class="contact-label">📸 <strong>Official Instagram:</strong></span>
+            <a href="https://instagram.com/cyvexis" target="_blank" rel="noopener noreferrer" class="contact-email">@cyvexis</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <p>&copy; 2026 Cyvexis Security &bull; Module 06: Cloud Security, Data Privacy &amp; API Protection &bull; Zero-Trust Protocol</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
