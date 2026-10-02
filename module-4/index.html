@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    if (window.location.hostname.includes('netlify.app')) {
+      window.location.replace('https://cyvexis.pages.dev' + window.location.pathname + window.location.search + window.location.hash);
+    }
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyvexis // Module 04: Social Engineering Beyond Email (Smishing, Quishing & Deepfakes)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Ambient Cyber Grid Background -->
+  <div class="cyber-background" aria-hidden="true">
+    <div class="grid-plane"></div>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <img src="cyvexis-logo.png" alt="Cyvexis 3D Logo" class="brand-logo-3d" onerror="this.src='../logo.png'" />
+        <a href="../index.html" class="back-link">
+          <span class="nav-arrow">←</span> Return to Cyvexis Hub
+        </a>
+      </div>
+      <div class="nav-meta">
+        <span class="pulse-dot"></span>
+        <span class="nav-badge">DRILL 04 // SMISHING, QUISHING &amp; DEEPFAKES</span>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- Header Section -->
+    <header class="drill-header">
+      <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px;">
+        <div class="tag-pill">TACTICAL THREAT AUDIT // MODULE 04</div>
+        <div class="tag-pill time-badge">⏱️ ESTIMATED TIME: 15 MINS</div>
+      </div>
+      <h1>Social Engineering Beyond Email (Smishing, Quishing &amp; Deepfakes)</h1>
+      <p class="drill-desc">
+        Modern adversaries bypass perimeter email security gateways by operating across SMS, physical and digital QR codes, and real-time synthetic voice cloning. Master the mechanics of multi-channel deception and verify your tactical defense readiness.
+      </p>
+    </header>
+
+    <!-- Training Stepper -->
+    <div class="training-stepper">
+      <div class="format-step-pill active">
+        <span class="format-step-num">1</span>
+        <span>CURRICULUM LESSONS</span>
+      </div>
+      <span class="format-step-arrow">➔</span>
+      <div class="format-step-pill">
+        <span class="format-step-num">2</span>
+        <span>THREAT SIMULATOR</span>
+      </div>
+      <span class="format-step-arrow">➔</span>
+      <div class="format-step-pill">
+        <span class="format-step-num">3</span>
+        <span>ASSESSMENT (80% TO PASS)</span>
+      </div>
+      <span class="format-step-arrow">➔</span>
+      <div class="format-step-pill">
+        <span class="format-step-num">4</span>
+        <span>OFFICIAL CERTIFICATE</span>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         CURRICULUM LESSON CONTENT (SECTIONS 1 TO 4)
+         ========================================================================== -->
+    <section class="curriculum-section" aria-label="Curriculum Lessons">
+      <div class="curriculum-grid">
+
+        <!-- SECTION 1: THE MULTI-CHANNEL THREAT LANDSCAPE -->
+        <article class="lesson-card">
+          <div class="lesson-header">
+            <span class="lesson-badge">SECTION 01 // VECTORS</span>
+            <span class="lesson-icon">📱</span>
+          </div>
+          <h2 class="lesson-title">The Multi-Channel Threat Landscape</h2>
+          <div class="lesson-content">
+            <p>
+              <strong>Overview:</strong> Threat actors routinely bypass corporate email gateways by shifting attack vectors to SMS (Smishing), direct mobile messaging (WhatsApp/Telegram), and targeted voice calls. Mobile devices naturally conceal risks due to smaller viewports, absent hover states, and truncated domain names.
+            </p>
+            <p>
+              <strong>Attack Mechanics:</strong> Common lures weaponize psychological urgency, including:
+            </p>
+            <ul class="lesson-bullet-list">
+              <li>Failed courier package deliveries with urgent "customs clearance fees"</li>
+              <li>Fake financial fraud warnings ("Unauthorized wire attempt: click to freeze")</li>
+              <li>Shortened and obfuscated redirects (e.g., bit.ly, tinyurl, lookalike domains)</li>
+            </ul>
+            <div class="key-defense-box">
+              <div class="key-defense-title">🛡️ Key Defense Protocol</div>
+              <p class="key-defense-desc">
+                <strong>Never click inbound links in SMS or messaging apps.</strong> Disregard instructions to reply "STOP". Access enterprise and delivery services solely via verified browser bookmarks or official standalone mobile applications.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- SECTION 2: QUISHING (QR CODE PHISHING) -->
+        <article class="lesson-card purple-accent">
+          <div class="lesson-header">
+            <span class="lesson-badge">SECTION 02 // VISUAL EXPLOITS</span>
+            <span class="lesson-icon">🔳</span>
+          </div>
+          <h2 class="lesson-title">Quishing (QR Code Phishing)</h2>
+          <div class="lesson-content">
+            <p>
+              <strong>Overview:</strong> Quick Response (QR) code phishing embeds malicious redirection matrixes into physical printouts, parking meters, conference venue signage, counterfeit office MFA update flyers, or as graphical email attachments.
+            </p>
+            <p>
+              <strong>Attack Mechanics:</strong> Traditional text-based email security gateways often fail to parse URLs embedded inside images. Scanning the code moves the transaction off monitored enterprise workstations and directly onto personal mobile browsers that lack corporate EDR monitoring.
+            </p>
+            <ul class="lesson-bullet-list">
+              <li>Physical sticker overlays covertly pasted over legitimate payment scanners</li>
+              <li>Embedded QR codes in emails requesting "Scan to re-authenticate Microsoft 365"</li>
+              <li>Obfuscated redirect chains routing to credential harvesting portals</li>
+            </ul>
+            <div class="key-defense-box">
+              <div class="key-defense-title">🛡️ Key Defense Protocol</div>
+              <p class="key-defense-desc">
+                <strong>Inspect physical QR codes for physical tampering or adhesive sticker overlays.</strong> Enable link preview within your camera app and rigorously inspect the Fully Qualified Domain Name (FQDN) before visiting.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- SECTION 3: VISHING & REAL-TIME AI VOICE CLONING -->
+        <article class="lesson-card amber-accent">
+          <div class="lesson-header">
+            <span class="lesson-badge">SECTION 03 // SYNTHETIC DEEPFAKES</span>
+            <span class="lesson-icon">🎙️</span>
+          </div>
+          <h2 class="lesson-title">Vishing &amp; Real-Time AI Voice Cloning</h2>
+          <div class="lesson-content">
+            <p>
+              <strong>Overview:</strong> Voice Phishing (Vishing) has evolved with generative neural audio synthesis. Threat actors can now generate convincing voice deepfakes of company executives, managers, or vendors using as little as <strong>3 to 5 seconds of public audio</strong> harvested from webinars or earnings calls.
+            </p>
+            <p>
+              <strong>Auditory &amp; Operational Indicators:</strong> Real-time synthetic speech synthesis exhibits distinct artifacts:
+            </p>
+            <ul class="lesson-bullet-list">
+              <li>Abrupt latency delays when interrupted or asked off-script questions</li>
+              <li>Unnatural prosody, robotic inflections, and strange pitch transitions</li>
+              <li>Audio clipping, phase distortion, and sterile acoustic backgrounds</li>
+            </ul>
+            <div class="key-defense-box">
+              <div class="key-defense-title">🛡️ Key Defense Protocol</div>
+              <p class="key-defense-desc">
+                <strong>Mandatory Out-of-Band (OOB) Verification:</strong> Never trust inbound Caller ID (telephony spoofing is trivial). Immediately hang up and dial the individual back using the official corporate internal directory.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- SECTION 4: VERIFICATION PROTOCOLS & INCIDENT SOP -->
+        <article class="lesson-card emerald-accent">
+          <div class="lesson-header">
+            <span class="lesson-badge">SECTION 04 // ENTERPRISE SOP</span>
+            <span class="lesson-icon">📋</span>
+          </div>
+          <h2 class="lesson-title">Verification Protocols &amp; Incident SOP</h2>
+          <div class="lesson-content">
+            <p>
+              <strong>Overview:</strong> Technical defenses must be backed by institutional governance that prevents social engineering from succeeding even when a perimeter deception lure breaches the organization.
+            </p>
+            <p>
+              <strong>Standard Operating Procedures (SOP):</strong>
+            </p>
+            <ul class="lesson-bullet-list">
+              <li><strong>Mandatory Callback Verification:</strong> Required for any wire transfer, payroll account update, or MFA hardware token reset.</li>
+              <li><strong>Strict Dual-Authorization:</strong> At least two authorized stakeholders must independently validate financial disbursements.</li>
+              <li><strong>Forensic Incident Reporting:</strong> Capture uncropped screenshots, document sending phone numbers, preserve email headers, and escalate to SecOps/SOC immediately.</li>
+            </ul>
+            <div class="key-defense-box">
+              <div class="key-defense-title">🛡️ Key Defense Protocol</div>
+              <p class="key-defense-desc">
+                <strong>Zero-Shaming Culture:</strong> If you accidentally scan an untrusted code or approve an authentication prompt, notify SecOps immediately. Fast reporting allows defenders to revoke session tokens in seconds.
+              </p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         INTERACTIVE TACTICAL THREAT SIMULATOR
+         ========================================================================== -->
+    <section class="simulator-container" id="threatSimulator" aria-label="Interactive Threat Simulator">
+      <div class="sim-header">
+        <span class="tag-pill">TACTICAL LABS // MULTI-CHANNEL DECEPTION SIMULATOR</span>
+        <h2>Interactive Threat Vector Inspector</h2>
+        <p>Analyze simulated live payloads across Smishing, Quishing, and Real-Time Deepfake Voice cloning.</p>
+      </div>
+
+      <!-- Simulator Tabs Navigation -->
+      <div class="sim-tabs-nav">
+        <button type="button" class="sim-tab-btn active" data-tab="smishing" onclick="switchSimTab('smishing')">
+          <span>💬</span> Smishing (SMS)
+        </button>
+        <button type="button" class="sim-tab-btn" data-tab="quishing" onclick="switchSimTab('quishing')">
+          <span>🔳</span> Quishing (QR Codes)
+        </button>
+        <button type="button" class="sim-tab-btn" data-tab="vishing" onclick="switchSimTab('vishing')">
+          <span>🎙️</span> AI Voice Deepfake
+        </button>
+        <button type="button" class="sim-tab-btn" data-tab="sop" onclick="switchSimTab('sop')">
+          <span>🛡️</span> Dual-Auth SOP Matrix
+        </button>
+      </div>
+
+      <!-- Tab 1: Smishing Panel -->
+      <div class="sim-tab-panel active" id="tab-smishing">
+        <div class="phone-mockup">
+          <div class="phone-top-bar">
+            <span>9:41 AM</span>
+            <div class="phone-speaker"></div>
+            <span>5G 📶 98%</span>
+          </div>
+
+          <div class="sms-contact">
+            <div class="sms-avatar">📦</div>
+            <div class="sms-sender-num">+1 (833) 492-0199</div>
+            <div class="sms-sender-sub">⚠️ Unverified Foreign Shortcode</div>
+          </div>
+
+          <div class="sms-bubble">
+            <p>
+              <strong>[USPS NOTICE]:</strong> Your courier package <strong>#US-9284-K</strong> failed delivery due to an unpaid customs fee ($1.85). Package will be destroyed within 12 hours unless confirmed:
+            </p>
+            <span class="sms-fake-link">https://usps-customs-triage.top/track/9284</span>
+          </div>
+
+          <div class="sms-annotations">
+            <h4>🚨 Dissected Threat Indicators:</h4>
+            <ul>
+              <li><strong>Lookalike Root Domain:</strong> Uses <code>.top</code> TLD instead of official <code>.gov</code> or <code>usps.com</code>.</li>
+              <li><strong>Artificial Urgency:</strong> Threatens package destruction within 12 hours to trigger panic.</li>
+              <li><strong>Mobile Viewport Deception:</strong> On mobile screens, the full URL is truncated to hide the top-level domain.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Quishing Panel -->
+      <div class="sim-tab-panel" id="tab-quishing">
+        <div class="quishing-demo-box">
+          <div class="qr-scanner-viewfinder">
+            <div class="viewfinder-frame">
+              <svg class="qr-mock-img" viewBox="0 0 100 100" fill="#0c1b33">
+                <rect x="0" y="0" width="30" height="30" />
+                <rect x="5" y="5" width="20" height="20" fill="#fff" />
+                <rect x="9" y="9" width="12" height="12" />
+                <rect x="70" y="0" width="30" height="30" />
+                <rect x="75" y="5" width="20" height="20" fill="#fff" />
+                <rect x="79" y="9" width="12" height="12" />
+                <rect x="0" y="70" width="30" height="30" />
+                <rect x="5" y="75" width="20" height="20" fill="#fff" />
+                <rect x="9" y="79" width="12" height="12" />
+                <circle cx="50" cy="50" r="10" />
+                <rect x="35" y="10" width="8" height="15" />
+                <rect x="55" y="20" width="10" height="8" />
+                <rect x="35" y="70" width="12" height="8" />
+                <rect x="65" y="65" width="15" height="15" />
+              </svg>
+              <div class="scanner-laser"></div>
+            </div>
+            <div class="qr-preview-card">
+              <div class="qr-preview-tag">⚠️ CAMERA APP URL PREVIEW DETECTED</div>
+              <div class="qr-preview-url">http://pay-meter-parking-auth.xyz/city/session?id=941</div>
+            </div>
+          </div>
+
+          <div class="qr-explainer-content">
+            <h3>Quishing (QR Code) Vector Dissection</h3>
+            <p>
+              In this scenario, an attacker placed an adhesive vinyl sticker over a city parking meter scanner.
+            </p>
+            <ul class="lesson-bullet-list">
+              <li><strong>Target Domain Analysis:</strong> The camera preview reveals <code>pay-meter-parking-auth.xyz</code>—a newly registered untrusted domain, NOT the official municipal city portal.</li>
+              <li><strong>Physical Inspection:</strong> Physical stickers over public terminals should always be examined for peeling corners, edge overlaps, or mismatched gloss.</li>
+              <li><strong>Email Quishing:</strong> Attackers send PDFs titled "Quarterly Benefits" containing a QR code to bypass enterprise email security scanners.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3: Deepfake Panel -->
+      <div class="sim-tab-panel" id="tab-vishing">
+        <div class="vishing-call-box">
+          <div class="call-header">
+            <span class="call-status-badge">🔴 INCOMING VOICE PHISHING SIMULATION</span>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-dim);">DURATION: 00:18</span>
+          </div>
+
+          <div class="caller-card">
+            <div class="caller-avatar-circle">🎙️</div>
+            <div class="caller-name">Marcus Vance (CEO / Executive)</div>
+            <div class="caller-spoofed-num">+1 (202) 555-0184 (Spoofed Executive Direct Line)</div>
+          </div>
+
+          <div class="voice-waveform-container">
+            <div class="waveform-bars">
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+            </div>
+            <div class="anomaly-alert">
+              ⚠️ ACOUSTIC ANOMALY: Synthetic Prosody Artifacts &amp; 850ms Latency Delay Detected
+            </div>
+          </div>
+
+          <p style="font-size: 0.88rem; color: #cbd5e1; margin-bottom: 20px; text-align: center;">
+            <em>"Hey, I am boarding an international flight. I need you to immediately reset my corporate banking token and execute the retainer transfer to our overseas counsel."</em>
+          </p>
+
+          <div class="call-action-btns">
+            <button type="button" class="btn-hangup" onclick="alert('✓ Call Terminated! Never execute wire transfers or token resets over inbound calls.')">
+              ✕ Hang Up Call
+            </button>
+            <button type="button" class="btn-oob-verify" onclick="alert('✓ Out-of-Band Initiated! Initiating secondary callback via internal corporate directory.')">
+              📞 Initiate OOB Directory Callback
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: SOP Matrix Panel -->
+      <div class="sim-tab-panel" id="tab-sop">
+        <div style="background: rgba(6, 9, 19, 0.6); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px;">
+          <h3 style="color: #ffffff; font-size: 1.25rem; margin-bottom: 14px;">Enterprise Verification SOP Matrix</h3>
+          <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 20px;">
+            Follow this mandatory decision tree whenever encountering unexpected communications:
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+            <div style="background: rgba(10, 15, 29, 0.9); border: 1px solid rgba(0, 242, 254, 0.3); border-radius: 8px; padding: 16px;">
+              <div style="color: var(--cyan-neon); font-family: var(--font-mono); font-weight: 700; font-size: 0.82rem; margin-bottom: 6px;">STEP 1 // ISOLATE</div>
+              <p style="font-size: 0.85rem; color: #cbd5e1; margin: 0;">Do not click links, scan QR codes, or verbally confirm sensitive information. Halt all urgent transactions.</p>
+            </div>
+            <div style="background: rgba(10, 15, 29, 0.9); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; padding: 16px;">
+              <div style="color: var(--emerald-safe); font-family: var(--font-mono); font-weight: 700; font-size: 0.82rem; margin-bottom: 6px;">STEP 2 // VERIFY OOB</div>
+              <p style="font-size: 0.85rem; color: #cbd5e1; margin: 0;">Initiate an out-of-band verification callback using numbers from the internal enterprise directory only.</p>
+            </div>
+            <div style="background: rgba(10, 15, 29, 0.9); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 8px; padding: 16px;">
+              <div style="color: var(--danger-rose); font-family: var(--font-mono); font-weight: 700; font-size: 0.82rem; margin-bottom: 6px;">STEP 3 // ESCALATE</div>
+              <p style="font-size: 0.85rem; color: #cbd5e1; margin: 0;">Capture full screenshots, record phone numbers and headers, and submit an immediate incident ticket to SecOps.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         INTERACTIVE 6-QUESTION QUIZ SECTION (80% PASSING CRITERIA)
+         ========================================================================== -->
+    <section class="quiz-section" id="quizSection" aria-label="Tactical Assessment">
+      
+      <div class="quiz-header-bar">
+        <div>
+          <span class="tag-pill" style="margin-bottom: 8px;">KNOWLEDGE EVALUATION</span>
+          <h2>Module 04 Threat Defense Assessment</h2>
+        </div>
+        <div class="score-hud" id="scoreDisplay">
+          Score: 0 / 6 Resolved
+        </div>
+      </div>
+
+      <!-- Passing Gate Notice Banner -->
+      <div class="quiz-passing-notice">
+        <span class="passing-notice-badge">⚡ PASSING CRITERIA NOTICE</span>
+        <div class="passing-notice-text">
+          You must score at least <strong>80% (minimum 5 out of 6 correct)</strong> to qualify for your official verified Cyvexis defense certificate. Review questions carefully before submitting.
+        </div>
+      </div>
+
+      <!-- QUESTION 1 -->
+      <article class="quiz-card" id="qCard1">
+        <div class="card-top">
+          <span class="q-num">QUESTION 01 // SMISHING REACTION</span>
+          <span class="status-indicator" id="status1">PENDING</span>
+        </div>
+        <p class="q-title">
+          An employee receives an urgent SMS from a shortcode claiming a package delivery failed due to unpaid customs clearance. What is the safest immediate action?
+        </p>
+        <div class="options-grid">
+          <button type="button" class="opt-btn" onclick="checkAnswer(1, 0, this)">
+            <span class="opt-key">A</span>
+            <span class="opt-label">Click the link to verify the tracking number.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(1, 1, this)">
+            <span class="opt-key">B</span>
+            <span class="opt-label">Reply 'STOP' to opt out of future updates.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(1, 2, this)">
+            <span class="opt-key">C</span>
+            <span class="opt-label">Navigate independently to the courier service website to check tracking status.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(1, 3, this)">
+            <span class="opt-key">D</span>
+            <span class="opt-label">Forward the SMS to personal contacts to see if they received it.</span>
+          </button>
+        </div>
+        <div class="feedback-msg" id="fb1" role="alert"></div>
+      </article>
+
+      <!-- QUESTION 2 -->
+      <article class="quiz-card" id="qCard2">
+        <div class="card-top">
+          <span class="q-num">QUESTION 02 // QUISHING MECHANICS</span>
+          <span class="status-indicator" id="status2">PENDING</span>
+        </div>
+        <p class="q-title">
+          Why do cyber adversaries increasingly leverage malicious QR codes (quishing) within enterprise environments?
+        </p>
+        <div class="options-grid">
+          <button type="button" class="opt-btn" onclick="checkAnswer(2, 0, this)">
+            <span class="opt-key">A</span>
+            <span class="opt-label">QR codes permanently disable mobile operating systems upon contact.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(2, 1, this)">
+            <span class="opt-key">B</span>
+            <span class="opt-label">They evade detection mechanisms configured on traditional secure email gateways.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(2, 2, this)">
+            <span class="opt-key">C</span>
+            <span class="opt-label">They automatically install rootkits without requiring user interaction.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(2, 3, this)">
+            <span class="opt-key">D</span>
+            <span class="opt-label">QR codes can bypass network firewalls without connecting to DNS.</span>
+          </button>
+        </div>
+        <div class="feedback-msg" id="fb2" role="alert"></div>
+      </article>
+
+      <!-- QUESTION 3 -->
+      <article class="quiz-card" id="qCard3">
+        <div class="card-top">
+          <span class="q-num">QUESTION 03 // VISHING IDENTITY VERIFICATION</span>
+          <span class="status-indicator" id="status3">PENDING</span>
+        </div>
+        <p class="q-title">
+          An IT technician receives an urgent call from someone claiming to be an executive who needs a hardware token reset while traveling. Which step confirms the caller's identity?
+        </p>
+        <div class="options-grid">
+          <button type="button" class="opt-btn" onclick="checkAnswer(3, 0, this)">
+            <span class="opt-key">A</span>
+            <span class="opt-label">Trust the caller if their phone number matches caller ID.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(3, 1, this)">
+            <span class="opt-key">B</span>
+            <span class="opt-label">Ask the caller to read back their corporate email address.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(3, 2, this)">
+            <span class="opt-key">C</span>
+            <span class="opt-label">Call the employee back on an internally established phone extension from the corporate directory.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(3, 3, this)">
+            <span class="opt-key">D</span>
+            <span class="opt-label">Immediately issue a temporary one-time password to prevent business disruption.</span>
+          </button>
+        </div>
+        <div class="feedback-msg" id="fb3" role="alert"></div>
+      </article>
+
+      <!-- QUESTION 4 -->
+      <article class="quiz-card" id="qCard4">
+        <div class="card-top">
+          <span class="q-num">QUESTION 04 // SYNTHETIC VOICE ARTIFACTS</span>
+          <span class="status-indicator" id="status4">PENDING</span>
+        </div>
+        <p class="q-title">
+          Which auditory anomaly is most characteristic of real-time synthetic voice cloning during an unexpected phone conversation?
+        </p>
+        <div class="options-grid">
+          <button type="button" class="opt-btn" onclick="checkAnswer(4, 0, this)">
+            <span class="opt-key">A</span>
+            <span class="opt-label">Abrupt latency spikes during interruptions combined with unnatural prosodic inflections.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(4, 1, this)">
+            <span class="opt-key">B</span>
+            <span class="opt-label">Loud static white noise throughout the entirety of the call.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(4, 2, this)">
+            <span class="opt-key">C</span>
+            <span class="opt-label">Frequent echo caused by speakerphone hardware feedback.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(4, 3, this)">
+            <span class="opt-key">D</span>
+            <span class="opt-label">Instantaneous, human-like voice inflection changes without pause.</span>
+          </button>
+        </div>
+        <div class="feedback-msg" id="fb4" role="alert"></div>
+      </article>
+
+      <!-- QUESTION 5 -->
+      <article class="quiz-card" id="qCard5">
+        <div class="card-top">
+          <span class="q-num">QUESTION 05 // PHYSICAL CODE INSPECTION</span>
+          <span class="status-indicator" id="status5">PENDING</span>
+        </div>
+        <p class="q-title">
+          A physical inspection reveals an adhesive sticker bearing a QR code affixed over the payment scanner at an offsite venue. What is the appropriate protocol?
+        </p>
+        <div class="options-grid">
+          <button type="button" class="opt-btn" onclick="checkAnswer(5, 0, this)">
+            <span class="opt-key">A</span>
+            <span class="opt-label">Scan the code using an incognito mobile browser session.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(5, 1, this)">
+            <span class="opt-key">B</span>
+            <span class="opt-label">Refrain from scanning the code and notify the venue management immediately.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(5, 2, this)">
+            <span class="opt-key">C</span>
+            <span class="opt-label">Peel off the sticker and scan it on a personal device to inspect the URL.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(5, 3, this)">
+            <span class="opt-key">D</span>
+            <span class="opt-label">Proceed with payment if the landing page looks identical to the venue's branding.</span>
+          </button>
+        </div>
+        <div class="feedback-msg" id="fb5" role="alert"></div>
+      </article>
+
+      <!-- QUESTION 6 -->
+      <article class="quiz-card" id="qCard6">
+        <div class="card-top">
+          <span class="q-num">QUESTION 06 // WIRE FRAUD POLICY CONTROLS</span>
+          <span class="status-indicator" id="status6">PENDING</span>
+        </div>
+        <p class="q-title">
+          Which organizational policy provides the strongest resilience against deepfake-facilitated wire transfer fraud?
+        </p>
+        <div class="options-grid">
+          <button type="button" class="opt-btn" onclick="checkAnswer(6, 0, this)">
+            <span class="opt-key">A</span>
+            <span class="opt-label">Mandatory dual-authorization with secondary verbal confirmation via pre-established directories.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(6, 1, this)">
+            <span class="opt-key">B</span>
+            <span class="opt-label">Restricting high-value payment requests exclusively to SMS.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(6, 2, this)">
+            <span class="opt-key">C</span>
+            <span class="opt-label">Requiring the caller to send a voice note confirmation on WhatsApp.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(6, 3, this)">
+            <span class="opt-key">D</span>
+            <span class="opt-label">Allowing verbal approval if the caller mentions internal project codenames.</span>
+          </button>
+        </div>
+        <div class="feedback-msg" id="fb6" role="alert"></div>
+      </article>
+
+      <!-- Triage Results Card (Dynamic) -->
+      <div id="triageResultsCard" class="triage-result-card" style="display: none;"></div>
+    </section>
+
+    <!-- ==========================================================================
+         CERTIFICATE GENERATION SECTION (CONNECTED TO CERTIFICATE-TEMPLATE.PNG)
+         ========================================================================== -->
+    <section class="cert-container" id="certificateSection" aria-label="Certificate Credential Generator">
+      <div class="cert-card" id="certCard">
+        <div class="cert-badge" id="certBadge">🔒 CERTIFICATE LOCKED - MINIMUM 80% (5/6) REQUIRED</div>
+        <h2 id="certTitle">Claim Your Module 04 Defense Credential</h2>
+        <p id="certDesc">
+          Complete all 6 threat evaluation questions above with at least 80% (5/6) correct to unlock your official verified certificate.
+        </p>
+
+        <div class="cert-input-group">
+          <input type="text" id="studentName" placeholder="Enter Full Name" autocomplete="off" aria-label="Student Full Name" disabled />
+          <button type="button" id="generateBtn" onclick="generateCertificate()" disabled style="opacity: 0.5; cursor: not-allowed;">
+            Download Certificate
+          </button>
+        </div>
+        <div id="certLockNotice" class="cert-lock-helper-msg" style="display: block; margin-top: 12px; color: #f59e0b; font-size: 0.88rem; font-family: var(--font-mono, monospace);">
+          ⚠️ Complete all 6 threat evaluation questions above to unlock download access.
+        </div>
+
+        <span class="cert-privacy-note">
+          🔒 Zero Data Retention: Rendered locally via HTML5 Canvas. We never store or transmit your identity.
+        </span>
+      </div>
+
+      <!-- Hidden 2048x1142 canvas for high-resolution certificate rendering -->
+      <canvas id="certCanvas" width="2048" height="1142" style="display:none;"></canvas>
+    </section>
+
+    <!-- Mandatory Cyvexis Threat & Safety Notice -->
+    <section class="cyvexis-safety-notice" aria-label="Official Security Advisory">
+      <div class="cyvexis-safety-card">
+        <div class="cyvexis-safety-header">
+          <span class="cyvexis-safety-icon">🛡️</span>
+          <div>
+            <h3>CYVEXIS OFFICIAL SECURITY ADVISORY</h3>
+            <p class="cyvexis-safety-tagline">ZERO-TRUST IDENTITY POLICY // MANDATORY USER GUIDELINE</p>
+          </div>
+        </div>
+        <p class="cyvexis-safety-statement">
+          <strong>⚠️ Cyvexis will NEVER ask you for your passwords, two-factor authentication codes, or sensitive account credentials.</strong>
+          If anyone contacts you asking for these credentials under our name, do not engage. Report the attempt immediately or report any issue to our official channels:
+        </p>
+        <div class="cyvexis-contacts-grid">
+          <div class="cyvexis-contact-badge">
+            <span class="contact-label">✉️ <strong>Official Security Desk:</strong></span>
+            <a href="mailto:cyvexis.cybersecurity@gmail.com" class="contact-email">cyvexis.cybersecurity@gmail.com</a>
+          </div>
+          <div class="cyvexis-contact-badge">
+            <span class="contact-label">📸 <strong>Official Instagram:</strong></span>
+            <a href="https://instagram.com/cyvexis" target="_blank" rel="noopener noreferrer" class="contact-email">@cyvexis</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <p>&copy; 2026 Cyvexis Security &bull; Module 04: Social Engineering Beyond Email &bull; Zero-Trust Protocol</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
