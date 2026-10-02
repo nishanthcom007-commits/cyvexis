@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    if (window.location.hostname.includes('netlify.app')) {
+      window.location.replace('https://cyvexis.pages.dev' + window.location.pathname + window.location.search + window.location.hash);
+    }
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyvexis // Module 05: Incident Response, Account Compromise & Containment Triage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Ambient Cyber Grid Background -->
+  <div class="cyber-background" aria-hidden="true">
+    <div class="grid-plane"></div>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <img src="cyvexis-logo.png" alt="Cyvexis 3D Logo" class="brand-logo-3d" onerror="this.src='../logo.png'" />
+        <a href="../index.html" class="back-link">
+          <span class="nav-arrow">←</span> Return to Cyvexis Hub
+        </a>
+      </div>
+      <div class="nav-meta">
+        <span class="pulse-dot"></span>
+        <span class="nav-badge">DRILL 05 // INCIDENT RESPONSE &amp; TRIAGE</span>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- Header Section -->
+    <header class="drill-header">
+      <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px;">
+        <div class="tag-pill danger-tag">EMERGENCY PROTOCOL // MODULE 05</div>
+        <div class="tag-pill time-badge">⏱️ ESTIMATED TIME: 15 MINS</div>
+      </div>
+      <h1>Incident Response, Account Compromise &amp; Containment Triage</h1>
+      <p class="drill-desc">
+        When an enterprise account is compromised, the first 60 minutes dictate whether an incident becomes a minor containment event or a catastrophic breach. Learn to identify subtle compromise indicators, execute session revocation, isolate endpoints, and preserve volatile RAM forensics.
+      </p>
+    </header>
+
+    <!-- Training Stepper -->
+    <div class="training-stepper">
+      <div class="format-step-pill active">
+        <span class="format-step-num">1</span>
+        <span>CURRICULUM LESSONS</span>
+      </div>
+      <span class="format-step-arrow">➔</span>
+      <div class="format-step-pill">
+        <span class="format-step-num">2</span>
+        <span>INCIDENT SIMULATOR</span>
+      </div>
+      <span class="format-step-arrow">➔</span>
+      <div class="format-step-pill">
+        <span class="format-step-num">3</span>
+        <span>ASSESSMENT (80% TO PASS)</span>
+      </div>
+      <span class="format-step-arrow">➔</span>
+      <div class="format-step-pill">
+        <span class="format-step-num">4</span>
+        <span>OFFICIAL CERTIFICATE</span>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         CURRICULUM LESSON CONTENT (SECTIONS 1 TO 4)
+         ========================================================================== -->
+    <section class="curriculum-section" aria-label="Curriculum Lessons">
+      <div class="curriculum-grid">
+
+        <!-- SECTION 1: RECOGNIZING SIGNS OF ACCOUNT COMPROMISE -->
+        <article class="lesson-card">
+          <div class="lesson-header">
+            <span class="lesson-badge">SECTION 01 // TELEMETRY</span>
+            <span class="lesson-icon">🕵️</span>
+          </div>
+          <h2 class="lesson-title">Recognizing Signs of Account Compromise</h2>
+          <div class="lesson-content">
+            <p>
+              <strong>Overview:</strong> Cyber breaches rarely announce themselves with blaring ransomware notes immediately; they begin quietly. Detecting subtle, early anomalies halts lateral movement and limits operational blast radius before privilege escalation occurs.
+            </p>
+            <p>
+              <strong>Key Compromise Indicators:</strong>
+            </p>
+            <ul class="lesson-bullet-list">
+              <li><strong>Unauthorized Inbox Rules:</strong> Stealth forwarding rules that divert invoices, billing updates, or security notifications directly into obscure folders (e.g., RSS Feeds, Archive, or Trash).</li>
+              <li><strong>Anomaly Logins:</strong> Concurrent authentications from distant geographical regions within physically impossible timeframes ("Impossible Travel"), or unexpected user-agent browser strings.</li>
+              <li><strong>Security Configuration Tampering:</strong> Unsolicited registration of secondary MFA hardware keys, authenticator apps, or altered recovery email addresses.</li>
+            </ul>
+            <div class="key-defense-box">
+              <div class="key-defense-title">🛡️ Key Defense Protocol</div>
+              <p class="key-defense-desc">
+                <strong>Treat any unexpected inbox rule or unfamiliar MFA device as an active security breach.</strong> Immediately alert SecOps rather than simply deleting the rule.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- SECTION 2: THE "FIRST 60 MINUTES" EMERGENCY TRIAGE SOP -->
+        <article class="lesson-card cyan-accent">
+          <div class="lesson-header">
+            <span class="lesson-badge">SECTION 02 // CONTAINMENT</span>
+            <span class="lesson-icon">⏱️</span>
+          </div>
+          <h2 class="lesson-title">The "First 60 Minutes" Emergency Triage SOP</h2>
+          <div class="lesson-content">
+            <p>
+              <strong>Overview:</strong> A structured, ordered response halts the attacker's persistent session cookies and prevents secondary access attempts.
+            </p>
+            <p>
+              <strong>Immediate 4-Step Triage Execution:</strong>
+            </p>
+            <ul class="lesson-bullet-list">
+              <li><strong>Immediate Step 1 — Session Invalidation:</strong> Terminate all active browser sessions, revoke OAuth application authorizations, and invalidate active refresh tokens across cloud identity providers (Microsoft 365, Google Workspace, Okta).</li>
+              <li><strong>Immediate Step 2 — Credential Reset:</strong> Update primary passwords only AFTER terminating external sessions and removing unauthorized MFA devices.</li>
+              <li><strong>Immediate Step 3 — Mailbox &amp; Delegation Audit:</strong> Inspect inbox forwarding rules, delegator access lists, transport rules, and automatic reply filters.</li>
+              <li><strong>Immediate Step 4 — Endpoint Isolation:</strong> Disconnect suspected physical or virtual endpoints from Wi-Fi and Ethernet <em>without powering down the machine</em> to preserve volatile RAM forensics.</li>
+            </ul>
+            <div class="key-defense-box">
+              <div class="key-defense-title">🛡️ Key Defense Protocol</div>
+              <p class="key-defense-desc">
+                <strong>Never power off a compromised endpoint.</strong> Powering down permanently destroys volatile memory (RAM) where running malware processes, unencrypted keys, and active network connections reside.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- SECTION 3: MITIGATING BEC & VENDOR FRAUD -->
+        <article class="lesson-card amber-accent">
+          <div class="lesson-header">
+            <span class="lesson-badge">SECTION 03 // FRAUD PREVENTION</span>
+            <span class="lesson-icon">💼</span>
+          </div>
+          <h2 class="lesson-title">Mitigating Business Email Compromise (BEC)</h2>
+          <div class="lesson-content">
+            <p>
+              <strong>Overview:</strong> Business Email Compromise (BEC) syndicates rarely deploy malware right away. Instead, they dwell silently in executive or accounting mailboxes, monitoring invoice threads until payment details are ready to exchange.
+            </p>
+            <p>
+              <strong>Attack Playbook &amp; Interception:</strong>
+            </p>
+            <ul class="lesson-bullet-list">
+              <li>Adversaries inject altered bank account details via PDF invoices right before wire execution.</li>
+              <li>They create mail rules to delete legitimate payment inquiries from real vendors.</li>
+              <li>They fabricate internal "executive approvals" citing time-sensitive confidential audits.</li>
+            </ul>
+            <div class="key-defense-box">
+              <div class="key-defense-title">🛡️ Key Defense Protocol</div>
+              <p class="key-defense-desc">
+                <strong>Mandatory Out-of-Band Callback Verification:</strong> Any update to wire routing coordinates or beneficiary accounts requires verbal phone verification using pre-vetted numbers from internal master records—never numbers listed on the new invoice or email.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- SECTION 4: EVIDENCE PRESERVATION & SAFE REPORTING -->
+        <article class="lesson-card emerald-accent">
+          <div class="lesson-header">
+            <span class="lesson-badge">SECTION 04 // FORENSICS &amp; COMMS</span>
+            <span class="lesson-icon">🔒</span>
+          </div>
+          <h2 class="lesson-title">Evidence Preservation &amp; Safe Reporting</h2>
+          <div class="lesson-content">
+            <p>
+              <strong>Overview:</strong> Proper incident coordination ensures evidence remains legally defensible while preventing attackers from discovering that defenders have begun remediation.
+            </p>
+            <p>
+              <strong>Operational Reporting Protocols:</strong>
+            </p>
+            <ul class="lesson-bullet-list">
+              <li><strong>Log Integrity:</strong> Export sign-in logs, cloud audit logs, and raw RFC 822 email message headers prior to modifying compromised infrastructure.</li>
+              <li><strong>Out-of-Band Emergency Channels:</strong> Never coordinate response activities via the suspected compromised email system (the attacker may be actively reading your emails). Use dedicated out-of-band bridges or encrypted channels.</li>
+              <li><strong>Internal vs External Communication:</strong> Escalate strictly to the designated Incident Response Lead and SecOps triage team following Cyvexis breach reporting guidelines.</li>
+            </ul>
+            <div class="key-defense-box">
+              <div class="key-defense-title">🛡️ Key Defense Protocol</div>
+              <p class="key-defense-desc">
+                <strong>Avoid Tipping Off Adversaries:</strong> Coordinating response within compromised email threads prompts attackers to deploy ransomware or purge forensic traces immediately.
+              </p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         INTERACTIVE TACTICAL INCIDENT RESPONSE SIMULATOR
+         ========================================================================== -->
+    <section class="simulator-container" id="incidentSimulator" aria-label="Interactive Incident Response Simulator">
+      <div class="sim-header">
+        <span class="tag-pill danger-tag">CYVEXIS INCIDENT LABS // TACTICAL TRIAGE SIMULATOR</span>
+        <h2>Interactive Incident Response Terminal</h2>
+        <p>Inspect active compromise indicators, dissect stealth inbox rules, simulate session revocations, and review emergency containment workflows.</p>
+      </div>
+
+      <!-- Simulator Tabs Navigation -->
+      <div class="sim-tabs-nav">
+        <button type="button" class="sim-tab-btn active" data-tab="rules" onclick="switchSimTab('rules')">
+          <span>📬</span> Stealth Inbox Rules
+        </button>
+        <button type="button" class="sim-tab-btn" data-tab="telemetry" onclick="switchSimTab('telemetry')">
+          <span>🌐</span> Impossible Travel
+        </button>
+        <button type="button" class="sim-tab-btn" data-tab="sop60" onclick="switchSimTab('sop60')">
+          <span>⏱️</span> 60-Minute Triage Runner
+        </button>
+        <button type="button" class="sim-tab-btn" data-tab="oob" onclick="switchSimTab('oob')">
+          <span>📞</span> Out-of-Band Bridge
+        </button>
+      </div>
+
+      <!-- Tab 1: Stealth Inbox Rules Panel -->
+      <div class="sim-tab-panel active" id="tab-rules">
+        <div class="rule-auditor-window">
+          <div class="rule-window-top">
+            <span style="color: #ffffff; font-weight: 700; font-size: 0.9rem;">EXCHANGE ONLINE // INBOX RULE AUDIT</span>
+            <span style="color: var(--danger-rose); font-size: 0.78rem;">⚠️ 1 MALICIOUS RULE ACTIVE</span>
+          </div>
+
+          <div class="rule-item-row" id="maliciousRuleRow">
+            <span class="rule-tag-threat">🚨 ATTACKER BACKDOOR RULE DETECTED</span>
+            <div class="rule-code-block">
+              IF Subject contains ['Invoice', 'Wire', 'Payment', 'Security', 'Password']<br/>
+              THEN MarkAsRead = True<br/>
+              AND MoveToFolder = 'RSS Feeds'<br/>
+              AND ForwardTo = 'finance-triage@adversary-exfil.xyz'<br/>
+              AND DeleteFromInbox = True
+            </div>
+            <p style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 12px;">
+              <strong>Forensic Analysis:</strong> The attacker configured this rule to suppress invoice notifications from real vendors and exfiltrate billing records to an external domain while hiding the emails in the unused RSS Feeds folder.
+            </p>
+            <button type="button" class="rule-btn-purge" onclick="purgeMaliciousRule()">
+              🗑️ Purge Malicious Rule &amp; Log Forensic Trace
+            </button>
+          </div>
+
+          <div id="rulePurgeAlert" style="display: none; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--emerald-safe); color: #a7f3d0; padding: 12px; border-radius: 6px; font-size: 0.85rem;"></div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Impossible Travel Telemetry -->
+      <div class="sim-tab-panel" id="tab-telemetry">
+        <div class="geo-telemetry-box">
+          <h3 style="color: #ffffff; font-size: 1.15rem; margin-bottom: 14px;">Cloud Identity Sign-In Telemetry</h3>
+          <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 18px;">
+            Identity Protection flagged two concurrent active sessions for <code>sarah.chen@cyvexis.internal</code> within an impossible physical transit window:
+          </p>
+
+          <div class="telemetry-grid">
+            <div class="session-badge-card">
+              <h4>SESSION 01 // LEGITIMATE WORKSTATION</h4>
+              <div class="session-data-line">Location: <span>New York, NY (USA)</span></div>
+              <div class="session-data-line">Timestamp: <span>14:10:22 UTC</span></div>
+              <div class="session-data-line">IP Address: <span>192.0.2.14</span></div>
+              <div class="session-data-line">Client: <span>Chrome 122 / macOS 14</span></div>
+              <div class="session-data-line">Auth Method: <span>FIDO2 Passkey ✓</span></div>
+            </div>
+
+            <div class="session-badge-card breach">
+              <h4>SESSION 02 // IMPOSSIBLE TRAVEL ANOMALY</h4>
+              <div class="session-data-line">Location: <span>Lagos, Nigeria</span></div>
+              <div class="session-data-line">Timestamp: <span>14:22:45 UTC (+12 mins)</span></div>
+              <div class="session-data-line">IP Address: <span>198.51.100.89</span></div>
+              <div class="session-data-line">Client: <span>Python-Requests / Linux</span></div>
+              <div class="session-data-line">Risk Score: <span style="color: var(--danger-rose); font-weight: 700;">CRITICAL (Impossible Travel)</span></div>
+            </div>
+          </div>
+
+          <button type="button" class="btn-revoke-all" onclick="triggerGlobalRevocation()">
+            🚨 Invalidate All Active Sessions &amp; Revoke Refresh Tokens
+          </button>
+          <div id="revocationStatus" style="display: none; margin-top: 14px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--emerald-safe); color: #a7f3d0; padding: 12px; border-radius: 6px; font-size: 0.85rem; text-align: center;"></div>
+        </div>
+      </div>
+
+      <!-- Tab 3: The First 60 Minutes Triage Runner -->
+      <div class="sim-tab-panel" id="tab-sop60">
+        <div style="background: rgba(6, 9, 19, 0.7); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px;">
+          <h3 style="color: #ffffff; font-size: 1.25rem; margin-bottom: 12px;">First 60 Minutes Triage Checklist</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">
+            Execute these ordered response stages to contain account compromise before privilege escalation:
+          </p>
+
+          <div class="triage-steps-grid">
+            <div class="triage-step-card">
+              <div class="step-number-tag">STAGE 01</div>
+              <div class="step-title-text">Session Invalidation</div>
+              <div class="step-desc-text">Revoke all active browser sessions, OAuth permissions, and refresh tokens across cloud identity providers.</div>
+            </div>
+            <div class="triage-step-card">
+              <div class="step-number-tag">STAGE 02</div>
+              <div class="step-title-text">Credential Reset</div>
+              <div class="step-desc-text">Purge unauthorized MFA devices, then reset master credentials to lock out the adversary.</div>
+            </div>
+            <div class="triage-step-card">
+              <div class="step-number-tag">STAGE 03</div>
+              <div class="step-title-text">Mailbox Audit</div>
+              <div class="step-desc-text">Examine hidden inbox forwarding rules, delegator access permissions, and automated transport rules.</div>
+            </div>
+            <div class="triage-step-card">
+              <div class="step-number-tag">STAGE 04</div>
+              <div class="step-title-text">Network Isolation</div>
+              <div class="step-desc-text">Unplug Ethernet &amp; disconnect Wi-Fi. Do not power down the workstation to preserve volatile RAM.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Out-of-Band Incident Bridge -->
+      <div class="sim-tab-panel" id="tab-oob">
+        <div style="background: rgba(10, 15, 29, 0.95); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px;">
+          <h3 style="color: #ffffff; font-size: 1.25rem; margin-bottom: 12px;">Out-of-Band (OOB) Incident Communications</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 18px;">
+            When an account or tenant is compromised, never coordinate incident response over internal email.
+          </p>
+          <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 8px; padding: 16px; margin-bottom: 16px;">
+            <strong style="color: var(--danger-rose); font-size: 0.85rem;">⚠️ CRITICAL OPERATIONAL WARNING:</strong>
+            <p style="font-size: 0.85rem; color: #cbd5e1; margin-top: 6px; line-height: 1.5;">
+              If the adversary possesses global tenant observation privileges or has compromised an executive mailbox, discussing containment in that channel tips them off, allowing them to delete event logs or accelerate ransomware deployment.
+            </p>
+          </div>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <button type="button" class="btn-retake" onclick="alert('✓ Secure Out-of-Band Phone Bridge Initiated. Connecting to Incident Commander.')" style="background: linear-gradient(135deg, #10b981, #047857); border: none;">
+              📞 Connect to Secure OOB Phone Bridge
+            </button>
+            <button type="button" class="btn-retake" onclick="alert('✓ SecOps Incident Ticket Created via Dedicated Out-of-Band Channel.')">
+              🎫 Submit OOB SecOps Containment Ticket
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         INTERACTIVE 6-QUESTION QUIZ SECTION (80% PASSING CRITERIA)
+         ========================================================================== -->
+    <section class="quiz-section" id="quizSection" aria-label="Tactical Assessment">
+      
+      <div class="quiz-header-bar">
+        <div>
+          <span class="tag-pill danger-tag" style="margin-bottom: 8px;">KNOWLEDGE EVALUATION</span>
+          <h2>Module 05 Threat Containment Assessment</h2>
+        </div>
+        <div class="score-hud" id="scoreDisplay">
+          Score: 0 / 6 Resolved
+        </div>
+      </div>
+
+      <!-- Passing Gate Notice Banner -->
+      <div class="quiz-passing-notice">
+        <span class="passing-notice-badge">⚡ PASSING CRITERIA NOTICE</span>
+        <div class="passing-notice-text">
+          You must score at least <strong>80% (minimum 5 out of 6 correct)</strong> to qualify for your official verified Cyvexis defense certificate. Review questions carefully before submitting.
+        </div>
+      </div>
+
+      <!-- QUESTION 1 -->
+      <article class="quiz-card" id="qCard1">
+        <div class="card-top">
+          <span class="q-num">QUESTION 01 // STEALTH INBOX RULES</span>
+          <span class="status-indicator" id="status1">PENDING</span>
+        </div>
+        <p class="q-title">
+          An employee notices that client emails containing invoices are automatically bypassing their inbox and moving directly into the RSS Feeds folder. What is the most likely cause?
+        </p>
+        <div class="options-grid">
+          <button type="button" class="opt-btn" onclick="checkAnswer(1, 0, this)">
+            <span class="opt-key">A</span>
+            <span class="opt-label">An automated spam filter update by the email provider.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(1, 1, this)">
+            <span class="opt-key">B</span>
+            <span class="opt-label">An unauthorized inbox forwarding or redirection rule created by an adversary.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(1, 2, this)">
+            <span class="opt-key">C</span>
+            <span class="opt-label">A corrupted local email client cache that needs re-indexing.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(1, 3, this)">
+            <span class="opt-key">D</span>
+            <span class="opt-label">The client's mail server configured an invalid SPF record.</span>
+          </button>
+        </div>
+        <div class="feedback-msg" id="fb1" role="alert"></div>
+      </article>
+
+      <!-- QUESTION 2 -->
+      <article class="quiz-card" id="qCard2">
+        <div class="card-top">
+          <span class="q-num">QUESTION 02 // IMMEDIATE INCIDENT ACTION</span>
+          <span class="status-indicator" id="status2">PENDING</span>
+        </div>
+        <p class="q-title">
+          What is the very first action an administrator should take upon confirming an active account compromise?
+        </p>
+        <div class="options-grid">
+          <button type="button" class="opt-btn" onclick="checkAnswer(2, 0, this)">
+            <span class="opt-key">A</span>
+            <span class="opt-label">Power off the user's workstation immediately to prevent disk writes.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(2, 1, this)">
+            <span class="opt-key">B</span>
+            <span class="opt-label">Revoke all active sessions and refresh tokens across identity providers.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(2, 2, this)">
+            <span class="opt-key">C</span>
+            <span class="opt-label">Send a company-wide email warning everyone about the breach.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(2, 3, this)">
+            <span class="opt-key">D</span>
+            <span class="opt-label">Change the user's password while leaving active sessions open for monitoring.</span>
+          </button>
+        </div>
+        <div class="feedback-msg" id="fb2" role="alert"></div>
+      </article>
+
+      <!-- QUESTION 3 -->
+      <article class="quiz-card" id="qCard3">
+        <div class="card-top">
+          <span class="q-num">QUESTION 03 // VOLATILE RAM FORENSICS</span>
+          <span class="status-indicator" id="status3">PENDING</span>
+        </div>
+        <p class="q-title">
+          When isolating a suspected malware-infected workstation during an incident, why should you disconnect network cables rather than powering down the computer?
+        </p>
+        <div class="options-grid">
+          <button type="button" class="opt-btn" onclick="checkAnswer(3, 0, this)">
+            <span class="opt-key">A</span>
+            <span class="opt-label">Powering down permanently corrupts the operating system registry.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(3, 1, this)">
+            <span class="opt-key">B</span>
+            <span class="opt-label">Volatile memory (RAM) containing active forensic artifacts is lost upon power-off.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(3, 2, this)">
+            <span class="opt-key">C</span>
+            <span class="opt-label">Network isolation automatically deletes malware from the hard drive.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(3, 3, this)">
+            <span class="opt-key">D</span>
+            <span class="opt-label">Shutting down alerts the attacker via hardware sensor telemetry.</span>
+          </button>
+        </div>
+        <div class="feedback-msg" id="fb3" role="alert"></div>
+      </article>
+
+      <!-- QUESTION 4 -->
+      <article class="quiz-card" id="qCard4">
+        <div class="card-top">
+          <span class="q-num">QUESTION 04 // VENDOR FRAUD &amp; BEC INTERCEPTION</span>
+          <span class="status-indicator" id="status4">PENDING</span>
+        </div>
+        <p class="q-title">
+          A finance manager receives an email from an established supplier requesting urgent payment updates to a new bank account due to an 'audit freeze'. What is the mandatory verification protocol?
+        </p>
+        <div class="options-grid">
+          <button type="button" class="opt-btn" onclick="checkAnswer(4, 0, this)">
+            <span class="opt-key">A</span>
+            <span class="opt-label">Reply directly to the email requesting written signed confirmation from the vendor.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(4, 1, this)">
+            <span class="opt-key">B</span>
+            <span class="opt-label">Inspect the email headers to confirm SPF passes, then process payment immediately.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(4, 2, this)">
+            <span class="opt-key">C</span>
+            <span class="opt-label">Call the vendor using the pre-established contact number from your internal procurement records.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(4, 3, this)">
+            <span class="opt-key">D</span>
+            <span class="opt-label">Ask the vendor to send a high-resolution scanned voided check via WhatsApp.</span>
+          </button>
+        </div>
+        <div class="feedback-msg" id="fb4" role="alert"></div>
+      </article>
+
+      <!-- QUESTION 5 -->
+      <article class="quiz-card" id="qCard5">
+        <div class="card-top">
+          <span class="q-num">QUESTION 05 // IMPOSSIBLE TRAVEL ANOMALY</span>
+          <span class="status-indicator" id="status5">PENDING</span>
+        </div>
+        <p class="q-title">
+          What does an 'Impossible Travel' alert in cloud identity logs indicate?
+        </p>
+        <div class="options-grid">
+          <button type="button" class="opt-btn" onclick="checkAnswer(5, 0, this)">
+            <span class="opt-key">A</span>
+            <span class="opt-label">A user authenticated from two distant geographical locations within a timeframe physically impossible to travel between.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(5, 1, this)">
+            <span class="opt-key">B</span>
+            <span class="opt-label">A user attempted to access internal resources using public transportation Wi-Fi.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(5, 2, this)">
+            <span class="opt-key">C</span>
+            <span class="opt-label">A VPN server failed to route traffic across international boundaries.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(5, 3, this)">
+            <span class="opt-key">D</span>
+            <span class="opt-label">An employee traveled abroad without registering their itinerary with IT security.</span>
+          </button>
+        </div>
+        <div class="feedback-msg" id="fb5" role="alert"></div>
+      </article>
+
+      <!-- QUESTION 6 -->
+      <article class="quiz-card" id="qCard6">
+        <div class="card-top">
+          <span class="q-num">QUESTION 06 // SAFE REPORTING CHANNELS</span>
+          <span class="status-indicator" id="status6">PENDING</span>
+        </div>
+        <p class="q-title">
+          Why is it dangerous to coordinate incident response activities using the compromised organization's primary corporate email?
+        </p>
+        <div class="options-grid">
+          <button type="button" class="opt-btn" onclick="checkAnswer(6, 0, this)">
+            <span class="opt-key">A</span>
+            <span class="opt-label">Email protocols are restricted by law during active cyber incidents.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(6, 1, this)">
+            <span class="opt-key">B</span>
+            <span class="opt-label">The attacker may possess persistent mailbox access and monitor response strategies in real time.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(6, 2, this)">
+            <span class="opt-key">C</span>
+            <span class="opt-label">Incident response communications require encrypted PGP keys by default.</span>
+          </button>
+          <button type="button" class="opt-btn" onclick="checkAnswer(6, 3, this)">
+            <span class="opt-key">D</span>
+            <span class="opt-label">Email logs automatically overwrite previous audit history during an active alert.</span>
+          </button>
+        </div>
+        <div class="feedback-msg" id="fb6" role="alert"></div>
+      </article>
+
+      <!-- Triage Results Card (Dynamic) -->
+      <div id="triageResultsCard" class="triage-result-card" style="display: none;"></div>
+    </section>
+
+    <!-- ==========================================================================
+         CERTIFICATE GENERATION SECTION (CONNECTED TO CERTIFICATE-TEMPLATE.PNG)
+         ========================================================================== -->
+    <section class="cert-container" id="certificateSection" aria-label="Certificate Credential Generator">
+      <div class="cert-card" id="certCard">
+        <div class="cert-badge" id="certBadge">🔒 CERTIFICATE LOCKED - MINIMUM 80% (5/6) REQUIRED</div>
+        <h2 id="certTitle">Claim Your Module 05 Defense Credential</h2>
+        <p id="certDesc">
+          Complete all 6 threat evaluation questions above with at least 80% (5/6) correct to unlock your official verified certificate.
+        </p>
+
+        <div class="cert-input-group">
+          <input type="text" id="studentName" placeholder="Enter Full Name" autocomplete="off" aria-label="Student Full Name" disabled />
+          <button type="button" id="generateBtn" onclick="generateCertificate()" disabled style="opacity: 0.5; cursor: not-allowed;">
+            Download Certificate
+          </button>
+        </div>
+        <div id="certLockNotice" class="cert-lock-helper-msg" style="display: block; margin-top: 12px; color: #f59e0b; font-size: 0.88rem; font-family: var(--font-mono, monospace);">
+          ⚠️ Complete all 6 threat evaluation questions above to unlock download access.
+        </div>
+
+        <span class="cert-privacy-note">
+          🔒 Zero Data Retention: Rendered locally via HTML5 Canvas. We never store or transmit your identity.
+        </span>
+      </div>
+
+      <!-- Hidden 2048x1142 canvas for high-resolution certificate rendering -->
+      <canvas id="certCanvas" width="2048" height="1142" style="display:none;"></canvas>
+    </section>
+
+    <!-- Mandatory Cyvexis Threat & Safety Notice -->
+    <section class="cyvexis-safety-notice" aria-label="Official Security Advisory">
+      <div class="cyvexis-safety-card">
+        <div class="cyvexis-safety-header">
+          <span class="cyvexis-safety-icon">🛡️</span>
+          <div>
+            <h3>CYVEXIS OFFICIAL SECURITY ADVISORY</h3>
+            <p class="cyvexis-safety-tagline">ZERO-TRUST IDENTITY POLICY // MANDATORY USER GUIDELINE</p>
+          </div>
+        </div>
+        <p class="cyvexis-safety-statement">
+          <strong>⚠️ Cyvexis will NEVER ask you for your passwords, two-factor authentication codes, or sensitive account credentials.</strong>
+          If anyone contacts you asking for these credentials under our name, do not engage. Report the attempt immediately or report any issue to our official channels:
+        </p>
+        <div class="cyvexis-contacts-grid">
+          <div class="cyvexis-contact-badge">
+            <span class="contact-label">✉️ <strong>Official Security Desk:</strong></span>
+            <a href="mailto:cyvexis.cybersecurity@gmail.com" class="contact-email">cyvexis.cybersecurity@gmail.com</a>
+          </div>
+          <div class="cyvexis-contact-badge">
+            <span class="contact-label">📸 <strong>Official Instagram:</strong></span>
+            <a href="https://instagram.com/cyvexis" target="_blank" rel="noopener noreferrer" class="contact-email">@cyvexis</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <p>&copy; 2026 Cyvexis Security &bull; Module 05: Incident Response, Account Compromise &amp; Containment Triage &bull; Zero-Trust Protocol</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
