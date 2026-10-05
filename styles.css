@@ -1,11 +1,13 @@
 :root {
-  --bg-deep: #060913;
-  --border-subtle: #1e293b;
-  --cyan-neon: #00f2fe;
-  --emerald-safe: #10b981;
+  --bg-deep: #062b4c;
+  --bg-surface: #0a3d6b;
+  --border-subtle: rgba(15, 252, 190, 0.25);
+  --cyan-neon: #0FFCBE;
+  --emerald-safe: #0FFCBE;
+  --brand-blue: #106EBE;
   --danger: #ef4444;
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
+  --text-main: #ffffff;
+  --text-muted: #d4ebfd;
   --font-mono: 'Fira Code', monospace;
   --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
 }
@@ -17,10 +19,11 @@
 }
 
 body {
-  background-color: var(--bg-deep);
+  background: radial-gradient(circle at 50% 0%, #1a87e2 0%, #106EBE 35%, #0b4578 70%, #062b4c 100%) fixed;
   color: var(--text-main);
   font-family: var(--font-sans);
   line-height: 1.6;
+  min-height: 100vh;
 }
 
 .container {
@@ -30,8 +33,9 @@ body {
 }
 
 .navbar {
-  border-bottom: 1px solid var(--border-subtle);
-  background: rgba(6, 9, 19, 0.9);
+  border-bottom: 1px solid rgba(15, 252, 190, 0.2);
+  background: rgba(6, 36, 68, 0.94);
+  backdrop-filter: blur(12px);
   padding: 16px 24px;
 }
 .nav-container {
@@ -46,6 +50,7 @@ body {
   text-decoration: none;
   font-size: 0.85rem;
   font-family: var(--font-mono);
+  font-weight: 600;
 }
 .nav-badge {
   font-size: 0.75rem;
@@ -59,9 +64,9 @@ body {
 }
 .tag-pill {
   display: inline-block;
-  background: rgba(0, 242, 254, 0.1);
+  background: rgba(15, 252, 190, 0.15);
   color: var(--cyan-neon);
-  border: 1px solid rgba(0, 242, 254, 0.3);
+  border: 1px solid rgba(15, 252, 190, 0.35);
   padding: 4px 12px;
   border-radius: 20px;
   font-size: 0.75rem;
@@ -79,14 +84,15 @@ body {
 
 /* Simulation Inbox */
 .simulation-card {
-  background: #0a0f1d;
+  background: rgba(7, 43, 77, 0.88);
   border: 1px solid var(--border-subtle);
   border-radius: 14px;
   overflow: hidden;
   margin-bottom: 50px;
+  box-shadow: 0 16px 40px rgba(4, 25, 48, 0.6);
 }
 .sim-header {
-  background: #040711;
+  background: rgba(5, 31, 56, 0.95);
   padding: 12px 18px;
   display: flex;
   align-items: center;
@@ -104,7 +110,7 @@ body {
 }
 .red { background: #ef4444; }
 .yellow { background: #f59e0b; }
-.green { background: #10b981; }
+.green { background: #0FFCBE; }
 .sim-title {
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -115,7 +121,7 @@ body {
   padding: 28px;
 }
 .email-meta {
-  background: #060913;
+  background: rgba(4, 25, 46, 0.7);
   border: 1px solid var(--border-subtle);
   border-radius: 8px;
   padding: 16px;
@@ -133,7 +139,7 @@ body {
   color: #fbbf24;
 }
 .email-content {
-  color: #cbd5e1;
+  color: #d4ebfd;
   font-size: 0.95rem;
   line-height: 1.7;
   margin-bottom: 30px;
@@ -159,7 +165,7 @@ body {
   margin-bottom: 20px;
 }
 .opt-btn {
-  background: #111a2e;
+  background: rgba(7, 43, 77, 0.85);
   border: 1px solid var(--border-subtle);
   color: #fff;
   padding: 14px 18px;
@@ -171,7 +177,7 @@ body {
 }
 .opt-btn:hover {
   border-color: var(--cyan-neon);
-  background: #15223c;
+  background: rgba(16, 110, 190, 0.4);
 }
 .feedback-box {
   padding: 16px;
@@ -187,19 +193,20 @@ body {
   margin-top: 40px;
 }
 .cert-card {
-  background: #0a0f1d;
-  border: 1px solid var(--border-subtle);
+  background: rgba(7, 43, 77, 0.92);
+  border: 1px solid rgba(15, 252, 190, 0.3);
   border-radius: 16px;
   padding: 32px;
   max-width: 580px;
   width: 100%;
   text-align: center;
+  box-shadow: 0 16px 40px rgba(4, 25, 48, 0.6);
 }
 .cert-badge {
   display: inline-block;
-  background: rgba(16, 185, 129, 0.15);
+  background: rgba(15, 252, 190, 0.15);
   color: var(--emerald-safe);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  border: 1px solid rgba(15, 252, 190, 0.4);
   padding: 6px 14px;
   border-radius: 20px;
   font-size: 0.78rem;
@@ -223,8 +230,8 @@ body {
 }
 .cert-input-group input {
   flex: 1;
-  background: #060913;
-  border: 1px solid #334155;
+  background: rgba(4, 25, 46, 0.8);
+  border: 1px solid rgba(15, 252, 190, 0.3);
   border-radius: 8px;
   padding: 12px 16px;
   color: #fff;
@@ -233,18 +240,26 @@ body {
 }
 .cert-input-group input:focus {
   border-color: var(--cyan-neon);
+  box-shadow: 0 0 10px rgba(15, 252, 190, 0.4);
 }
 .cert-input-group button {
-  background: var(--cyan-neon);
-  color: #000;
+  background: #0FFCBE;
+  color: #062b47;
   border: none;
-  border-radius: 8px;
-  padding: 12px 20px;
-  font-weight: 700;
+  border-radius: 9999px;
+  padding: 12px 24px;
+  font-weight: 800;
   cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(15, 252, 190, 0.3);
+}
+.cert-input-group button:hover {
+  background: #ffffff;
+  color: #062b47;
+  box-shadow: 0 0 20px rgba(15, 252, 190, 0.6);
 }
 .cert-privacy-note {
   display: block;
-  color: #64748b;
+  color: #94a3b8;
   font-size: 0.75rem;
 }

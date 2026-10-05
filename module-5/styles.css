@@ -5,24 +5,26 @@
    ========================================================================== */
 
 :root {
-  --bg-deep: #060913;
-  --bg-surface: #0a0f1d;
-  --bg-card: rgba(13, 20, 38, 0.85);
-  --bg-card-hover: rgba(18, 28, 54, 0.95);
-  --bg-input: #070c18;
+  --bg-void: #062b4c;
+  --bg-deep: #062b4c;
+  --bg-surface: rgba(6, 36, 68, 0.94);
+  --bg-card: rgba(8, 45, 84, 0.85);
+  --bg-card-hover: rgba(16, 110, 190, 0.4);
+  --bg-input: rgba(4, 25, 46, 0.9);
 
-  --border-subtle: #1e293b;
-  --border-glow: rgba(0, 242, 254, 0.4);
+  --border-subtle: rgba(15, 252, 190, 0.22);
+  --border-glow: rgba(15, 252, 190, 0.45);
   --border-danger: rgba(239, 68, 68, 0.5);
-  --border-emerald: rgba(16, 185, 129, 0.5);
+  --border-emerald: rgba(15, 252, 190, 0.45);
 
-  --cyan-neon: #00f2fe;
-  --cyan-glow: rgba(0, 242, 254, 0.25);
-  --cyan-dim: rgba(0, 242, 254, 0.08);
+  --brand-blue: #106EBE;
+  --cyan-neon: #0FFCBE;
+  --cyan-glow: rgba(15, 252, 190, 0.35);
+  --cyan-dim: rgba(15, 252, 190, 0.12);
 
-  --emerald-safe: #10b981;
-  --emerald-glow: rgba(16, 185, 129, 0.25);
-  --emerald-dim: rgba(16, 185, 129, 0.1);
+  --emerald-safe: #0FFCBE;
+  --emerald-glow: rgba(15, 252, 190, 0.35);
+  --emerald-dim: rgba(15, 252, 190, 0.12);
 
   --danger-rose: #ef4444;
   --danger-glow: rgba(239, 68, 68, 0.25);
@@ -31,12 +33,12 @@
   --amber-warn: #f59e0b;
   --amber-dim: rgba(245, 158, 11, 0.1);
 
-  --purple-accent: #a855f7;
-  --purple-glow: rgba(168, 85, 247, 0.25);
+  --purple-accent: #106EBE;
+  --purple-glow: rgba(16, 110, 190, 0.25);
 
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --text-dim: #64748b;
+  --text-main: #ffffff;
+  --text-muted: #d4ebfd;
+  --text-dim: #94a3b8;
 
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-mono: 'Fira Code', 'JetBrains Mono', monospace;
@@ -47,7 +49,7 @@
   --radius-full: 9999px;
 
   --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 1px rgba(255, 255, 255, 0.1);
-  --shadow-glow: 0 0 25px rgba(0, 242, 254, 0.18);
+  --shadow-glow: 0 0 25px rgba(15, 252, 190, 0.25);
 }
 
 /* Base Reset */
@@ -63,7 +65,7 @@ html {
 }
 
 body {
-  background-color: var(--bg-deep);
+  background: radial-gradient(circle at 50% 0%, #1a87e2 0%, #106EBE 35%, #0b4578 70%, #062b4c 100%) fixed;
   color: var(--text-main);
   font-family: var(--font-sans);
   line-height: 1.6;
