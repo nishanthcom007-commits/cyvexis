@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service &bull; Cyvexis Cybersecurity</title>
+  <meta name="description" content="Official Terms of Service for Cyvexis Cybersecurity Labs. Understand the acceptable use, educational scope, intellectual property, and defensive guidelines for our training platform." />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --brand-blue: #106EBE;
+      --mint-accent: #0FFCBE;
+      --bg-deep: #062b4c;
+      --bg-surface: rgba(6, 36, 68, 0.94);
+      --bg-card: rgba(8, 45, 84, 0.85);
+      --border-subtle: rgba(15, 252, 190, 0.22);
+      --border-glow: rgba(15, 252, 190, 0.45);
+      --text-main: #ffffff;
+      --text-muted: #d4ebfd;
+      --text-dim: #94a3b8;
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'Fira Code', monospace;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: radial-gradient(circle at 50% 0%, #1a87e2 0%, #106EBE 35%, #0b4578 70%, #062b4c 100%) fixed;
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+      flex: 1;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(6, 36, 68, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 16px 24px;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .brand-logo-svg {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 0 10px rgba(15, 252, 190, 0.4));
+    }
+
+    .logo-brand {
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+    }
+
+    .logo-brand .highlight-cyan {
+      color: var(--mint-accent);
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.08em;
+      margin-left: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--mint-accent);
+    }
+
+    .nav-links a.active {
+      color: var(--mint-accent);
+    }
+
+    /* Policy Card */
+    .policy-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      box-shadow: 0 18px 45px rgba(4, 25, 48, 0.65);
+      margin-top: 24px;
+    }
+
+    .policy-badge {
+      display: inline-block;
+      background: rgba(15, 252, 190, 0.15);
+      color: var(--mint-accent);
+      border: 1px solid rgba(15, 252, 190, 0.35);
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .policy-title {
+      font-size: 2.3rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.25;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .policy-meta {
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .policy-section {
+      margin-bottom: 36px;
+    }
+
+    .policy-section h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--mint-accent);
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+    }
+
+    .policy-section p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      margin-bottom: 14px;
+    }
+
+    .policy-section ul {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 16px;
+    }
+
+    .policy-section ul li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 10px;
+      color: var(--text-muted);
+      font-size: 0.96rem;
+    }
+
+    .policy-section ul li::before {
+      content: "•";
+      position: absolute;
+      left: 6px;
+      color: var(--mint-accent);
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    .callout-box {
+      background: rgba(15, 252, 190, 0.08);
+      border-left: 4px solid var(--mint-accent);
+      border-radius: var(--radius-sm);
+      padding: 18px 22px;
+      margin: 20px 0;
+    }
+
+    .callout-box p {
+      color: #ffffff;
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--mint-accent);
+      color: #062b47;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 0.92rem;
+      padding: 12px 26px;
+      border-radius: var(--radius-full);
+      transition: all 0.2s ease;
+      margin-top: 24px;
+    }
+
+    .back-btn:hover {
+      background: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(15, 252, 190, 0.5);
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border-subtle);
+      background: rgba(4, 25, 46, 0.9);
+      padding: 36px 24px;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.88rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--mint-accent);
+    }
+
+    @media (max-width: 768px) {
+      .policy-card {
+        padding: 30px 20px;
+      }
+      .policy-title {
+        font-size: 1.8rem;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="./index.html" class="logo-badge" title="Cyvexis Cybersecurity">
+        <svg class="brand-logo-svg" viewBox="0 0 48 48" fill="none">
+          <defs>
+            <linearGradient id="navShieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#1a87e2"/>
+              <stop offset="100%" stop-color="#106EBE"/>
+            </linearGradient>
+          </defs>
+          <path d="M24 4L7 11V22C7 33.2 14.3 43.4 24 46C33.7 43.4 41 33.2 41 22V11L24 4Z" fill="url(#navShieldGrad)" stroke="#0FFCBE" stroke-width="2.2" stroke-linejoin="round"/>
+          <path d="M24 13L14 17.5V23.5C14 30.2 18.3 36.5 24 39C29.7 36.5 34 30.2 34 23.5V17.5L24 13Z" fill="#062b4c" stroke="rgba(15, 252, 190, 0.45)" stroke-width="1.5"/>
+          <path d="M19.5 24.5L22.8 27.8L29 20.8" stroke="#0FFCBE" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="logo-brand">CYVEXIS <span class="highlight-cyan">DEFENSE</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="./index.html#curriculum">Training Modules</a></li>
+        <li><a href="./index.html#email-audit">Enterprise Audit</a></li>
+        <li><a href="./index.html#safety-notice">Safety Policy</a></li>
+        <li><a href="./privacy.html">Privacy</a></li>
+        <li><a href="./terms.html" class="active">Terms</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container">
+    <article class="policy-card">
+      <span class="policy-badge">// Legal Terms &amp; Conditions</span>
+      <h1 class="policy-title">Cyvexis Terms of Service</h1>
+      <div class="policy-meta">
+        Last Updated &amp; Effective: October 10, 2026 &bull; Reference: TOS-CYV-2026-V1
+      </div>
+
+      <div class="callout-box">
+        <p><strong>Defensive Purpose Mandate:</strong> Cyvexis provides educational and defensive cybersecurity awareness content. All simulated phishing scenarios, credential drills, and triage tools must be used solely for authorized educational and corporate defensive preparation.</p>
+      </div>
+
+      <section class="policy-section">
+        <h2>1. Acceptance of Terms</h2>
+        <p>By accessing or using the Cyvexis platform, training modules, scenario simulators, or certificate generation tools (collectively, the "Services"), you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you must not use or access the Services.</p>
+      </section>
+
+      <section class="policy-section">
+        <h2>2. Authorized Defensive Use Only</h2>
+        <p>The materials, code snippets, simulated attack vectors, and techniques demonstrated on Cyvexis are designed exclusively to train employees, developers, and security professionals to spot, resist, and report cyber threats. You explicitly agree NOT to:</p>
+        <ul>
+          <li>Use any technique, domain analysis tool, or simulation asset provided by Cyvexis to conduct unauthorized penetration testing, credential harvesting, spamming, smishing, or malicious cyber activities against any third-party individual or entity.</li>
+          <li>Replicate or weaponize simulated attack scenarios for unlawful interception or deception.</li>
+          <li>Attempt to compromise, disrupt, overload, or reverse-engineer the Cyvexis hosting infrastructure or application source code.</li>
+        </ul>
+      </section>
+
+      <section class="policy-section">
+        <h2>3. Intellectual Property &amp; Course Materials</h2>
+        <p>All curriculum text, scenario designs, graphics, code, and branding on Cyvexis are the intellectual property of Cyvexis Cybersecurity Labs or its licensors. You may:</p>
+        <ul>
+          <li>Access and complete modules for individual training or internal employee security awareness drills.</li>
+          <li>Download and publicly share your personalized Certificate of Completion earned upon achieving a passing score (&ge; 80%).</li>
+        </ul>
+        <p>You may not redistribute, resell, or white-label Cyvexis training modules as a commercial product without prior written consent from Cyvexis.</p>
+      </section>
+
+      <section class="policy-section">
+        <h2>4. Disclaimer of Warranties</h2>
+        <p>Cyvexis provides educational drills on an "as is" and "as available" basis without warranties of any kind, whether express or implied. While our modules are developed by security practitioners to mirror real-world threat actors, cyber threats evolve continuously. Completion of our drills does not guarantee that an individual or organization will be impervious to social engineering, zero-day vulnerabilities, or external data breaches.</p>
+      </section>
+
+      <section class="policy-section">
+        <h2>5. Limitation of Liability</h2>
+        <p>To the maximum extent permitted by applicable law, Cyvexis, its engineers, and contributors shall not be liable for any direct, indirect, incidental, or consequential damages resulting from the use or inability to use the platform, including any third-party cyber incidents, business disruptions, or data loss.</p>
+      </section>
+
+      <section class="policy-section">
+        <h2>6. Third-Party Links &amp; External References</h2>
+        <p>Our curriculum may reference external RFC standards, NIST guidelines, or official courier tracking services for educational illustration. Cyvexis does not control or assume responsibility for external third-party websites or services.</p>
+      </section>
+
+      <section class="policy-section">
+        <h2>7. Modifications to the Service and Terms</h2>
+        <p>We reserve the right to modify or update these Terms of Service at any time. Material changes will be indicated with an updated effective date. Continued use of the Services after such changes constitutes acceptance of the modified Terms.</p>
+      </section>
+
+      <section class="policy-section">
+        <h2>8. Contact &amp; Governance</h2>
+        <p>For questions regarding these Terms or licensing Cyvexis curriculum for enterprise training programs, please contact our team:</p>
+        <p><strong>Official Security Mailbox:</strong> <code>cyvexis.cybersecurity@gmail.com</code><br />
+        <strong>Official Security Social:</strong> <code>@cyvexis</code> (Instagram)</p>
+      </section>
+
+      <a href="./index.html" class="back-btn">← Return to Training Portal</a>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container" style="padding-top:0; padding-bottom:0;">
+      <div class="footer-links">
+        <a href="./index.html#curriculum">Training Modules</a>
+        <a href="./index.html#email-audit">Enterprise Audit</a>
+        <a href="./index.html#safety-notice">Safety Policy</a>
+        <a href="./privacy.html">Privacy Policy</a>
+        <a href="./terms.html">Terms of Service</a>
+      </div>
+      <p>&copy; 2026 Cyvexis Cybersecurity Labs &bull; Human-Centered Threat Defense &bull; Zero Data Retention Standard</p>
+    </div>
+  </footer>
+
+</body>
+</html>
