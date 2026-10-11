@@ -1,0 +1,18 @@
+# Cyvexis Robots Exclusion Standard
+User-agent: *
+Disallow: /admin
+Disallow: /dashboard
+Disallow: /api
+Disallow: /private
+Disallow: /.*
+Allow: /
+Allow: /privacy.html
+Allow: /terms.html
+Allow: /module-1/
+Allow: /module-2/
+Allow: /module-3/
+Allow: /module-4/
+Allow: /module-5/
+Allow: /module-6/
+
+Sitemap: https://cyvexis.pages.dev/sitemap.xml

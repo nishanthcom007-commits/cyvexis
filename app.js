@@ -22,7 +22,13 @@ function checkChoice(option) {
 
 function generateCertificate() {
   const nameInput = document.getElementById('studentName');
-  const name = nameInput.value.trim();
+  let name = nameInput ? nameInput.value.trim() : '';
+
+  // Sanitize input: strip HTML tags and control characters, limit length
+  name = name.replace(/<[^>]*>/g, '').replace(/[\x00-\x1F\x7F]/g, '').trim();
+  if (name.length > 60) {
+    name = name.substring(0, 60);
+  }
 
   if (!name) {
     alert("Please enter a name for the certificate.");
@@ -126,8 +132,9 @@ function renderCanvas(ctx, canvas, name, logo) {
   ctx.fillText("Client-Side Verified • Zero Credentials Stored • cyvexis", 600, 755);
 
   // Trigger Download
+  const safeFilename = name.replace(/[^a-zA-Z0-9_\-]/g, '_') || 'Student';
   const downloadLink = document.createElement('a');
-  downloadLink.download = `Cyvexis_Module3_Certificate_${name.replace(/\s+/g, '_')}.png`;
+  downloadLink.download = `Cyvexis_Certificate_${safeFilename}.png`;
   downloadLink.href = canvas.toDataURL('image/png');
   downloadLink.click();
 }

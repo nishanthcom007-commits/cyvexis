@@ -358,7 +358,13 @@ function generateCertificate() {
   }
 
   const nameInput = document.getElementById('studentName');
-  const name = nameInput ? nameInput.value.trim() : '';
+  let name = nameInput ? nameInput.value.trim() : '';
+
+  // Sanitize input: strip HTML tags and control characters, limit length
+  name = name.replace(/<[^>]*>/g, '').replace(/[\x00-\x1F\x7F]/g, '').trim();
+  if (name.length > 60) {
+    name = name.substring(0, 60);
+  }
 
   if (!name) {
     alert("Please enter your full name to generate your verified Cyvexis certificate.");

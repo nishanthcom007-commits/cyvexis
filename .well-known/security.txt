@@ -1,0 +1,7 @@
+# Cyvexis Responsible Vulnerability Disclosure Policy (RFC 9116)
+Contact: mailto:cyvexis.cybersecurity@gmail.com
+Expires: 2027-10-10T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://cyvexis.pages.dev/.well-known/security.txt
+Policy: https://cyvexis.pages.dev/terms.html
+Hiring: https://cyvexis.pages.dev/

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 &bull; Page Not Found | Cyvexis Cybersecurity</title>
+  <meta name="description" content="The requested security resource or drill could not be found." />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --brand-blue: #106EBE;
+      --mint-accent: #0FFCBE;
+      --bg-deep: #062b4c;
+      --text-main: #ffffff;
+      --text-muted: #d4ebfd;
+      --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-mono: 'Fira Code', monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: radial-gradient(circle at 50% 0%, #1a87e2 0%, #106EBE 35%, #0b4578 70%, #062b4c 100%) fixed;
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .error-card {
+      background: rgba(8, 45, 84, 0.88);
+      border: 1px solid rgba(15, 252, 190, 0.25);
+      border-radius: 20px;
+      padding: 48px 36px;
+      max-width: 580px;
+      width: 100%;
+      box-shadow: 0 16px 45px rgba(4, 25, 48, 0.7);
+    }
+
+    .error-code {
+      font-size: 5rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      color: var(--mint-accent);
+      line-height: 1;
+      margin-bottom: 16px;
+      letter-spacing: -0.03em;
+    }
+
+    .error-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: #ffffff;
+    }
+
+    .error-desc {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .btn-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--mint-accent);
+      color: #062b47;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 0.92rem;
+      padding: 12px 28px;
+      border-radius: 9999px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-home:hover {
+      background: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(15, 252, 190, 0.5);
+    }
+
+    .security-note {
+      margin-top: 24px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="error-card">
+    <div class="error-code">404</div>
+    <h1 class="error-title">Resource Not Found</h1>
+    <p class="error-desc">
+      The requested security path or drill endpoint does not exist. Administrative and non-public endpoints are restricted under Cyvexis access policies.
+    </p>
+    <a href="./index.html" class="btn-home">← Return to Training Portal</a>
+    <div class="security-note">
+      STATUS: RESTRICTED // DEBUG_MODE: OFF
+    </div>
+  </div>
+
+</body>
+</html>
