@@ -14,11 +14,16 @@
 
   <style>
     :root {
-      --brand-blue: #106EBE;
-      --mint-accent: #0FFCBE;
-      --bg-deep: #062b4c;
-      --text-main: #ffffff;
-      --text-muted: #d4ebfd;
+      --brand-accent: #957D58;
+      --brand-accent-hover: #826A47;
+      --bg-canvas: #FAF8F5;
+      --bg-card: #FFFFFF;
+      --border-subtle: #E8E3DC;
+      --border-medium: #DCD6CB;
+      --text-main: #1C1917;
+      --text-body: #3E3A36;
+      --text-muted: #78716C;
+      --text-dim: #9C958D;
       --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
       --font-mono: 'Fira Code', monospace;
     }
@@ -30,8 +35,8 @@
     }
 
     body {
-      background: radial-gradient(circle at 50% 0%, #1a87e2 0%, #106EBE 35%, #0b4578 70%, #062b4c 100%) fixed;
-      color: var(--text-main);
+      background: radial-gradient(circle at 50% 0%, #FFFFFF 0%, #FAF8F5 55%, #F4EFE6 100%) fixed;
+      color: var(--text-body);
       font-family: var(--font-sans);
       min-height: 100vh;
       display: flex;
@@ -40,67 +45,72 @@
       justify-content: center;
       padding: 24px;
       text-align: center;
+      -webkit-font-smoothing: antialiased;
     }
 
     .error-card {
-      background: rgba(8, 45, 84, 0.88);
-      border: 1px solid rgba(15, 252, 190, 0.25);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-top: 3px solid var(--brand-accent);
       border-radius: 20px;
-      padding: 48px 36px;
+      padding: 52px 40px;
       max-width: 580px;
       width: 100%;
-      box-shadow: 0 16px 45px rgba(4, 25, 48, 0.7);
+      box-shadow: 0 8px 30px rgba(44, 38, 30, 0.05);
     }
 
     .error-code {
       font-size: 5rem;
       font-weight: 800;
       font-family: var(--font-mono);
-      color: var(--mint-accent);
+      color: var(--brand-accent);
       line-height: 1;
       margin-bottom: 16px;
       letter-spacing: -0.03em;
     }
 
     .error-title {
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       font-weight: 800;
-      margin-bottom: 12px;
-      color: #ffffff;
+      margin-bottom: 14px;
+      color: var(--text-main);
+      letter-spacing: -0.01em;
     }
 
     .error-desc {
-      color: var(--text-muted);
+      color: var(--text-body);
       font-size: 0.98rem;
-      line-height: 1.6;
-      margin-bottom: 28px;
+      line-height: 1.65;
+      margin-bottom: 30px;
     }
 
     .btn-home {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--mint-accent);
-      color: #062b47;
+      background: var(--text-main);
+      color: #FFFFFF;
       text-decoration: none;
-      font-weight: 800;
+      font-weight: 700;
       font-size: 0.92rem;
-      padding: 12px 28px;
+      padding: 13px 28px;
       border-radius: 9999px;
       transition: all 0.2s ease;
+      box-shadow: 0 4px 14px rgba(28, 25, 23, 0.12);
     }
 
     .btn-home:hover {
-      background: #ffffff;
+      background: var(--brand-accent);
       transform: translateY(-2px);
-      box-shadow: 0 0 20px rgba(15, 252, 190, 0.5);
+      box-shadow: 0 6px 18px rgba(149, 125, 88, 0.25);
     }
 
     .security-note {
-      margin-top: 24px;
+      margin-top: 26px;
       font-family: var(--font-mono);
       font-size: 0.78rem;
-      color: #94a3b8;
+      color: var(--text-dim);
+      letter-spacing: 0.04em;
     }
   </style>
 </head>
