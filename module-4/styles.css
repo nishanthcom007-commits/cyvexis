@@ -621,8 +621,9 @@ body {
 }
 
 .sms-bubble {
-  background: #111a2e;
-  border: 1px solid rgba(239, 68, 68, 0.4);
+  background: #FAF8F5;
+  border: 1px solid #E8E3DC;
+  border-left: 3px solid #A8282B;
   border-radius: 18px 18px 18px 4px;
   padding: 14px 16px;
   margin-bottom: 14px;
@@ -631,19 +632,20 @@ body {
 
 .sms-bubble p {
   font-size: 0.88rem;
-  color: #f1f5f9;
+  color: #1C1917;
   line-height: 1.45;
   margin-bottom: 8px;
 }
 
 .sms-fake-link {
   display: inline-block;
-  color: #38bdf8;
+  color: #A8282B;
   font-family: var(--font-mono);
   font-size: 0.82rem;
+  font-weight: 700;
   word-break: break-all;
   text-decoration: underline;
-  background: rgba(0, 0, 0, 0.4);
+  background: #F5F2EB;
   padding: 4px 8px;
   border-radius: 4px;
 }
@@ -1472,12 +1474,37 @@ body {
 h1, h2, h3, h4, h5, h6,
 .hud-title, .modal-header h3, .cert-card h2, .cert-card h3,
 .learning-choice-title, .video-briefing-title, .article-title,
-.quiz-title, .summary-title, .score-big, .scenario-title, .phone-sender {
+.quiz-title, .summary-title, .score-big, .scenario-title, .phone-sender,
+.choice-title, .section-title, .quiz-question-title, .cyvexis-safety-header h3 {
   color: #1C1917 !important;
 }
 
-p, li, .briefing-desc, .article-section p, .learning-choice-desc, .desc-text, .sms-bubble-text {
+p, li, .briefing-desc, .article-section p, .learning-choice-desc, .desc-text, .sms-bubble-text,
+.hero-subtitle, .section-desc, .choice-desc, .cyvexis-safety-statement {
   color: #3E3A36 !important;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #957D58 0%, #685233 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #957D58 !important;
+}
+
+.threat-badge {
+  background: #FDF2F2 !important;
+  border: 1px solid #FECACA !important;
+  color: #991B1B !important;
+}
+
+.section-tag, .quiz-context-tag {
+  color: #957D58 !important;
+  font-weight: 700 !important;
+}
+
+.stat-label {
+  color: #57534E !important;
+  font-weight: 700 !important;
 }
 
 .hud-pill, .tag-pill, .badge-pill, .step-badge, .article-meta-badge {
@@ -1486,10 +1513,54 @@ p, li, .briefing-desc, .article-section p, .learning-choice-desc, .desc-text, .s
   border-color: #D8CFBF !important;
 }
 
-.learning-choice-card, .video-briefing-container, .article-reading-container, .quiz-card, .cert-card, .simulator-card, .quishing-card, .vishing-card {
+.choice-card, .learning-choice-card, .video-briefing-container, .article-reading-container, 
+.quiz-card, .cert-card, .simulator-card, .quishing-card, .vishing-card, .cyvexis-safety-card, .cyvexis-safety-box {
   background: #FFFFFF !important;
   border: 1px solid #E8E3DC !important;
   box-shadow: 0 4px 24px rgba(44, 38, 30, 0.05) !important;
+}
+
+.choice-card.active {
+  border-color: #957D58 !important;
+  background: #FFFFFF !important;
+  box-shadow: 0 8px 24px rgba(149, 125, 88, 0.15), 0 0 0 2px #957D58 !important;
+}
+
+.quiz-highlight-box {
+  background: #F5F2EB !important;
+  border: 1px solid #DCD6CB !important;
+  color: #1C1917 !important;
+}
+
+.quiz-passing-notice {
+  background: #FFFBEB !important;
+  border: 1px solid #FCD34D !important;
+  border-left: 4px solid #D97706 !important;
+  color: #78350F !important;
+}
+
+.quiz-passing-notice .passing-notice-badge, .passing-notice-badge {
+  background: #FEF3C7 !important;
+  color: #92400E !important;
+  border: 1px solid #F59E0B !important;
+  font-weight: 800 !important;
+}
+
+.quiz-passing-notice .passing-notice-text,
+.quiz-passing-notice .passing-notice-text strong {
+  color: #78350F !important;
+}
+
+.quiz-feedback-box.correct {
+  background: #EDF5F0 !important;
+  border: 1px solid #A3D1AE !important;
+  color: #1C4D2A !important;
+}
+
+.quiz-feedback-box.incorrect {
+  background: #FDF2F2 !important;
+  border: 1px solid #FECACA !important;
+  color: #991B1B !important;
 }
 
 .phone-mockup, .qr-frame-box, .audio-waveform-container {
@@ -1552,15 +1623,31 @@ p, li, .briefing-desc, .article-section p, .learning-choice-desc, .desc-text, .s
 }
 
 .btn-choice-select.secondary, .btn-secondary {
-  background: #FFFFFF !important;
+  background: #F5F2EB !important;
   border-color: #DCD6CB !important;
   color: #1C1917 !important;
 }
 
 .btn-choice-select.secondary:hover, .btn-secondary:hover {
-  background: #F5F2EB !important;
+  background: #E8E3DC !important;
   border-color: #957D58 !important;
+  color: #1C1917 !important;
+}
+
+.cyvexis-contact-badge {
+  background: #F5F2EB !important;
+  border: 1px solid #E8E3DC !important;
+  color: #1C1917 !important;
+}
+.cyvexis-contact-badge strong, .cyvexis-contact-badge span {
+  color: #1C1917 !important;
+}
+.cyvexis-contact-badge code {
   color: #957D58 !important;
+  background: rgba(149, 125, 88, 0.12) !important;
+}
+.cyvexis-primary-warning {
+  color: #A8282B !important;
 }
 
 .cert-input-group input {
