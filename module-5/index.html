@@ -227,7 +227,7 @@
       <div class="sim-tab-panel active" id="tab-rules">
         <div class="rule-auditor-window">
           <div class="rule-window-top">
-            <span style="color: #ffffff; font-weight: 700; font-size: 0.9rem;">EXCHANGE ONLINE // INBOX RULE AUDIT</span>
+            <span style="color: #1C1917; font-weight: 700; font-size: 0.9rem;">EXCHANGE ONLINE // INBOX RULE AUDIT</span>
             <span style="color: var(--danger-rose); font-size: 0.78rem;">⚠️ 1 MALICIOUS RULE ACTIVE</span>
           </div>
 
@@ -240,7 +240,7 @@
               AND ForwardTo = 'finance-triage@adversary-exfil.xyz'<br/>
               AND DeleteFromInbox = True
             </div>
-            <p style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 12px;">
+            <p style="font-size: 0.88rem; color: #3E3A36; margin-bottom: 12px; line-height: 1.5;">
               <strong>Forensic Analysis:</strong> The attacker configured this rule to suppress invoice notifications from real vendors and exfiltrate billing records to an external domain while hiding the emails in the unused RSS Feeds folder.
             </p>
             <button type="button" class="rule-btn-purge" onclick="purgeMaliciousRule()">
@@ -248,15 +248,15 @@
             </button>
           </div>
 
-          <div id="rulePurgeAlert" style="display: none; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--emerald-safe); color: #a7f3d0; padding: 12px; border-radius: 6px; font-size: 0.85rem;"></div>
+          <div id="rulePurgeAlert" style="display: none; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--emerald-safe); color: #2E6F40; padding: 12px; border-radius: 6px; font-size: 0.85rem;"></div>
         </div>
       </div>
 
       <!-- Tab 2: Impossible Travel Telemetry -->
       <div class="sim-tab-panel" id="tab-telemetry">
         <div class="geo-telemetry-box">
-          <h3 style="color: #ffffff; font-size: 1.15rem; margin-bottom: 14px;">Cloud Identity Sign-In Telemetry</h3>
-          <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 18px;">
+          <h3 style="color: #1C1917; font-size: 1.15rem; font-weight: 800; margin-bottom: 14px;">Cloud Identity Sign-In Telemetry</h3>
+          <p style="color: #57534E; font-size: 0.9rem; margin-bottom: 18px;">
             Identity Protection flagged two concurrent active sessions for <code>sarah.chen@cyvexis.internal</code> within an impossible physical transit window:
           </p>
 
@@ -283,15 +283,15 @@
           <button type="button" class="btn-revoke-all" onclick="triggerGlobalRevocation()">
             🚨 Invalidate All Active Sessions &amp; Revoke Refresh Tokens
           </button>
-          <div id="revocationStatus" style="display: none; margin-top: 14px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--emerald-safe); color: #a7f3d0; padding: 12px; border-radius: 6px; font-size: 0.85rem; text-align: center;"></div>
+          <div id="revocationStatus" style="display: none; margin-top: 14px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--emerald-safe); color: #2E6F40; padding: 12px; border-radius: 6px; font-size: 0.85rem; text-align: center;"></div>
         </div>
       </div>
 
       <!-- Tab 3: The First 60 Minutes Triage Runner -->
       <div class="sim-tab-panel" id="tab-sop60">
-        <div style="background: rgba(6, 9, 19, 0.7); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px;">
-          <h3 style="color: #ffffff; font-size: 1.25rem; margin-bottom: 12px;">First 60 Minutes Triage Checklist</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">
+        <div style="background: #FAF8F5; border: 1px solid #DCD6CB; border-radius: var(--radius-md); padding: 24px;">
+          <h3 style="color: #1C1917; font-size: 1.25rem; font-weight: 800; margin-bottom: 12px;">First 60 Minutes Triage Checklist</h3>
+          <p style="color: #57534E; font-size: 0.9rem; margin-bottom: 20px;">
             Execute these ordered response stages to contain account compromise before privilege escalation:
           </p>
 
@@ -322,22 +322,22 @@
 
       <!-- Tab 4: Out-of-Band Incident Bridge -->
       <div class="sim-tab-panel" id="tab-oob">
-        <div style="background: rgba(10, 15, 29, 0.95); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px;">
-          <h3 style="color: #ffffff; font-size: 1.25rem; margin-bottom: 12px;">Out-of-Band (OOB) Incident Communications</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 18px;">
+        <div style="background: #FAF8F5; border: 1px solid #DCD6CB; border-radius: var(--radius-md); padding: 24px;">
+          <h3 style="color: #1C1917; font-size: 1.25rem; font-weight: 800; margin-bottom: 12px;">Out-of-Band (OOB) Incident Communications</h3>
+          <p style="color: #57534E; font-size: 0.9rem; margin-bottom: 18px;">
             When an account or tenant is compromised, never coordinate incident response over internal email.
           </p>
-          <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 8px; padding: 16px; margin-bottom: 16px;">
+          <div style="background: #FDF2F2; border: 1px solid rgba(168, 40, 43, 0.3); border-radius: 8px; padding: 16px; margin-bottom: 16px;">
             <strong style="color: var(--danger-rose); font-size: 0.85rem;">⚠️ CRITICAL OPERATIONAL WARNING:</strong>
-            <p style="font-size: 0.85rem; color: #cbd5e1; margin-top: 6px; line-height: 1.5;">
+            <p style="font-size: 0.88rem; color: #3E3A36; margin-top: 6px; line-height: 1.5;">
               If the adversary possesses global tenant observation privileges or has compromised an executive mailbox, discussing containment in that channel tips them off, allowing them to delete event logs or accelerate ransomware deployment.
             </p>
           </div>
           <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <button type="button" class="btn-retake" onclick="alert('✓ Secure Out-of-Band Phone Bridge Initiated. Connecting to Incident Commander.')" style="background: linear-gradient(135deg, #10b981, #047857); border: none;">
+            <button type="button" class="btn-retake" onclick="alert('✓ Secure Out-of-Band Phone Bridge Initiated. Connecting to Incident Commander.')" style="background: #2E6F40; color: #ffffff; border: none; padding: 12px 18px; border-radius: 8px; font-weight: 700; cursor: pointer;">
               📞 Connect to Secure OOB Phone Bridge
             </button>
-            <button type="button" class="btn-retake" onclick="alert('✓ SecOps Incident Ticket Created via Dedicated Out-of-Band Channel.')">
+            <button type="button" class="btn-retake" onclick="alert('✓ SecOps Incident Ticket Created via Dedicated Out-of-Band Channel.')" style="background: #1C1917; color: #ffffff; border: 1px solid #1C1917; padding: 12px 18px; border-radius: 8px; font-weight: 700; cursor: pointer;">
               🎫 Submit OOB SecOps Containment Ticket
             </button>
           </div>

@@ -246,7 +246,7 @@
             </div>
           </div>
 
-          <p style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 12px; font-family: var(--font-mono);">
+          <p style="font-size: 0.88rem; color: #3E3A36; margin-bottom: 12px; font-family: var(--font-mono); line-height: 1.5;">
             <strong>Telemetry Alert:</strong> Automated crawlers identified publicly accessible SQL database backups containing 45,000 unencrypted customer PII records.
           </p>
 
@@ -254,7 +254,7 @@
             🚨 Apply Global Block Public Access (BPA) &amp; Enforce SSE-KMS (AES-256)
           </button>
 
-          <div id="bucketRemediateAlert" style="display: none; margin-top: 14px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--emerald-safe); color: #a7f3d0; padding: 12px; border-radius: 6px; font-size: 0.85rem; font-family: var(--font-mono);"></div>
+          <div id="bucketRemediateAlert" style="display: none; margin-top: 14px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--emerald-safe); color: #2E6F40; padding: 12px; border-radius: 6px; font-size: 0.85rem; font-family: var(--font-mono);"></div>
         </div>
       </div>
 
@@ -275,7 +275,7 @@ const AWS_SECRET_ACCESS_KEY = "<span class="highlight-leak">wJalrXUtnFEMI/K7MDEN
 
 const s3 = new AWS.S3({ accessKeyId: AWS_ACCESS_KEY_ID, secretAccessKey: AWS_SECRET_ACCESS_KEY });</pre>
 
-          <p style="font-size: 0.84rem; color: #cbd5e1; margin-bottom: 12px; font-family: var(--font-mono);">
+          <p style="font-size: 0.88rem; color: #3E3A36; margin-bottom: 12px; font-family: var(--font-mono); line-height: 1.5;">
             <strong>Pre-Commit Hook Alert:</strong> If pushed to GitHub, adversary bot scrapers will detect and abuse this root access credential in approximately 45 seconds.
           </p>
 
@@ -283,7 +283,7 @@ const s3 = new AWS.S3({ accessKeyId: AWS_ACCESS_KEY_ID, secretAccessKey: AWS_SEC
             🛡️ Strip Hardcoded Secrets &amp; Inject Dynamic Secrets Manager Vault
           </button>
 
-          <div id="gitRemediateAlert" style="display: none; margin-top: 14px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--emerald-safe); color: #a7f3d0; padding: 12px; border-radius: 6px; font-size: 0.85rem; font-family: var(--font-mono);"></div>
+          <div id="gitRemediateAlert" style="display: none; margin-top: 14px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--emerald-safe); color: #2E6F40; padding: 12px; border-radius: 6px; font-size: 0.85rem; font-family: var(--font-mono);"></div>
         </div>
       </div>
 
@@ -309,7 +309,7 @@ const s3 = new AWS.S3({ accessKeyId: AWS_ACCESS_KEY_ID, secretAccessKey: AWS_SEC
             <div class="privacy-tier-card" data-tier="restricted" onclick="selectPrivacyTier('restricted')">
               <div class="tier-name">3. Confidential</div>
               <div class="tier-examples">Source code, financial reports, keys</div>
-              <span class="tier-badge" style="color: #f59e0b;">High Risk</span>
+              <span class="tier-badge" style="color: #b45309;">High Risk</span>
             </div>
             <div class="privacy-tier-card selected" data-tier="pii" onclick="selectPrivacyTier('pii')">
               <div class="tier-name">4. Regulated PII</div>
@@ -318,12 +318,12 @@ const s3 = new AWS.S3({ accessKeyId: AWS_ACCESS_KEY_ID, secretAccessKey: AWS_SEC
             </div>
           </div>
 
-          <div style="background: rgba(10, 15, 29, 0.9); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 18px; margin-top: 14px;">
-            <h4 id="tierDisplayTitle" style="color: var(--cyan-neon); font-size: 1rem; margin-bottom: 8px;">Regulated PII &amp; Sensitive Personal Data</h4>
-            <div style="font-size: 0.86rem; color: #cbd5e1; margin-bottom: 8px; line-height: 1.5;">
+          <div style="background: #FFFFFF; border: 1px solid #DCD6CB; border-radius: var(--radius-sm); padding: 18px; margin-top: 14px; box-shadow: 0 1px 4px rgba(44, 38, 30, 0.04);">
+            <h4 id="tierDisplayTitle" style="color: #1C1917; font-weight: 800; font-size: 1rem; margin-bottom: 8px;">Regulated PII &amp; Sensitive Personal Data</h4>
+            <div style="font-size: 0.88rem; color: #3E3A36; margin-bottom: 8px; line-height: 1.5;">
               <strong>Mandatory Controls:</strong> <span id="tierDisplayControls">Field-level tokenization, strict data minimization, dynamic masking, and AES-256 storage. Zero storage in unsanctioned public SaaS/AI tools.</span>
             </div>
-            <div style="font-size: 0.86rem; color: #a7f3d0; line-height: 1.5;">
+            <div style="font-size: 0.88rem; color: #2E6F40; line-height: 1.5;">
               <strong>Statutory Compliance:</strong> <span id="tierDisplayCompliance">Strict governance under GDPR (EU) and DPDP Act (India). Explicit consent required. Penalties up to 4% global turnover or ₹250 Crore for willful negligence.</span>
             </div>
           </div>
@@ -340,13 +340,13 @@ const s3 = new AWS.S3({ accessKeyId: AWS_ACCESS_KEY_ID, secretAccessKey: AWS_SEC
 
           <div class="oauth-scope-item danger-scope" id="oauthRogueRow">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <h4 style="color: #ffffff; font-size: 0.95rem;">Application: "Free AI Document Assistant &amp; Spellchecker"</h4>
+              <h4 style="color: #1C1917; font-size: 0.95rem; font-weight: 800;">Application: "Free AI Document Assistant &amp; Spellchecker"</h4>
               <span style="font-size: 0.75rem; color: var(--danger-rose); font-weight: 700;">UNAPPROVED SHADOW SAAS</span>
             </div>
-            <div style="font-size: 0.84rem; color: #f87171; margin-bottom: 6px;">
+            <div style="font-size: 0.84rem; color: #A8282B; margin-bottom: 6px;">
               <strong>Requested OAuth Scopes:</strong> <code>https://mail.google.com/</code> &bull; <code>https://www.googleapis.com/auth/drive</code>
             </div>
-            <p style="font-size: 0.82rem; color: #cbd5e1; line-height: 1.45;">
+            <p style="font-size: 0.88rem; color: #3E3A36; line-height: 1.5;">
               <strong>Security Risk:</strong> This browser extension was granted full read/write/delete access to corporate mailboxes and cloud drives. It possesses continuous API access to steal session tokens, search confidential attachments, and exfiltrate customer records.
             </p>
           </div>
