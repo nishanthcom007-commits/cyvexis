@@ -1130,6 +1130,19 @@ body {
   margin-bottom: 18px;
 }
 
+.q-title code {
+  font-family: var(--font-mono);
+  color: #FFFFFF !important;
+  background: #1C1917 !important;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.95em;
+  font-weight: 700;
+  border: 1px solid #3E3A36;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  display: inline-block;
+}
+
 .options-grid {
   display: flex;
   flex-direction: column;
@@ -1217,15 +1230,27 @@ body {
 }
 
 .feedback-msg.correct {
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.35);
-  color: #a7f3d0;
+  background: #EDF7ED !important;
+  border: 1.5px solid #16A34A !important;
+  color: #065F46 !important;
+  font-weight: 600;
+}
+
+.feedback-msg.correct strong {
+  color: #043C22 !important;
+  font-weight: 800;
 }
 
 .feedback-msg.wrong {
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.35);
-  color: #fecaca;
+  background: #FEF2F2 !important;
+  border: 1.5px solid #DC2626 !important;
+  color: #991B1B !important;
+  font-weight: 600;
+}
+
+.feedback-msg.wrong strong {
+  color: #58151C !important;
+  font-weight: 800;
 }
 
 /* Triage Results Card */
@@ -1642,16 +1667,32 @@ p, li, .briefing-desc, .article-section p, .learning-choice-desc, .desc-text, .s
   color: #78350F !important;
 }
 
-.quiz-feedback-box.correct {
-  background: #EDF5F0 !important;
-  border: 1px solid #A3D1AE !important;
-  color: #1C4D2A !important;
+.quiz-feedback-box.correct,
+.feedback-msg.correct {
+  background: #EDF7ED !important;
+  border: 1.5px solid #16A34A !important;
+  color: #065F46 !important;
+  font-weight: 600;
 }
 
-.quiz-feedback-box.incorrect {
-  background: #FDF2F2 !important;
-  border: 1px solid #FECACA !important;
+.quiz-feedback-box.correct strong,
+.feedback-msg.correct strong {
+  color: #043C22 !important;
+  font-weight: 800;
+}
+
+.quiz-feedback-box.incorrect,
+.feedback-msg.wrong {
+  background: #FEF2F2 !important;
+  border: 1.5px solid #DC2626 !important;
   color: #991B1B !important;
+  font-weight: 600;
+}
+
+.quiz-feedback-box.incorrect strong,
+.feedback-msg.wrong strong {
+  color: #58151C !important;
+  font-weight: 800;
 }
 
 .phone-mockup, .qr-frame-box, .audio-waveform-container {

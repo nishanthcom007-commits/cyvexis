@@ -2780,15 +2780,40 @@ p, li, .briefing-desc, .article-section p, .learning-choice-desc, .desc-text,
 }
 
 .quiz-feedback-box.correct {
-  background: #EDF5F0 !important;
-  border: 1px solid #A3D1AE !important;
-  color: #1C4D2A !important;
+  background: #EDF7ED !important;
+  border: 1.5px solid #16A34A !important;
+  color: #065F46 !important;
+  font-weight: 600 !important;
+}
+
+.quiz-feedback-box.correct strong {
+  color: #043C22 !important;
+  font-weight: 800 !important;
 }
 
 .quiz-feedback-box.incorrect {
-  background: #FDF2F2 !important;
-  border: 1px solid #FECACA !important;
+  background: #FEF2F2 !important;
+  border: 1.5px solid #DC2626 !important;
   color: #991B1B !important;
+  font-weight: 600 !important;
+}
+
+.quiz-feedback-box.incorrect strong {
+  color: #58151C !important;
+  font-weight: 800 !important;
+}
+
+.quiz-feedback-drawer {
+  background: #FFFFFF !important;
+  border: 1.5px solid #DCD6CB !important;
+  box-shadow: 0 4px 20px rgba(44, 38, 30, 0.08) !important;
+}
+
+.feedback-drawer-text {
+  color: #3E3A36 !important;
+  font-size: 0.96rem !important;
+  line-height: 1.65 !important;
+  font-weight: 500 !important;
 }
 
 .phone-screen, .prompt-screen, .calc-screen, .code-snippet, .sim-display {

@@ -294,6 +294,34 @@ pre, code, .url, .mono, [class*="email"], [class*="domain"], [class*="hash"] {
   font-size: 0.94rem;
   line-height: 1.6;
 }
+.feedback-box.correct,
+.feedback-msg.correct,
+.feedback-msg.correct-fb {
+  background: #EDF7ED !important;
+  border: 1.5px solid #16A34A !important;
+  color: #065F46 !important;
+  font-weight: 600 !important;
+}
+.feedback-box.correct strong,
+.feedback-msg.correct strong,
+.feedback-msg.correct-fb strong {
+  color: #043C22 !important;
+  font-weight: 800 !important;
+}
+.feedback-box.incorrect,
+.feedback-msg.wrong,
+.feedback-msg.wrong-fb {
+  background: #FEF2F2 !important;
+  border: 1.5px solid #DC2626 !important;
+  color: #991B1B !important;
+  font-weight: 600 !important;
+}
+.feedback-box.incorrect strong,
+.feedback-msg.wrong strong,
+.feedback-msg.wrong-fb strong {
+  color: #58151C !important;
+  font-weight: 800 !important;
+}
 
 /* Certificate Generator UI */
 .cert-container {
