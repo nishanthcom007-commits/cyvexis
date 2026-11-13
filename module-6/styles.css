@@ -896,55 +896,69 @@ body {
 }
 
 .q-num {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #957D58;
-  letter-spacing: 0.06em;
+  display: inline-flex !important;
+  align-items: center !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.84rem !important;
+  font-weight: 800 !important;
+  color: #1C1917 !important;
+  background: #F5F2EB !important;
+  border: 1.5px solid #DCD6CB !important;
+  padding: 4px 10px !important;
+  border-radius: 6px !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 1px 3px rgba(44, 38, 30, 0.04) !important;
 }
 
 .status-indicator {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 4px;
+  font-family: var(--font-mono) !important;
+  font-size: 0.78rem !important;
+  font-weight: 800 !important;
+  padding: 4px 10px !important;
+  border-radius: 6px !important;
   background: #F5F2EB;
-  color: #57534E;
-  border: 1px solid #E8E3DC;
+  color: #1C1917;
+  border: 1.5px solid #DCD6CB;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
 }
 
-.status-indicator.correct {
-  background: #EDF5F0;
-  color: #2E6F40;
-  border-color: rgba(46, 111, 64, 0.4);
+.status-indicator.correct,
+.status-indicator.resolved {
+  background: #E8F5E9 !important;
+  color: #1B5E20 !important;
+  border: 2px solid #2E7D32 !important;
+  font-weight: 800 !important;
 }
 
-.status-indicator.wrong {
-  background: #FDF2F2;
-  color: #A8282B;
-  border-color: rgba(168, 40, 43, 0.4);
+.status-indicator.wrong,
+.status-indicator.triaged-wrong {
+  background: #FFEBEE !important;
+  color: #B91C1C !important;
+  border: 2px solid #DC2626 !important;
+  font-weight: 800 !important;
 }
 
 .q-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #1C1917;
-  line-height: 1.5;
-  margin-bottom: 18px;
+  font-size: 1.15rem !important;
+  font-weight: 800 !important;
+  color: #1C1917 !important;
+  line-height: 1.55 !important;
+  margin-bottom: 18px !important;
 }
 
 .q-title code {
-  font-family: var(--font-mono);
+  font-family: var(--font-mono) !important;
   color: #FFFFFF !important;
   background: #1C1917 !important;
-  padding: 3px 8px;
-  border-radius: 6px;
-  font-size: 0.95em;
-  font-weight: 700;
-  border: 1px solid #3E3A36;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-  display: inline-block;
+  padding: 4px 10px !important;
+  border-radius: 6px !important;
+  font-size: 0.95em !important;
+  font-weight: 800 !important;
+  border: 1.5px solid #44403C !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18) !important;
+  display: inline-block !important;
 }
 
 .options-grid {
@@ -1490,30 +1504,40 @@ p, li, .briefing-desc, .article-section p, .learning-choice-desc, .desc-text,
 
 .quiz-feedback-box.correct,
 .feedback-msg.correct {
+  display: block !important;
   background: #EDF7ED !important;
-  border: 1.5px solid #16A34A !important;
-  color: #065F46 !important;
-  font-weight: 600;
+  border: 2px solid #16A34A !important;
+  border-left: 6px solid #16A34A !important;
+  color: #043C22 !important;
+  font-weight: 600 !important;
+  font-size: 0.96rem !important;
+  line-height: 1.55 !important;
+  border-radius: 8px !important;
 }
 
 .quiz-feedback-box.correct strong,
 .feedback-msg.correct strong {
-  color: #043C22 !important;
-  font-weight: 800;
+  color: #022C1A !important;
+  font-weight: 800 !important;
 }
 
 .quiz-feedback-box.incorrect,
 .feedback-msg.wrong {
+  display: block !important;
   background: #FEF2F2 !important;
-  border: 1.5px solid #DC2626 !important;
-  color: #991B1B !important;
-  font-weight: 600;
+  border: 2px solid #DC2626 !important;
+  border-left: 6px solid #DC2626 !important;
+  color: #58151C !important;
+  font-weight: 600 !important;
+  font-size: 0.96rem !important;
+  line-height: 1.55 !important;
+  border-radius: 8px !important;
 }
 
 .quiz-feedback-box.incorrect strong,
 .feedback-msg.wrong strong {
-  color: #58151C !important;
-  font-weight: 800;
+  color: #450A0A !important;
+  font-weight: 800 !important;
 }
 
 .terminal-window, .sim-display, .bucket-console, .vault-box {

@@ -1433,18 +1433,28 @@ body {
 }
 
 .quiz-scenario-badge {
-  font-family: var(--font-mono);
-  font-size: 0.74rem;
-  color: var(--text-dim);
-  letter-spacing: 0.08em;
-  margin-bottom: 8px;
+  display: inline-flex !important;
+  align-items: center !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.84rem !important;
+  font-weight: 800 !important;
+  color: #1C1917 !important;
+  background: #F5F2EB !important;
+  border: 1.5px solid #DCD6CB !important;
+  padding: 4px 10px !important;
+  border-radius: 6px !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 12px !important;
+  box-shadow: 0 1px 3px rgba(44, 38, 30, 0.04) !important;
 }
 
 .quiz-question-text {
-  font-size: 1.35rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-  line-height: 1.4;
+  font-size: 1.3rem !important;
+  font-weight: 800 !important;
+  color: #1C1917 !important;
+  margin-bottom: 16px !important;
+  line-height: 1.45 !important;
 }
 
 .quiz-scenario-context {
@@ -2780,26 +2790,36 @@ p, li, .briefing-desc, .article-section p, .learning-choice-desc, .desc-text,
 }
 
 .quiz-feedback-box.correct {
+  display: block !important;
   background: #EDF7ED !important;
-  border: 1.5px solid #16A34A !important;
-  color: #065F46 !important;
+  border: 2px solid #16A34A !important;
+  border-left: 6px solid #16A34A !important;
+  color: #043C22 !important;
   font-weight: 600 !important;
+  font-size: 0.96rem !important;
+  line-height: 1.55 !important;
+  border-radius: 8px !important;
 }
 
 .quiz-feedback-box.correct strong {
-  color: #043C22 !important;
+  color: #022C1A !important;
   font-weight: 800 !important;
 }
 
 .quiz-feedback-box.incorrect {
+  display: block !important;
   background: #FEF2F2 !important;
-  border: 1.5px solid #DC2626 !important;
-  color: #991B1B !important;
+  border: 2px solid #DC2626 !important;
+  border-left: 6px solid #DC2626 !important;
+  color: #58151C !important;
   font-weight: 600 !important;
+  font-size: 0.96rem !important;
+  line-height: 1.55 !important;
+  border-radius: 8px !important;
 }
 
 .quiz-feedback-box.incorrect strong {
-  color: #58151C !important;
+  color: #450A0A !important;
   font-weight: 800 !important;
 }
 
